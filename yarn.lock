@@ -1646,6 +1646,11 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-multi-carousel@^2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/react-multi-carousel/-/react-multi-carousel-2.8.1.tgz#b56e941579abe2e38d93c7bc5ccea75ab2d1b890"
+  integrity sha512-IxeVB9yG8TpsNxE6akQbuOMyr1lh3PJlf5xcR7m+W9FPht1L6PDaQocwoZBVD9gElBkI1yd0G2zPfbBykYgS4w==
+
 react@18.1.0:
   version "18.1.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.1.0.tgz#6f8620382decb17fdc5cc223a115e2adbf104890"

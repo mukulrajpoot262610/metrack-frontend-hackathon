@@ -11,8 +11,8 @@ const Header = () => {
             <div className='w-1/2 h-full relative p-2'>
                 <img src='/overlay/react.webp' className='absolute h-40 top-0 -left-20' />
                 <img src='/overlay/code.webp' className='absolute h-40 bottom-20 -right-20' />
-                <img src='/overlay/django.webp' className='absolute h-40 bottom-20 -left-20' />
-                <img src='/overlay/react_2.webp' className='absolute h-40 top-40 right-20' />
+                <img src='/overlay/django.webp' className='absolute h-40 bottom-20 -left-16' />
+                <img src='/overlay/5.png' className='absolute h-40 top-40 -right-20' />
                 <div className='w-full h-5/6 rounded-3xl bg-gray-50'>
                     <img src='/overlay/46.jpg' className='h-full object-cover rounded-3xl' />
                 </div>
