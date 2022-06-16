@@ -28,7 +28,7 @@ const COURSES = [
 const Courses = () => {
     return (
         <div className='relative mt-20 gap-4 w-full min-h-screen flex justify-center items-center flex-col'>
-            <h1 className='text-5xl font-bold text-center'>Trending courses of the month</h1>
+            <h1 className='text-3xl lg:text-5xl font-bold text-center'>Trending courses of the month</h1>
             <p className='font-medium text-lg text-center'>These are the selected courses from YouTube to build your focus on learning rather than finding courses.</p>
 
             <div className='mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 '>

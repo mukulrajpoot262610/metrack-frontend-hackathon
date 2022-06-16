@@ -5,10 +5,7 @@ const Register = () => {
     return (
         <div className='h-screen flex items-center justify-center gap-20 pt-20 pb-10'>
             <div className='w-full lg:w-1/3 p-6'>
-                <h1 className='font-bold text-center text-xl uppercase'>Welcome to 100Tube</h1>
-
-                <button className='btn btn-ghost shadow-lg mt-10 w-full'>Continue with Google</button>
-                <p className='text-center text-gray-400 font-semibold my-4 text-xs'>or continue with Email</p>
+                <h1 className='font-bold text-center text-3xl uppercase mb-10'>Welcome to 100Tube</h1>
 
                 <form>
                     <div className="form-control w-full">
@@ -38,7 +35,7 @@ const Register = () => {
                             <span className="label-text-alt">Alt label</span>
                         </label> */}
                     </div>
-                    <button className='btn btn-ghost bg-red-100 mt-6 hover:bg-red-300 w-full'>Log In </button>
+                    <button className='btn btn-ghost bg-red-100 mt-6 hover:bg-red-300 w-full'>Register </button>
                     <p className='mt-4 text-xs text-center'>Have an account already?
                         <Link href="/auth">
                             <span className='ml-1 hover:underline text-blue-400 cursor-pointer'>Login Now</span>
