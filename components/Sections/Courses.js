@@ -24,15 +24,16 @@ const COURSES = [
 
 const Courses = () => {
     return (
-        <div className='relative mt-20 gap-4 w-full h-screen flex justify-center items-center flex-col'>
-            <h1 className='text-5xl font-bold'>Trending courses of the month</h1>
+        <div className='relative mt-20 gap-4 w-full min-h-screen flex justify-center items-center flex-col'>
+            <h1 className='text-5xl font-bold text-center'>Trending courses of the month</h1>
             <p className='font-medium text-lg text-center'>These are the selected courses from YouTube to build your focus on learning rather than finding courses.</p>
 
-            <div className='mt-10 flex gap-8'>
+            <div className='mt-10 flex gap-8 flex-wrap'>
                 {
                     COURSES.map(e => <CourseCard key={e.id} data={e} />)
                 }
             </div>
+            <button className='btn btn-ghost bg-red-200 mt-10 hover:bg-red-100 shadow-lg'>View More</button>
         </div>
     )
 }
