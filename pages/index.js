@@ -11,7 +11,6 @@ export default function Home() {
       <Channels />
       <Courses />
       <Features />
-      <Whyus />
     </div>
   )
 }
