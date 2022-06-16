@@ -5,7 +5,7 @@ const CourseCard = ({ data }) => {
     const { name, channel, thumbnail, image, respect } = data;
 
     return (
-        <div className="card max-w-sm bg-base-100 shadow-xl">
+        <div className="card max-w-sm bg-base-100 shadow-xl cursor-pointer hover:-translate-y-3 duration-200">
             <figure><img src={thumbnail} alt="Shoes" /></figure>
             <div className="card-body p-6">
                 <h2 className="card-title font-bold">{name}</h2>

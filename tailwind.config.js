@@ -11,6 +11,9 @@ module.exports = {
         green: '#8dffa8',
         yellow: '#e1ff31'
       },
+      fontSize: {
+        '10xl': '32rem'
+      }
     },
   },
   plugins: [require("daisyui")],

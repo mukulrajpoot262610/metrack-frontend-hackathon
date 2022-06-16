@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import CourseCard from '../Card/CourseCard'
 
@@ -32,7 +33,7 @@ const Courses = () => {
 
             <div className='mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 '>
                 {
-                    COURSES.map(e => <CourseCard key={e.id} data={e} />)
+                    COURSES.map(e => <Link href={`/courses/${e.slug}`} key={e.id}><CourseCard data={e} /></Link>)
                 }
             </div>
             <button className='btn btn-ghost bg-red-200 mt-10 hover:bg-red-100 shadow-lg'>View More</button>
