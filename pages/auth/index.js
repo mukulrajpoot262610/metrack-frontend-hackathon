@@ -5,10 +5,7 @@ const Login = () => {
     return (
         <div className='h-screen flex items-center justify-center gap-20 pt-20 pb-10'>
             <div className='w-full lg:w-1/3 p-6'>
-                <h1 className='font-bold text-center text-xl uppercase'>Log in to 100Tube</h1>
-
-                <button className='btn btn-ghost shadow-lg mt-10 w-full'>Continue with Google</button>
-                <p className='text-center text-gray-400 font-semibold my-4 text-xs'>or continue with Email</p>
+                <h1 className='font-bold text-center text-3xl uppercase mb-10'>Log in to 100Tube</h1>
 
                 <form>
                     <div className="form-control w-full">
