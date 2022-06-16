@@ -15,7 +15,9 @@ const VerifyEmail = () => {
                 <p className='text-center'>Wrong email address? <span className='font-bold text-blue-400 hover:underline cursor-pointer'>Change email </span></p>
 
                 <div className='flex justify-center items-center mt-6 '>
-                    <button className='btn btn-ghost bg-red-50 btn-wide hover:bg-red-200 border border-red-200'>Go To Login</button>
+                    <Link href="/auth">
+                        <button className='btn btn-ghost bg-red-50 btn-wide hover:bg-red-200 border border-red-200'>Go To Login</button>
+                    </Link>
                 </div>
             </div>
             <div className='hidden lg:block lg:w-2/3 h-full'>

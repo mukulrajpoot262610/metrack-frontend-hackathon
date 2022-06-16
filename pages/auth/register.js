@@ -5,7 +5,8 @@ const Register = () => {
     return (
         <div className='h-screen flex items-center justify-center gap-20 pt-20 pb-10'>
             <div className='w-full lg:w-1/3 p-6'>
-                <h1 className='font-bold text-center text-3xl uppercase mb-10'>Welcome to 100Tube</h1>
+                <h1 className='font-bold text-center text-3xl uppercase '>Welcome to 100Tube</h1>
+                <p className='mt-2 text-center text-xs mb-8'>Join 100Tube for Free and explore the new learing experience</p>
 
                 <form>
                     <div className="form-control w-full">
@@ -23,7 +24,7 @@ const Register = () => {
                         </label>
                         <input type="text" placeholder="Type here" className="input input-bordered w-full" />
                         {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
+                            <span className="label-text-alt text-red-300">We&apos;ll send a verification link to your email.</span>
                         </label> */}
                     </div>
                     <div className="form-control w-full mt-2">
