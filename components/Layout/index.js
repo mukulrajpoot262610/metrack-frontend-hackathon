@@ -1,19 +1,20 @@
-import Head from 'next/head'
-import React from 'react'
-import Navbar from './Navbar'
+import Head from "next/head";
+import React from "react";
+import { ContextProviders } from "../contexts";
+import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
-    return (
-        <>
-            <Head>
-                <title>SkillsTube</title>
-            </Head>
-            <Navbar />
-            <main className='min-h-screen w-11/12 lg:w-10/12 mx-auto'>
-                {children}
-            </main>
-        </>
-    )
-}
+  return (
+    <>
+      <Head>
+        <title>SkillsTube</title>
+      </Head>
+      <Navbar />
+      <main className="w-11/12 min-h-screen mx-auto lg:w-10/12">
+        <ContextProviders>{children}</ContextProviders>
+      </main>
+    </>
+  );
+};
 
-export default Layout
+export default Layout;
