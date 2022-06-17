@@ -1,4 +1,8 @@
 import { AuthContextProvider, AuthContext } from "./AuthContext";
+import {
+  MenuToggleContextProvider,
+  MenuToggleContext,
+} from "./MenuToggleContext";
 import { NotifyContextProvider, notifyContext } from "./NotifyContext";
 import { TokenContextProvider, tokenContext } from "./TokenContext";
 import { UserContextProvider, userContext } from "./UserContext";
@@ -9,7 +13,9 @@ function ContextProviders({ children }) {
       <TokenContextProvider>
         <AuthContextProvider>
           <UserContextProvider>
-            <NotifyContextProvider>{children}</NotifyContextProvider>
+            <NotifyContextProvider>
+              <MenuToggleContextProvider>{children}</MenuToggleContextProvider>
+            </NotifyContextProvider>
           </UserContextProvider>
         </AuthContextProvider>
       </TokenContextProvider>
@@ -20,6 +26,7 @@ function ContextProviders({ children }) {
 export {
   ContextProviders,
   AuthContext,
+  MenuToggleContext,
   notifyContext,
   tokenContext,
   userContext,
