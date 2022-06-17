@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {
+  AuthContext,
+  MenuToggleContext,
+  notifyContext,
+  tokenContext,
+} from "../../components/contexts";
+import { userSignup } from "../../components/services/authService";
+import { useRouter } from "next/router";
 
 const schema = yup.object().shape({
   username: yup.string().required("username is required"),
@@ -12,6 +20,13 @@ const schema = yup.object().shape({
 });
 
 const Register = () => {
+  const [pending, setPending] = useState(false);
+  const { setShowNav } = useContext(MenuToggleContext);
+  const { notify } = useContext(notifyContext);
+  const { token, setToken } = useContext(tokenContext);
+  const { setLoggedIn } = useContext(AuthContext);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -20,9 +35,34 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
+  // handlers
   const submitForm = (data) => {
-    console.log(data, "data");
+    handleSignup(data);
   };
+
+  const handleSignup = (data) => {
+    setPending(true);
+    userSignup(data).then((res) => {
+      setPending(false);
+      if (!res.status) {
+        notify(res.message);
+        return;
+      }
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+      setToken(res.data.token);
+      setLoggedIn(true);
+      notify(res.message);
+      router.push("/");
+    });
+  };
+
+  // show nav and footer when component unmounts
+  useEffect(() => {
+    setShowNav(false);
+    return () => {
+      setShowNav(true);
+    };
+  }, []);
   return (
     <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">

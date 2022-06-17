@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {
+  AuthContext,
+  MenuToggleContext,
+  notifyContext,
+} from "../../components/contexts";
+import { userLogin } from "../../components/services/authService";
+import { useRouter } from "next/router";
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
+  username: yup.string().required(),
   password: yup.string().min(4).max(15).required(),
 });
 
 const Login = () => {
+  const [pending, setPending] = useState(false);
+  const { setShowNav } = useContext(MenuToggleContext);
+  const { notify } = useContext(notifyContext);
+  const { setLoggedIn } = useContext(AuthContext);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -17,10 +30,35 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
+  // handlers
   const submitForm = (data) => {
-    console.log(data, "data");
+    handleLogin(data);
   };
+
+  const handleLogin = (data) => {
+    setPending(true);
+    userLogin(data).then((res) => {
+      // set token if login is successful
+      setPending(false);
+      if (res.status) {
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+        setLoggedIn(true);
+        router.push("/");
+        return;
+      }
+      // notify the error
+      notify(res.message);
+    });
+  };
+
+  // show nav and footer when component unmounts
+  useEffect(() => {
+    setShowNav(false);
+    return () => {
+      setShowNav(true);
+    };
+  }, []);
+
   return (
     <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
@@ -31,12 +69,12 @@ const Login = () => {
         <form onSubmit={handleSubmit(submitForm)}>
           <div className="w-full form-control">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text">Username or Email</span>
             </label>
             <input
               type="text"
-              name="email"
-              {...register("email")}
+              name="username"
+              {...register("username")}
               placeholder="Type here"
               className="w-full input input-bordered"
             />
