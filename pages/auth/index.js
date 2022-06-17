@@ -101,9 +101,12 @@ const Login = () => {
               {" "}
               {errors?.password?.message}{" "}
             </p>
-            {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
+            <label className="label">
+                            {errors.password ? <span className="text-red-500 label-text-alt">Password is required!</span> : <span className="label-text-alt"></span>}
+                            <Link href="/auth/forget-password">
+                                <span className="cursor-pointer label-text-alt hover:underline">Forget Password?</span>
+                            </Link>
+            </label>
           </div>
           <button
             type="submit"
