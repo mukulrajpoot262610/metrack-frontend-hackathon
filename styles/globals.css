@@ -16,3 +16,8 @@ body {
   width: 4px;
   background-color: black;
 }
+
+::selection {
+  background-color: #fef2f2;
+  color: #de6b71;
+}

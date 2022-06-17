@@ -1,30 +1,43 @@
 import React from 'react'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => console.log(data);
+
     return (
         <div className='h-screen flex items-center justify-center gap-20 pt-20 pb-10'>
             <div className='w-full lg:w-1/3 p-6'>
                 <h1 className='font-bold text-center text-3xl uppercase mb-10'>Log in to 100Tube</h1>
 
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full" />
-                        {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full" {...register("email", {
+                            required: true, pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                            }
+                        })} />
+                        {errors.email && <label className="label">
+                            <span className="label-text-alt text-red-500">Enter a valid Email Address!</span>
+                        </label>}
                     </div>
                     <div className="form-control w-full mt-2">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full" />
-                        {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
+                        <input type="text" {...register("password", { required: true })} placeholder="Type here" className="input input-bordered w-full" />
+                        <label className="label">
+                            {errors.password ? <span className="label-text-alt text-red-500">Password is required!</span> : <span className="label-text-alt"></span>}
+                            <Link href="/auth/forget-password">
+                                <span className="label-text-alt cursor-pointer hover:underline">Forget Password?</span>
+                            </Link>
+                        </label>
                     </div>
                     <button className='btn btn-ghost bg-red-100 mt-6 hover:bg-red-300 w-full'>Log In </button>
                     <p className='mt-4 text-xs text-center'>Don’t have an account?
