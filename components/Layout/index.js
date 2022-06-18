@@ -1,19 +1,35 @@
-import Head from 'next/head'
-import React from 'react'
-import Navbar from './Navbar'
+import Head from "next/head";
+import React, { useEffect } from "react";
+import Navbar from "./Navbar";
+import { useDispatch } from "react-redux";
+import { refresh } from "../../services/api";
+import { setAuth } from "../../redux/authSlice";
+import { Toaster } from "react-hot-toast";
 
 const Layout = ({ children }) => {
-    return (
-        <>
-            <Head>
-                <title>SkillsTube</title>
-            </Head>
-            <Navbar />
-            <main className='min-h-screen w-11/12 lg:w-10/12 mx-auto'>
-                {children}
-            </main>
-        </>
-    )
-}
+  const dispatch = useDispatch();
 
-export default Layout
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await refresh();
+        dispatch(setAuth(res.data));
+      } catch (err) {}
+    })();
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>SkillsTube</title>
+      </Head>
+      <Navbar />
+      <main className="w-11/12 min-h-screen mx-auto lg:w-10/12">
+        {children}
+      </main>
+      <Toaster position="bottom-right" />
+    </>
+  );
+};
+
+export default Layout;

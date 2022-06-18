@@ -1,60 +1,121 @@
-import React from 'react'
-import Link from 'next/link'
-import { useForm } from 'react-hook-form';
+import React, { useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { login } from "../../services/api";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuth } from "../../redux/authSlice";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector((state) => state.auth);
+  const router = useRouter();
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const res = await login(data);
+      dispatch(setAuth(res.data));
+    } catch (err) {
+      toast(err?.response?.data?.msg);
+    }
+  };
 
-    return (
-        <div className='h-screen flex items-center justify-center gap-20 pt-20 pb-10'>
-            <div className='w-full lg:w-1/3 p-6'>
-                <h1 className='font-bold text-center text-3xl uppercase mb-10'>Log in to 100Tube</h1>
+  useEffect(() => {
+    if (isAuth) {
+      router.push("/");
+    }
+  }, [isAuth]);
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full" {...register("email", {
-                            required: true, pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-                            }
-                        })} />
-                        {errors.email && <label className="label">
-                            <span className="label-text-alt text-red-500">Enter a valid Email Address!</span>
-                        </label>}
-                    </div>
-                    <div className="form-control w-full mt-2">
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input type="text" {...register("password", { required: true })} placeholder="Type here" className="input input-bordered w-full" />
-                        <label className="label">
-                            {errors.password ? <span className="label-text-alt text-red-500">Password is required!</span> : <span className="label-text-alt"></span>}
-                            <Link href="/auth/forget-password">
-                                <span className="label-text-alt cursor-pointer hover:underline">Forget Password?</span>
-                            </Link>
-                        </label>
-                    </div>
-                    <button className='btn btn-ghost bg-red-100 mt-6 hover:bg-red-300 w-full'>Log In </button>
-                    <p className='mt-4 text-xs text-center'>Don’t have an account?
-                        <Link href="/auth/register">
-                            <span className='ml-1 hover:underline text-blue-400 cursor-pointer'>Register Now</span>
-                        </Link>
-                    </p>
-                </form>
-            </div>
-            <div className='hidden lg:block lg:w-2/3 h-full'>
-                <div className='rounded-3xl bg-red-50 flex justify-center items-center h-full overflow-hidden relative'>
-                    <h1 className='text-red-200 font-black text-9xl absolute top-16 z-10 uppercase'>Login</h1>
-                    <img src='/hero.svg' className='z-20 object-cover rounded-3xl w-10/12' />
-                </div>
-            </div>
+  return (
+    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
+      <div className="w-full p-6 lg:w-1/3">
+        <h1 className="mb-10 text-3xl font-bold text-center uppercase">
+          Log in to 100Tube
+        </h1>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="w-full form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="w-full input input-bordered"
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                },
+              })}
+            />
+            {errors.email && (
+              <label className="label">
+                <span className="text-red-500 label-text-alt">
+                  Enter a valid Email Address!
+                </span>
+              </label>
+            )}
+          </div>
+          <div className="w-full mt-2 form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              type="text"
+              {...register("password", { required: true })}
+              placeholder="Type here"
+              className="w-full input input-bordered"
+            />
+            <label className="label">
+              {errors.password ? (
+                <span className="text-red-500 label-text-alt">
+                  Password is required!
+                </span>
+              ) : (
+                <span className="label-text-alt"></span>
+              )}
+              <Link href="/auth/forget-password">
+                <span className="cursor-pointer label-text-alt hover:underline">
+                  Forget Password?
+                </span>
+              </Link>
+            </label>
+          </div>
+          <button className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300">
+            Log In{" "}
+          </button>
+          <p className="mt-4 text-xs text-center">
+            Don’t have an account?
+            <Link href="/auth/register">
+              <span className="ml-1 text-blue-400 cursor-pointer hover:underline">
+                Register Now
+              </span>
+            </Link>
+          </p>
+        </form>
+      </div>
+      <div className="hidden h-full lg:block lg:w-2/3">
+        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-red-50">
+          <h1 className="absolute z-10 font-black text-red-200 uppercase text-9xl top-16">
+            Login
+          </h1>
+          <img
+            src="/hero.svg"
+            className="z-20 object-cover w-10/12 rounded-3xl"
+          />
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
