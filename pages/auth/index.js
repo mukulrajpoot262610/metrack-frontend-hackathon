@@ -1,139 +1,62 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import {
-  AuthContext,
-  MenuToggleContext,
-  notifyContext,
-} from "../../components/contexts";
-import { userLogin } from "../../components/services/authService";
-import { useRouter } from "next/router";
-
-const schema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().min(4).max(15).required(),
-});
 
 const Login = () => {
-  const [pending, setPending] = useState(false);
-  const { setShowNav } = useContext(MenuToggleContext);
-  const { notify } = useContext(notifyContext);
-  const { setLoggedIn } = useContext(AuthContext);
-  const router = useRouter();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-  // handlers
-  const submitForm = (data) => {
-    handleLogin(data);
+  const onSubmit = async (data) => {
+    console.log(data)
+    try {
+
+    } catch (err) {
+
+    }
   };
-
-  const handleLogin = (data) => {
-    setPending(true);
-    userLogin(data).then((res) => {
-      // set token if login is successful
-      setPending(false);
-      if (res.status) {
-        localStorage.setItem("token", JSON.stringify(res.data.token));
-        setLoggedIn(true);
-        router.push("/");
-        return;
-      }
-      // notify the error
-      notify(res.message);
-    });
-  };
-
-  // show nav and footer when component unmounts
-  useEffect(() => {
-    setShowNav(false);
-    return () => {
-      setShowNav(true);
-    };
-  }, []);
 
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
-      <div className="w-full p-6 lg:w-1/3">
-        <h1 className="mb-10 text-3xl font-bold text-center uppercase">
-          Log in to 100Tube
-        </h1>
+    <div className='h-screen flex items-center justify-center gap-20 pt-20 pb-10'>
+      <div className='w-full lg:w-1/3 p-6'>
+        <h1 className='font-bold text-center text-3xl uppercase mb-10'>Log in to 100Tube</h1>
 
-        <form onSubmit={handleSubmit(submitForm)}>
-          <div className="w-full form-control">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-control w-full">
             <label className="label">
-              <span className="label-text">Username or Email</span>
+              <span className="label-text">Email</span>
             </label>
-            <input
-              type="text"
-              name="username"
-              {...register("username")}
-              placeholder="Type here"
-              className="w-full input input-bordered"
-            />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.email?.message}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="text-red-300 label-text-alt">We&apos;ll send a verification link to your email.</span>
-                        </label> */}
+            <input type="text" placeholder="Type here" className="input input-bordered w-full" {...register("email", {
+              required: true, pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+              }
+            })} />
+            {errors.email && <label className="label">
+              <span className="label-text-alt text-red-500">Enter a valid Email Address!</span>
+            </label>}
           </div>
-          <div className="w-full mt-2 form-control">
+          <div className="form-control w-full mt-2">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <input
-              type="text"
-              name="password"
-              {...register("password")}
-              placeholder="Type here"
-              className="w-full input input-bordered"
-            />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.password?.message}{" "}
-            </p>
+            <input type="text" {...register("password", { required: true })} placeholder="Type here" className="input input-bordered w-full" />
             <label className="label">
-                            {errors.password ? <span className="text-red-500 label-text-alt">Password is required!</span> : <span className="label-text-alt"></span>}
-                            <Link href="/auth/forget-password">
-                                <span className="cursor-pointer label-text-alt hover:underline">Forget Password?</span>
-                            </Link>
+              {errors.password ? <span className="label-text-alt text-red-500">Password is required!</span> : <span className="label-text-alt"></span>}
+              <Link href="/auth/forget-password">
+                <span className="label-text-alt cursor-pointer hover:underline">Forget Password?</span>
+              </Link>
             </label>
           </div>
-          <button
-            type="submit"
-            id="submit"
-            className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
-          >
-            Log In{" "}
-          </button>
-          <p className="mt-4 text-xs text-center">
-            Don’t have an account?
+          <button className='btn btn-ghost bg-red-100 mt-6 hover:bg-red-300 w-full'>Log In </button>
+          <p className='mt-4 text-xs text-center'>Don&apos;t have an account?
             <Link href="/auth/register">
-              <span className="ml-1 text-blue-400 cursor-pointer hover:underline">
-                Register Now
-              </span>
+              <span className='ml-1 hover:underline text-blue-400 cursor-pointer'>Register Now</span>
             </Link>
           </p>
         </form>
       </div>
-      <div className="hidden h-full lg:block lg:w-2/3">
-        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-red-50">
-          <h1 className="absolute z-10 font-black text-red-200 uppercase text-9xl top-16">
-            Login
-          </h1>
-          <img
-            src="/hero.svg"
-            className="z-20 object-cover w-10/12 rounded-3xl"
-          />
+      <div className='hidden lg:block lg:w-2/3 h-full'>
+        <div className='rounded-3xl bg-red-50 flex justify-center items-center h-full overflow-hidden relative'>
+          <h1 className='text-red-200 font-black text-9xl absolute top-16 z-10 uppercase'>Login</h1>
+          <img src='/hero.svg' className='z-20 object-cover rounded-3xl w-10/12' />
         </div>
       </div>
     </div>

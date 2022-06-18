@@ -10,5 +10,7 @@ const api = axios.create({
 })
 
 // ROUTES
+export const RegisterUser = (data) => api.post('/api/register', data)
+export const LoginUser = (data) => api.post('/api/login', data)
 
 export default api

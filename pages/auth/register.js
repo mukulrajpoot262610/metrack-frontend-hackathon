@@ -3,12 +3,6 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {
-  AuthContext,
-  MenuToggleContext,
-  notifyContext,
-  tokenContext,
-} from "../../components/contexts";
 import { userSignup } from "../../components/services/authService";
 import { useRouter } from "next/router";
 
@@ -21,10 +15,7 @@ const schema = yup.object().shape({
 
 const Register = () => {
   const [pending, setPending] = useState(false);
-  const { setShowNav } = useContext(MenuToggleContext);
-  const { notify } = useContext(notifyContext);
-  const { token, setToken } = useContext(tokenContext);
-  const { setLoggedIn } = useContext(AuthContext);
+
   const router = useRouter();
 
   const {
@@ -56,13 +47,6 @@ const Register = () => {
     });
   };
 
-  // show nav and footer when component unmounts
-  useEffect(() => {
-    setShowNav(false);
-    return () => {
-      setShowNav(true);
-    };
-  }, []);
   return (
     <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
