@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(4).max(15).required(),
-});
 
 const ForgetPassowrd = () => {
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector((state) => state.auth);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
-  const submitForm = (data) => {
-    console.log(data, "data");
+  const onSubmit = async (data) => {
+    try {
+      const res = await login(data);
+      dispatch(setAuth(res.data));
+    } catch (err) {
+      toast(err?.response?.data?.msg);
+    }
   };
+
+  useEffect(() => {
+    if (isAuth) {
+      router.push("/");
+    }
+  }, [isAuth]);
+
   return (
     <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
@@ -30,31 +40,32 @@ const ForgetPassowrd = () => {
         <p className="mt-2 mb-10 text-xs text-center">
           We&apos;ll send a password reset link to your email.
         </p>
-        <form onSubmit={handleSubmit(submitForm)}>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full form-control">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
             <input
               type="text"
-              name="email"
-              {...register("email")}
               placeholder="Type here"
               className="w-full input input-bordered"
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                },
+              })}
             />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.email?.message}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="text-red-300 label-text-alt">We&apos;ll send a verification link to your email.</span>
-                        </label> */}
+            {errors.email && (
+              <label className="label">
+                <span className="text-red-500 label-text-alt">
+                  Enter a valid Email Address!
+                </span>
+              </label>
+            )}
           </div>
-          <button
-            type="submit"
-            id="submit"
-            className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
-          >
+          <button className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300">
             Send Password Reset Link
           </button>
           <p className="mt-4 text-xs text-center">

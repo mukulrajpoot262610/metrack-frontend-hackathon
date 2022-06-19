@@ -1,51 +1,43 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { userSignup } from "../../components/services/authService";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-
-const schema = yup.object().shape({
-  username: yup.string().required("username is required"),
-  email: yup.string().email().required(),
-  password: yup.string().min(4).max(15).required(),
-  confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
-});
+import { useForm } from "react-hook-form";
+import { register as signup } from "../../services/api";
+import { setAuth } from "../../redux/authSlice";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const [pending, setPending] = useState(false);
-
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false)
+  const { isAuth } = useSelector((state) => state.auth);
   const router = useRouter();
-
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
-  // handlers
-  const submitForm = (data) => {
-    handleSignup(data);
+  const onSubmit = async (data) => {
+    setLoading(true)
+    try {
+      const res = await signup(data);
+      dispatch(setAuth(res.data));
+      toast.success("LogIn Success 🎉");
+      setLoading(false)
+    } catch (err) {
+      setLoading(false)
+      console.log(err)
+      toast.error(err?.response?.data?.msg);
+    }
   };
 
-  const handleSignup = (data) => {
-    setPending(true);
-    userSignup(data).then((res) => {
-      setPending(false);
-      if (!res.status) {
-        notify(res.message);
-        return;
-      }
-      localStorage.setItem("token", JSON.stringify(res.data.token));
-      setToken(res.data.token);
-      setLoggedIn(true);
-      notify(res.message);
+  useEffect(() => {
+    if (isAuth) {
       router.push("/");
-    });
-  };
+    }
+  }, [isAuth]);
 
   return (
     <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
@@ -57,25 +49,29 @@ const Register = () => {
           Join 100Tube for Free and explore the new learing experience
         </p>
 
-        <form onSubmit={handleSubmit(submitForm)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full form-control">
             <label className="label">
-              <span className="label-text">Username</span>
+              <span className="label-text">Name</span>
             </label>
             <input
               type="text"
-              name="username"
-              {...register("username")}
               placeholder="Type here"
               className="w-full input input-bordered"
+              {...register("name", {
+                required: true,
+                pattern: {
+                  value: /^[a-z ,.'-]+$/i,
+                },
+              })}
             />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.username?.message}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
+            {errors.name && (
+              <label className="label">
+                <span className="text-red-500 label-text-alt">
+                  Enter a valid name!
+                </span>
+              </label>
+            )}
           </div>
           <div className="w-full form-control">
             <label className="label">
@@ -83,18 +79,22 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="email"
-              {...register("email")}
               placeholder="Type here"
               className="w-full input input-bordered"
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                },
+              })}
             />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.email?.message}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="text-red-300 label-text-alt">We&apos;ll send a verification link to your email.</span>
-                        </label> */}
+            {errors.email && (
+              <label className="label">
+                <span className="text-red-500 label-text-alt">
+                  Enter a valid Email Address!
+                </span>
+              </label>
+            )}
           </div>
           <div className="w-full mt-2 form-control">
             <label className="label">
@@ -102,43 +102,21 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="password"
-              {...register("password")}
+              {...register("password", { required: true })}
               placeholder="Type here"
               className="w-full input input-bordered"
             />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.password?.message}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
-          </div>
-          <div className="w-full mt-2 form-control">
             <label className="label">
-              <span className="label-text">Confirm Password</span>
+              {errors.password ? (
+                <span className="text-red-500 label-text-alt">
+                  Password is required!
+                </span>
+              ) : (
+                <span className="label-text-alt"></span>
+              )}
             </label>
-            <input
-              type="text"
-              name="confirmPassword"
-              {...register("confirmPassword")}
-              placeholder="Type here"
-              className="w-full input input-bordered"
-            />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.confirmPassword && "Passwords Should Match!"}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
           </div>
-          <button
-            type="submit"
-            id="submit"
-            className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
-          >
+          <button className={`w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300 ${loading && "loading"} `}>
             Register{" "}
           </button>
           <p className="mt-4 text-xs text-center">
