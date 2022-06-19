@@ -111,7 +111,10 @@ const Register = () => {
               )}
             </label>
           </div>
-          <button className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300">
+          <button
+            type="submit"
+            className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
+          >
             Register{" "}
           </button>
           <p className="mt-4 text-xs text-center">

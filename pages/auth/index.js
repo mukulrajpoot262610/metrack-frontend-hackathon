@@ -83,7 +83,7 @@ const Login = () => {
               ) : (
                 <span className="label-text-alt"></span>
               )}
-              <Link href="/auth/forget-password">
+              <Link href="/auth/forgot-password">
                 <span className="cursor-pointer label-text-alt hover:underline">
                   Forget Password?
                 </span>

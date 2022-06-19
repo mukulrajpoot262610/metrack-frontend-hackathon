@@ -15,6 +15,11 @@ export const logout = () => api.post("/api/logout");
 export const login = (data) => api.post("/api/login", data);
 export const register = (data) => api.post("/api/register", data);
 export const refresh = () => api.get("/api/refresh");
+export const forgotPassword = (data) =>
+  api.post("/api/request-password-reset", data);
+export const resetPassword = (data) => api.post("/api/reset-password", data);
+export const verifyMagicToken = (data) =>
+  api.post("/api/validate-magictoken", data);
 
 // UPDATE
 api.interceptors.response.use(
