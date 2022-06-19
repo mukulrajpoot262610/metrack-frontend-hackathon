@@ -20,6 +20,8 @@ export const forgotPassword = (data) =>
 export const resetPassword = (data) => api.post("/api/reset-password", data);
 export const verifyMagicToken = (data) =>
   api.post("/api/validate-magictoken", data);
+export const verifyEmail = (data) => api.post("/api/verify-email", data);
+export const requestEmailVerification = () => api.get("/api/verify-email");
 
 // UPDATE
 api.interceptors.response.use(

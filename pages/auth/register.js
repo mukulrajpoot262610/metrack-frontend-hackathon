@@ -8,21 +8,21 @@ import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const router = useRouter();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
     try {
       const res = await signup(data);
-      dispatch(setAuth(res.data));
+      // dispatch(setAuth(res.data));
       toast("account created");
+      router.push("/auth/verify");
     } catch (err) {
       toast(err?.response?.data?.msg);
     }
