@@ -24,10 +24,10 @@ const Layout = ({ children }) => {
         <title>SkillsTube</title>
       </Head>
       <Navbar />
-      <main className="w-11/12 min-h-screen mx-auto lg:w-10/12">
+      <main className="w-11/12 min-h-screen pt-16 mx-auto lg:w-10/12">
         {children}
       </main>
-      <Toaster position="bottom-right" />
+      <Toaster />
     </>
   );
 };
