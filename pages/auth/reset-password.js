@@ -58,7 +58,6 @@ const ResetPassowrd = () => {
         <p className="mt-2 mb-10 text-xs text-center">
           Make a new password for your 100Tube account.
         </p>
-
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full mt-2 form-control">
             <label className="label">

@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       try {
         const res = await refresh();
         dispatch(setAuth(res.data));
-      } catch (err) {}
+      } catch (err) { }
     })();
   }, []);
 

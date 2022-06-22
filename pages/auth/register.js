@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -11,6 +11,7 @@ import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 const Register = () => {
   const dispatch = useDispatch();
   const { isAuth } = UseRedirectOnAuth("/", true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -19,13 +20,15 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setLoading(true)
     try {
       const res = await signup(data);
       dispatch(setAuth(res.data));
-      toast.success("account created");
-      router.push("/auth/verify");
+      toast.success("LogIn Success 🎉");
+      setLoading(false)
     } catch (err) {
-      console.log(err);
+      setLoading(false)
+      console.log(err)
       toast.error(err?.response?.data?.msg);
     }
   };
@@ -107,10 +110,7 @@ const Register = () => {
               )}
             </label>
           </div>
-          <button
-            type="submit"
-            className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
-          >
+          <button className={`w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300 ${loading && "loading"} `}>
             Register{" "}
           </button>
           <p className="mt-4 text-xs text-center">

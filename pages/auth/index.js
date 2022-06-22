@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -11,6 +11,8 @@ import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 const Login = () => {
   const dispatch = useDispatch();
   const { isAuth } = UseRedirectOnAuth("/", true);
+  const [loading, setLoading] = useState(false)
+  const router = useRouter();
 
   const {
     register,
@@ -19,11 +21,15 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setLoading(true)
     try {
       const res = await login(data);
       dispatch(setAuth(res.data));
+      setLoading(false)
     } catch (err) {
-      toast.error(err?.response?.data?.msg);
+      console.log(err)
+      setLoading(false)
+      toast.error(err?.response?.data?.msg || err?.message);
     }
   };
 
@@ -83,13 +89,13 @@ const Login = () => {
               </Link>
             </label>
           </div>
-          <button className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300">
+          <button className={`w-full mt-6 ${loading && "loading"} bg-red-100 btn btn-ghost hover:bg-red-300`}>
             Log In{" "}
           </button>
           <p className="mt-4 text-xs text-center">
             Don’t have an account?
             <Link href="/auth/register">
-              <span className="ml-1 text-blue-400 cursor-pointer hover:underline">
+              <span className={`ml-1 text-blue-400 cursor-pointer hover:underline`}>
                 Register Now
               </span>
             </Link>
