@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { forgotPassword } from "../../services/api";
+import toast from "react-hot-toast";
 
 const ForgetPassowrd = () => {
   const dispatch = useDispatch();
@@ -18,8 +20,8 @@ const ForgetPassowrd = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await login(data);
-      dispatch(setAuth(res.data));
+      const res = await forgotPassword(data);
+      toast(res?.data?.msg);
     } catch (err) {
       toast(err?.response?.data?.msg);
     }
@@ -32,7 +34,7 @@ const ForgetPassowrd = () => {
   }, [isAuth]);
 
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
+    <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="text-3xl font-bold text-center uppercase">
           Forgot Password
