@@ -25,6 +25,10 @@ export const requestEmailVerification = () => api.get("/api/verify-email");
 export const getPublishedCourses = () => api.get("/api/get-all-course");
 export const getCourseDetail = (id) => api.get(`/api/get-course/${id}`);
 
+// MESSAGES
+export const sendMessage = (data) => api.post("/api/messages", data);
+export const getMessages = () => api.get("/api/messages");
+
 // UPDATE
 api.interceptors.response.use(
   (config) => {

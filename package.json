@@ -19,7 +19,8 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.4.0",
     "react-multi-carousel": "^2.8.1",
-    "react-redux": "^8.0.2"
+    "react-redux": "^8.0.2",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
