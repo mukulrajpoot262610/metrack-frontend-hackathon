@@ -1,28 +1,54 @@
-import React from "react";
-import Link from "next/link";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
-const schema = yup.object().shape({
-  username: yup.string().required("username is required"),
-  email: yup.string().email().required(),
-  password: yup.string().min(4).max(15).required(),
-  confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
-});
+import toast from "react-hot-toast";
+import { resetPassword, verifyMagicToken } from "../../services/api";
 
 const ResetPassowrd = () => {
+  const { isAuth } = useSelector((state) => state.auth);
+  const router = useRouter();
+  const params = router.query;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
-  const submitForm = (data) => {
-    console.log(data, "data");
+  const onSubmit = async (data) => {
+    const { password, confirmPassword } = data;
+    try {
+      if (password !== confirmPassword) {
+        return toast("passwords do not match");
+      }
+      data = { ...data, ...params };
+      const res = await resetPassword(data);
+      toast(res?.data?.msg);
+      router.push("/auth");
+    } catch (err) {
+      toast(err?.response?.data?.msg);
+    }
   };
+
+  // ONLOAD: check if link is valid
+  useEffect(() => {
+    if (!params?.token) return;
+    (async () => {
+      try {
+        const res = await verifyMagicToken(params);
+      } catch (err) {
+        router.push("/auth/invalid-link");
+      }
+    })();
+  }, [params]);
+
+  useEffect(() => {
+    if (isAuth) {
+      router.push("/");
+    }
+  }, [isAuth]);
+
   return (
     <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
@@ -32,25 +58,27 @@ const ResetPassowrd = () => {
         <p className="mt-2 mb-10 text-xs text-center">
           Make a new password for your 100Tube account.
         </p>
-        <form>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full mt-2 form-control">
             <label className="label">
-              <span className="label-text">Password</span>
+              <span className="label-text">New Password</span>
             </label>
             <input
               type="text"
-              name="password"
-              {...register("password")}
+              {...register("password", { required: true })}
               placeholder="Type here"
               className="w-full input input-bordered"
             />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.password?.message}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
+            <label className="label">
+              {errors.password ? (
+                <span className="text-red-500 label-text-alt">
+                  Password is required!
+                </span>
+              ) : (
+                <span className="label-text-alt"></span>
+              )}
+            </label>
           </div>
           <div className="w-full mt-2 form-control">
             <label className="label">
@@ -58,22 +86,22 @@ const ResetPassowrd = () => {
             </label>
             <input
               type="text"
-              name="confirmPassword"
-              {...register("confirmPassword")}
+              {...register("confirmPassword", { required: true })}
               placeholder="Type here"
               className="w-full input input-bordered"
             />
-            <p className="pt-1 text-sm text-error">
-              {" "}
-              {errors?.confirmPassword && "Passwords Should Match!"}{" "}
-            </p>
-            {/* <label className="label">
-                            <span className="label-text-alt">Alt label</span>
-                        </label> */}
+            <label className="label">
+              {errors.password ? (
+                <span className="text-red-500 label-text-alt">
+                  Passwords should match
+                </span>
+              ) : (
+                <span className="label-text-alt"></span>
+              )}
+            </label>
           </div>
           <button
             type="submit"
-            id="submit"
             className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
           >
             Reset Password

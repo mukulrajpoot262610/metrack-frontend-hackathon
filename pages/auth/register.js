@@ -15,7 +15,6 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -23,9 +22,10 @@ const Register = () => {
     setLoading(true)
     try {
       const res = await signup(data);
-      dispatch(setAuth(res.data));
       toast.success("LogIn Success 🎉");
       setLoading(false)
+      // dispatch(setAuth(res.data));
+      router.push("/auth/verify");
     } catch (err) {
       setLoading(false)
       console.log(err)
