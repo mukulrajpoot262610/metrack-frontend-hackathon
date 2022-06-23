@@ -25,10 +25,10 @@ export default function Timeline() {
   ];
 
   let blue = false;
-  const elements = data.map((i) => {
+  const elements = data.map((i, j) => {
     blue = !blue;
     return (
-      <div className="relative h-full px-10 overflow-hidden wrap">
+      <div key={j} className="relative h-full px-10 overflow-hidden wrap">
         <div className="absolute h-full border border-accent border-2-2 border-opacity-20"></div>
         <div className="flex items-center w-full mb-8 right-timeline">
           <div className="order-1"></div>

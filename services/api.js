@@ -23,6 +23,10 @@ export const verifyMagicToken = (data) =>
 export const verifyEmail = (data) => api.post("/api/verify-email", data);
 export const requestEmailVerification = () => api.get("/api/verify-email");
 
+// MESSAGES
+export const sendMessage = (data) => api.post("/api/messages", data);
+export const getMessages = () => api.get("/api/messages");
+
 // UPDATE
 api.interceptors.response.use(
   (config) => {
