@@ -1,7 +1,7 @@
 import React from "react";
 import Courses from "../../components/dashboard/Courses";
 
-export default function courses() {
+export default function EnrolledCourses() {
   return (
     <>
       <Courses />

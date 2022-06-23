@@ -1,4 +1,5 @@
 import React from "react";
+import CourseContent from "../../components/Dashboard/CourseContent";
 
 const Explore = () => {
   return (
@@ -52,6 +53,9 @@ const Explore = () => {
           </select>
         </div>
         <hr />
+
+        <CourseContent />
+
       </div>
     </div>
   );

@@ -1,6 +1,10 @@
 import React from "react";
-import Dashboard from "../../components/dashboard";
+import DashboardComponent from "../../components/dashboard/DashboardComponent";
+import Sidebar from "../../components/dashboard/Sidebar";
 
 export default function index() {
-  return <Dashboard />;
+  return <div className="grid grid-cols-6 gap-4 pt-4 pb-10">
+    <Sidebar />
+    <DashboardComponent />
+  </div>;
 }
