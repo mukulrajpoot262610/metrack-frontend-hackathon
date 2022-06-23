@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Carousel() {
   return (
-    <div class="carousel carousel-center space-x-4 rounded-box">
+    <div className="carousel carousel-center space-x-4 rounded-box">
       <div className="carousel-item">
         <div className="p-4 overflow-hidden shadow w-80 bg-base-100 rounded-xl">
           <figure className="overflow-hidden rounded-md aspect-w-2 aspect-h-1">

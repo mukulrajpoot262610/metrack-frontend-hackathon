@@ -26,7 +26,7 @@ export default function Sidebar() {
 
   return (
     <section className="col-span-3">
-      <ul class="space-y-2 bg-base-100 sticky top-20 text-base-content">
+      <ul className="space-y-2 bg-base-100 sticky top-20 text-base-content">
         <li className="">
           <Link href="/dashboard">
             <a className="relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 bg-red-50 hover:bg-red-300">

@@ -69,25 +69,25 @@ export default function SettingsContent() {
             <h2 className="text-sm font-bold text-accent">Email Preferences</h2>
             <form className="space-y-4">
               <div className="flex items-center gap-x-4">
-                <input type="checkbox" class="checkbox checkbox-primary" />
+                <input type="checkbox" className="checkbox checkbox-primary" />
                 <label htmlFor="" className="flex-1 text-sm">
                   Updates related to new projects
                 </label>
               </div>
               <div className="flex items-center gap-x-4">
-                <input type="checkbox" class="checkbox checkbox-primary" />
+                <input type="checkbox" className="checkbox checkbox-primary" />
                 <label htmlFor="" className="flex-1 text-sm">
                   Updates related to new products
                 </label>
               </div>
               <div className="flex items-center gap-x-4">
-                <input type="checkbox" class="checkbox checkbox-primary" />
+                <input type="checkbox" className="checkbox checkbox-primary" />
                 <label htmlFor="" className="flex-1 text-sm">
                   Updates related to new services
                 </label>
               </div>
               <div className="flex items-center gap-x-4">
-                <input type="checkbox" class="checkbox checkbox-primary" />
+                <input type="checkbox" className="checkbox checkbox-primary" />
                 <label htmlFor="" className="flex-1 text-sm">
                   Branding and Advertisements
                 </label>
