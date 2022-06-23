@@ -9,9 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../services/api";
 import { TbLogout } from "react-icons/tb";
 import { BiCog } from "react-icons/bi";
+import { useRouter } from "next/router";
 
 export default function Sidebar() {
+
   const dispatch = useDispatch();
+  const router = useRouter()
+
+  const path = router.pathname
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -30,32 +35,32 @@ export default function Sidebar() {
         <ul className="space-y-2 bg-base-100 sticky top-20 text-base-content">
           <li className="">
             <Link href="/dashboard">
-              <a className="relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 bg-red-50 hover:bg-red-300">
-                <MdOutlineDashboard className="text-base font-bold" />
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+                <MdOutlineDashboard className="text-xl font-bold" />
                 Dashboard
               </a>
             </Link>
           </li>
           <li className="">
             <Link href="/dashboard/courses">
-              <a className="relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300">
-                <FiBook className="text-base font-bold" />
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/courses" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+                <FiBook className="text-xl font-bold" />
                 Courses
               </a>
             </Link>
           </li>
           <li className="">
             <Link href="/dashboard/settings">
-              <a className="relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300">
-                <BiCog className="text-base font-bold" />
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/settings" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+                <BiCog className="text-xl font-bold" />
                 Settings
               </a>
             </Link>
           </li>
           <li className="">
             <Link href="/profile">
-              <a className="relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300">
-                <AiOutlineUser className="text-base font-bold" />
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/profile" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+                <AiOutlineUser className="text-xl font-bold" />
                 Profile
               </a>
             </Link>
@@ -63,16 +68,16 @@ export default function Sidebar() {
           <li className="">
             <button
               onClick={handleLogout}
-              className="relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300"
+              className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/logout" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}
             >
-              <TbLogout className="text-base font-bold" />
+              <TbLogout className="text-xl font-bold" />
               Logout
             </button>
           </li>
         </ul>
       </section>
 
-      <section className="fixed lg:hidden bottom-0 w-full h-16 left-0 bg-white border">
+      <section className="fixed lg:hidden z-40 bottom-0 w-full h-16 left-0 bg-white border">
         <ul className="flex items-center justify-around">
           <li className="">
             <Link href="/dashboard">

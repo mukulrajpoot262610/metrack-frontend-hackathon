@@ -1,10 +1,14 @@
 import React from "react";
-import Courses from "../../components/dashboard/Courses";
+import CourseContent from "../../components/Common/CourseContent";
+import Sidebar from "../../components/dashboard/Sidebar";
 
 export default function EnrolledCourses() {
   return (
     <>
-      <Courses />
+      <div className="grid grid-cols-12 gap-4 pt-4 pb-10">
+        <Sidebar />
+        <CourseContent />
+      </div>
     </>
   );
 }

@@ -35,11 +35,11 @@ export default function CourseContent() {
   });
 
   return (
-    <section className="col-span-9">
-      <div className="w-full p-4 space-y-4 bg-red-50 rounded-xl">
+    <section className="col-span-12 lg:col-span-9">
+      <div className="w-full space-y-4 rounded-xl">
         <div className="space-y-2">
-          <h2 className="text-sm font-bold text-accent">Enrolled Courses</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <h2 className="text-sm font-bold text-red-400">Enrolled Courses</h2>
+          <div className="grid grid-cols-1 gap-4 z-20 sm:grid-cols-2 lg:grid-cols-3">
             {elements}
           </div>
         </div>

@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Stats() {
   return (
-    <div className="flex w-full shadow stats">
+    <div className="bg-white rounded-box grid grid-cols-1 lg:grid-cols-3 shadow">
       <div className="stat">
-        <div className="stat-figure text-secondary">
+        <div className="stat-figure text-black">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -24,7 +24,7 @@ export default function Stats() {
       </div>
 
       <div className="stat">
-        <div className="stat-figure text-secondary">
+        <div className="stat-figure text-black">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -44,7 +44,7 @@ export default function Stats() {
       </div>
 
       <div className="stat">
-        <div className="stat-figure text-secondary">
+        <div className="stat-figure text-black">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

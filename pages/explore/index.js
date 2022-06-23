@@ -1,5 +1,5 @@
 import React from "react";
-import CourseContent from "../../components/Dashboard/CourseContent";
+import CourseContent from "../../components/Common/CourseContent";
 
 const Explore = () => {
   return (
