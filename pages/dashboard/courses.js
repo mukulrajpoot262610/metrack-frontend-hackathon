@@ -7,7 +7,7 @@ export default function EnrolledCourses() {
     <>
       <div className="grid grid-cols-12 gap-4 pt-4 pb-10">
         <Sidebar />
-        <CourseContent />
+        <CourseContent courses={[]} />
       </div>
     </>
   );

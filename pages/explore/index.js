@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import CourseContent from "../../components/Common/CourseContent";
+import { getPublishedCourses } from "../../services/api";
 
 const Explore = () => {
+
+  const [response, setResponse] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await getPublishedCourses()
+        setResponse(data.data)
+      } catch (err) {
+        console.log(err)
+        toast.error(err.response.data.msg)
+      }
+    }
+    fetchData()
+  }, [])
+
+
   return (
     <div className="flex items-start justify-center min-h-screen gap-10 pb-10">
       <div className="w-1/5 p-2 border-r">
@@ -54,7 +73,7 @@ const Explore = () => {
         </div>
         <hr />
 
-        <CourseContent />
+        <CourseContent courses={response} />
 
       </div>
     </div>
