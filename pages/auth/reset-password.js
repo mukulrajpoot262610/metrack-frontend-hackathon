@@ -50,7 +50,7 @@ const ResetPassowrd = () => {
   }, [isAuth]);
 
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
+    <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="text-3xl font-bold text-center uppercase">
           Reset Password
@@ -58,7 +58,6 @@ const ResetPassowrd = () => {
         <p className="mt-2 mb-10 text-xs text-center">
           Make a new password for your 100Tube account.
         </p>
-
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full mt-2 form-control">
             <label className="label">

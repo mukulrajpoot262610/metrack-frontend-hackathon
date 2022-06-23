@@ -3,6 +3,7 @@ import Link from "next/dist/client/link";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAngleDown } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
+import { AiOutlineUser } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { logout } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
@@ -17,9 +18,9 @@ const Navbar = () => {
     try {
       await logout();
       dispatch(setAuth({ data: null }));
-      toast("logged out");
+      toast.success("logged out");
     } catch (e) {
-      toast("unable to logout");
+      toast.error("unable to logout");
     }
   };
 
@@ -35,10 +36,10 @@ const Navbar = () => {
         </div>
         {isAuth ? (
           <div className="flex items-center gap-4">
-            <Link href="/">
-              <button className="text-xs font-bold border border-red-300 btn btn-ghost hover:bg-red-50 btn-sm">
+            <Link href="/profile">
+              <a className="text-xs font-bold border border-red-300 btn btn-ghost hover:bg-red-50 btn-sm">
                 Profile
-              </button>
+              </a>
             </Link>
             <div className="dropdown dropdown-hover dropdown-end">
               <div
@@ -69,10 +70,20 @@ const Navbar = () => {
                 </div>
                 <hr className="my-4" />
                 <li className="text-sm">
-                  <a className="hover:bg-red-50 active:bg-red-300">
-                    <MdOutlineDashboard className="text-base font-bold" />
-                    Dashboard{" "}
-                  </a>
+                  <Link href="/dashboard">
+                    <a className="hover:bg-red-50 active:bg-red-300">
+                      <MdOutlineDashboard className="text-base font-bold" />
+                      Dashboard
+                    </a>
+                  </Link>
+                </li>
+                <li className="text-sm">
+                  <Link href="/profile">
+                    <a className="hover:bg-red-50 active:bg-red-300">
+                      <AiOutlineUser className="text-base font-bold" />
+                      Profile
+                    </a>
+                  </Link>
                 </li>
                 <li className="text-sm">
                   <button

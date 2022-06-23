@@ -6,17 +6,17 @@ import { login } from "../../services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
+import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const { isAuth } = UseRedirectOnAuth("/", true);
   const [loading, setLoading] = useState(false)
-  const { isAuth } = useSelector((state) => state.auth);
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -33,14 +33,8 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    if (isAuth) {
-      router.push("/");
-    }
-  }, [isAuth]);
-
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
+    <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="mb-10 text-3xl font-bold text-center uppercase">
           Log in to 100Tube

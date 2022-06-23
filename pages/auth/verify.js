@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const VerifyEmail = () => {
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
+    <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="mb-10 text-3xl font-bold text-center uppercase">
           Check Your Mail
@@ -45,7 +45,7 @@ const VerifyEmail = () => {
           </h1>
           <img
             src="/email.png"
-            className="z-20 object-cover object-top w-10/12 mt-20 rounded-3xl"
+            className="z-20 object-cover object-top w-10/12 rounded-3xl"
           />
         </div>
       </div>

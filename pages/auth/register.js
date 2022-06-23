@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import { register as signup } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
+import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false)
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth } = UseRedirectOnAuth("/", true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -22,10 +23,9 @@ const Register = () => {
     setLoading(true)
     try {
       const res = await signup(data);
+      dispatch(setAuth(res.data));
       toast.success("LogIn Success 🎉");
       setLoading(false)
-      // dispatch(setAuth(res.data));
-      router.push("/auth/verify");
     } catch (err) {
       setLoading(false)
       console.log(err)
@@ -33,14 +33,8 @@ const Register = () => {
     }
   };
 
-  useEffect(() => {
-    if (isAuth) {
-      router.push("/");
-    }
-  }, [isAuth]);
-
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pt-20 pb-10">
+    <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="text-3xl font-bold text-center uppercase ">
           Welcome to 100Tube
