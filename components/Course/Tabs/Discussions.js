@@ -2,16 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
-import { getDiscussion, sendMessage } from "../../services/api";
+import { getDiscussion, sendMessage } from "../../../services/api";
 import { useSelector } from "react-redux";
 import { format, formatDistance } from "date-fns";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import { MdOutlineReply } from "react-icons/md";
 import { Link as ScrollerLink, Element } from "react-scroll";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
 const socket = io("http://localhost:3001");
 
 export default function Discussions({ id }) {
+
   const [reply, setReply] = useState(null);
   const [msg, setMsg] = useState("");
   const { user } = useSelector((state) => state.auth);
@@ -92,56 +93,74 @@ export default function Discussions({ id }) {
   const messages = data?.chat?.map((i) => {
     return (
       <>
-        <Element id={i?._id} className="flex md:pr-20">
-          <div className={`${i?.user?._id === user?._id ? "to" : "from"}`}>
-            <div className="flex justify-between text-[10px] px-2 mb-2">
-              <p className="pr-4">{i?.user?.name}</p>
-              <p className="">
-                {i?.createdAt &&
-                  formatDistance(new Date(i.createdAt), new Date(Date.now()))}
-              </p>
-            </div>
-            {i?.replyOf && (
-              <section className="p-2 mb-2 rounded-lg bg-base-300">
-                <ScrollerLink
-                  spy={true}
-                  className="block w-full h-full cursor-pointer"
-                  to={`${i?.replyOf?._id}`}
-                  containerId="chat"
-                >
-                  <span className="w-full h-full">{i?.replyOf?.message}</span>
-                </ScrollerLink>
-              </section>
-            )}
-            <section id="" className="flex">
-              <p className="flex-1 px-2 text-sm md:text-base">{i?.message}</p>
-              <div className="h-full dropdown">
-                <label tabIndex="0" className="z-50 m-1 btn btn-xs btn-ghost">
-                  <HiOutlineDotsVertical />
-                </label>
-                <ul
-                  tabIndex="0"
-                  className="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <button onClick={(e) => setReply(i)}>Reply</button>
-                  </li>
-                  <li>
-                    <button>Info</button>
-                  </li>
-                </ul>
+        <Element id={i?._id} className="flex items-start gap-4">
+
+          <div className={`${i?.user?._id === user?._id ? "my-2 p-4 w-full bg-gray-50" : "my-2 p-4 w-full bg-gray-50"}`}>
+
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
+                <img src="https://api.lorem.space/image/face?hash=47449" className="w-8 h-8 object-cover rounded-full" />
               </div>
+
+              <div className="flex justify-between items-center px-2 mb-2">
+                <p className="pr-4 text-sm font-bold">{i?.user?.name}</p>
+                <p className="text-xs">
+                  {i?.createdAt &&
+                    formatDistance(new Date(i.createdAt), new Date(Date.now()))} ago
+                </p>
+              </div>
+            </div>
+
+            <section id="" className="flex mt-2">
+              <p className="flex-1 px-2 text-sm">{i?.message}</p>
             </section>
+
+            <div className="h-full px-2 text-sm font-medium my-2 mb-3">
+              <button className="flex items-center btn btn-ghost btn-sm gap-1" onClick={(e) => setReply(i)}><MdOutlineReply /> Reply</button>
+            </div>
+
+            <div className="ml-12">
+              {i?.replyOf && (
+                <>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
+                      <img src="https://api.lorem.space/image/face?hash=47449" className="w-8 h-8 object-cover rounded-full" />
+                    </div>
+
+                    <div className="flex justify-between items-center px-2 mb-2">
+                      <p className="pr-4 text-sm font-bold">{i?.user?.name}</p>
+                      <p className="text-xs">
+                        {i?.createdAt &&
+                          formatDistance(new Date(i.createdAt), new Date(Date.now()))} ago
+                      </p>
+                    </div>
+                  </div>
+                  <section className="py-2 mb-2">
+                    <ScrollerLink
+                      spy={true}
+                      className="block w-full h-full cursor-pointer"
+                      to={`${i?.replyOf?._id}`}
+                      containerId="chat"
+                    >
+                      <span className="w-full h-full">{i?.replyOf?.message}</span>
+                    </ScrollerLink>
+                  </section>
+                </>
+              )}
+            </div>
+
           </div>
+
         </Element>
       </>
     );
   });
 
   return (
-    <div className="flex flex-col w-full h-screen max-w-4xl mx-auto overflow-hidden border border-neutral border-opacity-10 bg-base-100 rounded-xl">
-      <section className="p-4 bg-accent text-accent-content">
+    <div className="flex flex-col w-full mx-auto">
+      <section className="p-4 text-accent-content">
         <p className="font-bold">Discussions</p>
+        <p className="text-sm mt-1">Ask questions, discuss different approaches, and share your thoughts about this course.</p>
       </section>
       {reply ? (
         <div id="replyTo" className="p-4 mt-1 bg-accent">
@@ -154,6 +173,7 @@ export default function Discussions({ id }) {
               X
             </button>
           </div>
+
           <div className="flex justify-between">
             <p className="text-xs">{reply?.user?.name}</p>
             <p className="text-xs">
@@ -163,29 +183,40 @@ export default function Discussions({ id }) {
           </div>
         </div>
       ) : null}
+
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex gap-4 p-4 border-t border-neutral border-opacity-10"
+        className="flex w-full gap-4 pt-4 border-t border-neutral border-opacity-10"
       >
-        <input
-          type="text"
-          placeholder="message"
-          className="flex-1 w-full input input-bordered"
-          {...register("message", { required: true })}
-          value={msg}
-          onChange={(e) => setMsg(e.target.value)}
-        />
-        <button type="submit" className="btn btn-primary">
-          send
-        </button>
+        <div className="w-10 h-10 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-1">
+          <img src="https://api.lorem.space/image/face?hash=47449" className="w-10 h-10 object-cover rounded-full" />
+        </div>
+        <div className="w-full ml-1">
+          <textarea
+            type="text"
+            placeholder="Add to the discussion"
+            className="flex-1 w-full textarea textarea-bordered"
+            {...register("message", { required: true })}
+            value={msg}
+            onChange={(e) => setMsg(e.target.value)}
+          />
+          <div className="flex justify-end">
+            {
+              msg && <button className="btn btn-sm">Post</button>
+            }
+          </div>
+        </div>
       </form>
-      <div id="chat-wrapper" className="relative w-full h-full overflow-hidden">
+
+      <div id="chat-wrapper" className="relative w-full h-full">
         <Element
-          className="w-full h-full pl-4 pr-4 overflow-auto overflow-x-hidden md:pr-0 chat"
+          className="w-full h-full pl-4 pr-4 md:pr-0 chat"
           id="chat"
         >
           <Element className="w-0 h-0 opacity-0" id="top-of-chat"></Element>
+
           {messages}
+
           <ScrollerLink
             to="top-of-chat"
             className="absolute animate-bounce bottom-4 right-4"

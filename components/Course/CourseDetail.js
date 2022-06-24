@@ -1,80 +1,122 @@
-import React from "react";
-import Discussions from "./Discussions";
+import React, { useState } from "react";
+import Discussions from "./Tabs/Discussions";
+
+import { MdVideoLibrary, MdOutlineDescription } from 'react-icons/md'
+import { SiHtml5, SiJavascript, SiReact, SiAngular, SiDjango, SiFlutter } from 'react-icons/si'
+import { FaVuejs, FaNodeJs, FaPython, FaLaptopCode } from 'react-icons/fa'
+import { HiOutlineSaveAs, HiChatAlt2 } from 'react-icons/hi'
+
+const COURSES = [
+  {
+    id: 0,
+    name: 'HTML/CSS',
+    logo: <SiHtml5 className="text-sm" />,
+  },
+  {
+    id: 1,
+    name: 'Javascript',
+    logo: <SiJavascript className="text-sm" />,
+  },
+  {
+    id: 2,
+    name: 'React',
+    logo: <SiReact className="text-sm" />,
+  },
+  {
+    id: 3,
+    name: 'Vue.js',
+    logo: <FaVuejs className="text-sm" />,
+  },
+  {
+    id: 4,
+    name: 'Angular',
+    logo: <SiAngular className="text-sm" />,
+  },
+  {
+    id: 5,
+    name: 'Node.js',
+    logo: <FaNodeJs className="text-sm" />,
+  },
+  {
+    id: 6,
+    name: 'Python',
+    logo: <FaPython className="text-sm" />,
+  },
+  {
+    id: 7,
+    name: 'Django',
+    logo: <SiDjango className="text-sm" />,
+  },
+  {
+    id: 8,
+    name: 'Flutter',
+    logo: <SiFlutter className="text-sm" />,
+  },
+]
 
 const CourseDetail = ({ course }) => {
+
+  const [tabs, setTabs] = useState(0)
+
   return (
     <>
-      <div className="flex flex-col items-start justify-center min-h-screen pb-10">
-        <div className="flex w-full">
-          <div className="w-3/4">
-            <div className="video-container">
-              <iframe
-                src={course?.video}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <h1 className="text-xl font-bold">{course?.name}</h1>
-            <div className="flex items-center gap-2 mt-4">
-              <img
-                src={course?.channelImage}
-                className="w-12 h-12 rounded-full"
-              />
-              <div className="flex items-center justify-between w-full">
-                <h1 className="text-lg font-medium text-gray-500">
-                  {course?.channel}
-                </h1>
-                <button className="border border-red-300 btn btn-sm btn-ghost hover:bg-red-200">
-                  Enroll Now
-                </button>
+      <div className="min-h-screen pb-10">
+        <header className="fixed left-0 top-16 z-40 w-full h-40 bg-blue-50">
+          <div className="w-10/12 mx-auto py-6 flex items-center justify-between">
+            <div className="w-2/3">
+              <h2 className="mt-3 text-3xl font-bold capitalize">{course?.name}</h2>
+              <div className="flex items-center gap-1 mt-1">
+                <div className="avatar-group -space-x-4 ring-0">
+                  <div className="avatar">
+                    <div className="w-6">
+                      <img src="https://api.lorem.space/image/face?hash=4818" />
+                    </div>
+                  </div>
+                  <div className="avatar">
+                    <div className="w-6">
+                      <img src="https://api.lorem.space/image/face?hash=40311" />
+                    </div>
+                  </div>
+                  <div className="avatar">
+                    <div className="w-6">
+                      <img src="https://api.lorem.space/image/face?hash=84348" />
+                    </div>
+                  </div>
+                  <div className="avatar placeholder">
+                    <div className="w-6 bg-neutral-focus text-neutral-content">
+                      <span className="text-xs">+99</span>
+                    </div>
+                  </div>
+                </div>
+                <h2 className="text-xs"><span className="font-bold">23</span> developers have joined this project.</h2>
               </div>
             </div>
-          </div>
-        </div>
-        <hr className="w-full my-4 mb-0 border-gray-200" />
 
-        <div className="flex items-center justify-between w-full h-16 px-4">
-          <div className="flex items-center justify-center gap-6">
-            <h3 className="text-sm font-bold text-red-300 uppercase border-b border-red-300 cursor-pointer bg-red-50">
-              About
-            </h3>
-            <h3
-              className={`font-bold  border-red-300 cursor-pointer hover:border-b text-sm uppercase`}
-            >
-              Discussions
-            </h3>
-            <h3
-              className={`font-bold border-red-300 cursor-pointer hover:border-b text-sm uppercase`}
-            >
-              Projects & Resources
-            </h3>
+            <div className="w-1/3 flex justify-end gap-2">
+              <button className="btn bg-blue-500 border-0 hover:bg-blue-400">Enroll Now</button>
+              <button className="btn btn-ghost hover:bg-transparent flex items-center gap-1"><HiOutlineSaveAs className="text-xl" /> Save</button>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-6">
-            <button className="border border-red-300 btn btn-sm btn-ghost hover:bg-red-200">
-              Enroll Now
-            </button>
-            <button className="border border-red-300 btn btn-sm btn-ghost hover:bg-red-200">
-              Save for later
-            </button>
-            <button className="border border-red-300 btn btn-sm btn-ghost hover:bg-red-200">
-              Share
-            </button>
+
+          <div className="w-10/12 mx-auto bottom-0 absolute left-32">
+            <div className="tabs">
+              <a onClick={() => setTabs(0)} className={`${tabs === 0 && "tab-active font-bold"} tab tab-lifted gap-1`}><MdVideoLibrary /> Video</a>
+              <a onClick={() => setTabs(1)} className={`${tabs === 1 && "tab-active font-bold"} tab tab-lifted gap-1`}><MdOutlineDescription /> About</a>
+              <a onClick={() => setTabs(2)} className={`${tabs === 2 && "tab-active font-bold"} tab tab-lifted gap-1`}><HiChatAlt2 /> Discussion</a>
+              <a onClick={() => setTabs(3)} className={`${tabs === 3 && "tab-active font-bold"} tab tab-lifted gap-1`}><FaLaptopCode /> Projects</a>
+            </div>
           </div>
+        </header>
+
+        <div className="flex justify-between">
+          <div className="mt-64 w-4/6">
+            {
+              tabs === 2 && <Discussions id={course?.discussionId} />
+            }
+          </div>
+          <div className="w-2/6"></div>
         </div>
 
-        <hr className="w-full my-4 mt-0 border-gray-200" />
-
-        <div className="p-6">
-          <h2 className="font-bold">About this Course</h2>
-          <p>
-            Become the singer you’ve always wanted to be with the vocal coach to
-            the stars—Valerie Morehouse.
-          </p>
-        </div>
-      </div>
-      <div className="py-10">
-        <Discussions id={course?.discussionId} />
       </div>
     </>
   );
