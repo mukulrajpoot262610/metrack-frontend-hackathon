@@ -52,6 +52,9 @@ const COURSES = [
     },
 ]
 
+
+
+
 const ExploreComponent = ({ response, selected }) => {
     return (
         <section className="col-span-12 lg:col-span-9 mt-4">

@@ -102,9 +102,9 @@ export default function Discussions({ id }) {
                 <img src="https://api.lorem.space/image/face?hash=47449" className="w-8 h-8 object-cover rounded-full" />
               </div>
 
-              <div className="flex justify-between items-center px-2 mb-2">
-                <p className="pr-4 text-sm font-bold">{i?.user?.name}</p>
-                <p className="text-xs">
+              <div className="flex justify-start items-center ml-2 mb-2 overflow-hidden">
+                <p className="pr-2 text-sm font-bold">{i?.user?.name}</p>
+                <p className="text-xs whitespace-nowrap">
                   {i?.createdAt &&
                     formatDistance(new Date(i.createdAt), new Date(Date.now()))} ago
                 </p>
@@ -115,11 +115,11 @@ export default function Discussions({ id }) {
               <p className="flex-1 px-2 text-sm">{i?.message}</p>
             </section>
 
-            <div className="h-full px-2 text-sm font-medium my-2 mb-3">
+            <div className="h-full px-2 text-sm font-medium my-2">
               <button className="flex items-center btn btn-ghost btn-sm gap-1" onClick={(e) => setReply(i)}><MdOutlineReply /> Reply</button>
             </div>
 
-            <div className="ml-12">
+            <div className="ml-6">
               {i?.replyOf && (
                 <>
                   <div className="flex items-center gap-2">
@@ -127,9 +127,9 @@ export default function Discussions({ id }) {
                       <img src="https://api.lorem.space/image/face?hash=47449" className="w-8 h-8 object-cover rounded-full" />
                     </div>
 
-                    <div className="flex justify-between items-center px-2 mb-2">
-                      <p className="pr-4 text-sm font-bold">{i?.user?.name}</p>
-                      <p className="text-xs">
+                    <div className="flex justify-start items-center pl-2 mb-2">
+                      <p className="pr-2 text-sm font-bold">{i?.user?.name}</p>
+                      <p className="text-xs whitespace-nowrap">
                         {i?.createdAt &&
                           formatDistance(new Date(i.createdAt), new Date(Date.now()))} ago
                       </p>
@@ -148,7 +148,6 @@ export default function Discussions({ id }) {
                 </>
               )}
             </div>
-
           </div>
 
         </Element>

@@ -64,7 +64,7 @@ const Explore = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await getPublishedCourses()
+        const { data } = await getPublishedCourses(COURSES[selected].name)
         setResponse(data.data)
       } catch (err) {
         console.log(err)
@@ -72,12 +72,12 @@ const Explore = () => {
       }
     }
     fetchData()
-  }, [])
+  }, [selected])
 
   return <div className="grid grid-cols-12 gap-4 pb-10 pt-16">
     <ExploreSidebar selected={selected} setSelected={setSelected} courses={COURSES} />
     {
-      response.length === 0 ? <LoaderIcon /> : <ExploreComponent courses={COURSES} response={response} selected={selected} />
+      <ExploreComponent courses={COURSES} response={response} selected={selected} />
     }
   </div>;
 };

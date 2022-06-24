@@ -9,15 +9,29 @@ export default function CourseContent({ courses }) {
   const router = useRouter()
   const path = router.pathname
 
+
+  function truncateString(str, num) {
+    if (str.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
+    }
+  }
+
+
   const elements = courses.map((data, j) => {
     return (
       <div key={j} className="max-w-sm duration-200 hover:shadow-lg border cursor-pointer card bg-base-100 border-t-0 border-black">
-        <figure>
-          <img src={data?.thumbnail} alt="Shoes" />
-        </figure>
+        <Link href={`/explore/${data._id}`}>
+          <figure>
+            <img src={data?.thumbnail} alt="Shoes" />
+          </figure>
+        </Link>
         <div className="p-4 card-body">
-          <h2 className="font-semibold card-title hover:underline capitalize text-lg">{data?.name}</h2>
-          <p className="text-gray-400 font-light">{data?.description}</p>
+          <Link href={`/explore/${data._id}`}>
+            <h2 className="font-semibold card-title tracking-tight leading-tight hover:underline capitalize text-lg">{truncateString(data?.name, 50)}</h2>
+          </Link>
+          <p className="text-gray-400 text-xs font-light">{truncateString(data?.description, 100)}</p>
 
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">

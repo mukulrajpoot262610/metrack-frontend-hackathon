@@ -24,7 +24,7 @@ export const verifyEmail = (data) => api.post("/api/verify-email", data);
 export const requestEmailVerification = () => api.get("/api/verify-email");
 
 // COURSE
-export const getPublishedCourses = () => api.get("/api/get-all-course");
+export const getPublishedCourses = (category) => api.get(`/api/get-all-course?category=${category}`);
 export const getCourseDetail = (id) => api.get(`/api/get-course/${id}`);
 
 // DISCUSSIONS
