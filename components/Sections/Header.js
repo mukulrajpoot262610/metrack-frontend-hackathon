@@ -1,12 +1,14 @@
 import React from "react";
+import Link from 'next/link'
 
 const Header = () => {
   return (
-    <header className="relative flex flex-col items-center justify-center w-full h-screen lg:gap-20 lg:flex-row">
+    <header className="relative flex flex-col items-center justify-center w-full min-h-screen lg:gap-20 lg:flex-row">
+
       <div className="flex flex-col items-start justify-center w-full h-full lg:w-1/2">
         <h1 className="z-20 max-w-5xl text-4xl font-bold md:text-6xl">
           We increase your learning experience by{" "}
-          <span className="text-6xl font-extrabold text-transparent md:text-9xl bg-clip-text bg-gradient-to-r from-red-200 to-red-300">
+          <span className="text-6xl font-extrabold text-transparent md:text-8xl bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300">
             100X
           </span>
         </h1>
@@ -18,27 +20,30 @@ const Header = () => {
           So, We combined amazing YouTube content with complete learning
           experience.
         </p>
-        <button className="mt-8 bg-red-200 btn lg:mb-16 btn-ghost btn-wide hover:bg-red-100">
-          Join Now
-        </button>
+        <Link href="/explore">
+          <button className="mt-8 bg-blue-200 btn btn-ghost btn-wide hover:bg-blue-100">
+            Explore Courses
+          </button>
+        </Link>
       </div>
-      <div className="relative w-full h-full p-2 md:w-11/12 lg:w-1/2">
+
+      <div className="relative w-full mt-10 lg:mt-0 h-full p-2 md:w-11/12 lg:w-1/2">
         <img
           src="/overlay/react.webp"
           className="absolute h-40 -top-10 md:top-0 -left-10 md:-left-20"
         />
         <img
           src="/overlay/code.webp"
-          className="absolute bottom-0 h-48 md:bottom-10 -right-10 md:-right-5"
+          className="absolute -bottom-20 h-48 md:-bottom-28 -right-10 md:-right-10"
         />
         <img
           src="/overlay/django.webp"
-          className="absolute bottom-0 h-40 md:bottom-20 -left-10 md:-left-16"
+          className="absolute bottom-0 hidden lg:block h-48 md:-bottom-20 -left-10 md:-left-16"
         />
-        <div className="w-full h-5/6 rounded-3xl bg-red-50">
+        <div className="w-full h-5/6 rounded-3xl bg-blue-50">
           <img
-            src="/hero.svg"
-            className="object-cover w-full h-full rounded-3xl"
+            src="/hero.png"
+            className="object-cover object-top h-64  md:h-96 w-full lg:h-full rounded-3xl"
           />
         </div>
       </div>

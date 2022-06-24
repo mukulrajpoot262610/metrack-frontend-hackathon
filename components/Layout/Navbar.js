@@ -37,7 +37,7 @@ const Navbar = () => {
         {isAuth ? (
           <div className="flex items-center gap-4">
             <Link href="/profile">
-              <a className="text-xs font-bold border border-red-300 btn btn-ghost hover:bg-red-50 btn-sm">
+              <a className="text-xs font-bold border border-blue-300 btn btn-ghost hover:bg-blue-50 btn-sm">
                 Profile
               </a>
             </Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 className="flex items-center justify-center gap-2"
               >
                 <div className="cursor-pointer avatar">
-                  <div className="w-10 rounded-full ring-1 ring-red-400 ring-offset-base-100 ring-offset-2">
+                  <div className="w-10 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
                     <img src="https://api.lorem.space/image/face?hash=47449" />
                   </div>
                 </div>
@@ -59,7 +59,7 @@ const Navbar = () => {
               >
                 <div className="flex items-center gap-4">
                   <div className="cursor-pointer avatar">
-                    <div className="w-20 rounded-full ring-1 ring-red-400 ring-offset-base-100 ring-offset-2">
+                    <div className="w-20 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
                       <img src="https://api.lorem.space/image/face?hash=47449" />
                     </div>
                   </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <hr className="my-4" />
                 <li className="text-sm">
                   <Link href="/dashboard">
-                    <a className="hover:bg-red-50 active:bg-red-300">
+                    <a className="hover:bg-blue-50 active:bg-blue-300">
                       <MdOutlineDashboard className="text-base font-bold" />
                       Dashboard
                     </a>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 </li>
                 <li className="text-sm">
                   <Link href="/profile">
-                    <a className="hover:bg-red-50 active:bg-red-300">
+                    <a className="hover:bg-blue-50 active:bg-blue-300">
                       <AiOutlineUser className="text-base font-bold" />
                       Profile
                     </a>
@@ -88,7 +88,7 @@ const Navbar = () => {
                 <li className="text-sm">
                   <button
                     onClick={handleLogout}
-                    className="hover:bg-red-50 active:bg-red-300"
+                    className="hover:bg-blue-50 active:bg-blue-300"
                   >
                     <TbLogout className="text-base font-bold" />
                     Logout
@@ -100,10 +100,10 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-4">
             <Link href="/auth">
-              <p className="font-bold btn btn-ghost hover:bg-red-50">Login</p>
+              <p className="font-bold btn btn-ghost hover:bg-blue-50">Login</p>
             </Link>
             <Link href="/auth/register">
-              <button className="font-bold border border-red-300 btn btn-ghost hover:bg-red-50">
+              <button className="font-bold border border-blue-300 btn btn-ghost hover:bg-blue-50">
                 Resigter
               </button>
             </Link>

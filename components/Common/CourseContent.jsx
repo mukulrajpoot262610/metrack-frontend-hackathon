@@ -25,12 +25,12 @@ export default function CourseContent({ courses }) {
               <p className="font-semibold">{data?.respect}</p>
             </div>
             {
-              path === '/dashboard/courses' && <button className="border border-red-200 btn btn-sm btn-ghost hover:bg-red-50">
+              path === '/dashboard/courses' && <button className="border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50">
                 Continue Watching
               </button>
             }
             <Link href={`/explore/${data._id}`}>
-              <button className="border border-red-200 btn btn-ghost hover:bg-red-50">
+              <button className="border border-blue-200 btn btn-ghost hover:bg-blue-50">
                 Enroll
               </button>
             </Link>
@@ -45,7 +45,7 @@ export default function CourseContent({ courses }) {
       <div className="w-full space-y-4 rounded-xl">
         <div className="space-y-2">
           {
-            path === '/dashboard/courses' && <h2 className="text-sm font-bold text-red-400">Enrolled Courses</h2>
+            path === '/dashboard/courses' && <h2 className="text-sm font-bold text-blue-400">Enrolled Courses</h2>
           }
 
           {
@@ -56,7 +56,7 @@ export default function CourseContent({ courses }) {
                 path === '/dashboard/courses' && <>
                   <p className="my-2">Try Enrolling in some courses.</p>
                   <Link href="/explore">
-                    <button className="btn btn-ghost border border-red-300 mt-6 hover:bg-red-50">Explore Courses</button>
+                    <button className="btn btn-ghost border border-blue-300 mt-6 hover:bg-blue-50">Explore Courses</button>
                   </Link>
                 </>
               }

@@ -101,18 +101,18 @@ const ResetPassowrd = () => {
           </div>
           <button
             type="submit"
-            className="w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300"
+            className="w-full mt-6 bg-blue-100 btn btn-ghost hover:bg-blue-300"
           >
             Reset Password
           </button>
         </form>
       </div>
       <div className="hidden h-full lg:block lg:w-2/3">
-        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-red-50">
-          <h1 className="absolute z-10 font-black text-red-200 uppercase text-9xl top-16">
+        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
+          <h1 className="absolute z-10 font-black text-blue-200 uppercase text-9xl top-16">
             Forgot
           </h1>
-          <h1 className="absolute z-10 font-black text-red-200 uppercase text-8xl top-40">
+          <h1 className="absolute z-10 font-black text-blue-200 uppercase text-8xl top-40">
             PAssword
           </h1>
           <img

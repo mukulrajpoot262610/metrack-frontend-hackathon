@@ -34,7 +34,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pb-10">
+    <div className="flex items-center justify-center pt-20 gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="mb-10 text-3xl font-bold text-center uppercase">
           Log in to 100Tube
@@ -48,7 +48,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.email ? "input-error" : ""}`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -72,7 +72,7 @@ const Login = () => {
               type="text"
               {...register("password", { required: true })}
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
             />
             <label className="label">
               {errors.password ? (
@@ -89,7 +89,7 @@ const Login = () => {
               </Link>
             </label>
           </div>
-          <button className={`w-full mt-6 ${loading && "loading"} bg-red-100 btn btn-ghost hover:bg-red-300`}>
+          <button className={`w-full mt-6 ${loading && "loading"} bg-blue-100 btn btn-ghost hover:bg-blue-300`}>
             Log In{" "}
           </button>
           <p className="mt-4 text-xs text-center">
@@ -103,8 +103,8 @@ const Login = () => {
         </form>
       </div>
       <div className="hidden h-full lg:block lg:w-2/3">
-        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-red-50">
-          <h1 className="absolute z-10 font-black text-red-200 uppercase text-9xl top-16">
+        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
+          <h1 className="absolute z-10 font-black text-blue-200 uppercase text-9xl top-16">
             Login
           </h1>
           <img

@@ -22,7 +22,7 @@ const VerifyEmail = () => {
           </span>
           .
         </p> */}
-        {/* 
+        {/*
         <p className="text-center">
           Wrong email address?{" "}
           <span className="font-bold text-blue-400 cursor-pointer hover:underline">
@@ -32,15 +32,15 @@ const VerifyEmail = () => {
 
         <div className="flex items-center justify-center mt-6 ">
           <Link href="/auth">
-            <button className="border border-red-200 btn btn-ghost bg-red-50 btn-wide hover:bg-red-200">
+            <button className="border border-blue-200 btn btn-ghost bg-blue-50 btn-wide hover:bg-blue-200">
               Go To Login
             </button>
           </Link>
         </div>
       </div>
       <div className="hidden h-full lg:block lg:w-2/3">
-        <div className="relative flex justify-center h-full overflow-hidden rounded-3xl bg-red-50">
-          <h1 className="absolute font-black text-red-200 uppercase text-8xl top-12">
+        <div className="relative flex justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
+          <h1 className="absolute font-black text-blue-200 uppercase text-8xl top-12">
             Verification
           </h1>
           <img

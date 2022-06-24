@@ -35,7 +35,7 @@ export default function Sidebar() {
         <ul className="space-y-2 bg-base-100 sticky top-20 text-base-content">
           <li className="">
             <Link href="/dashboard">
-              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard" ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}>
                 <MdOutlineDashboard className="text-xl font-bold" />
                 Dashboard
               </a>
@@ -43,7 +43,7 @@ export default function Sidebar() {
           </li>
           <li className="">
             <Link href="/dashboard/courses">
-              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/courses" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/courses" ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}>
                 <FiBook className="text-xl font-bold" />
                 Courses
               </a>
@@ -51,7 +51,7 @@ export default function Sidebar() {
           </li>
           <li className="">
             <Link href="/dashboard/settings">
-              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/settings" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/settings" ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}>
                 <BiCog className="text-xl font-bold" />
                 Settings
               </a>
@@ -59,7 +59,7 @@ export default function Sidebar() {
           </li>
           <li className="">
             <Link href="/profile">
-              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/profile" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}>
+              <a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/profile" ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}>
                 <AiOutlineUser className="text-xl font-bold" />
                 Profile
               </a>
@@ -68,7 +68,7 @@ export default function Sidebar() {
           <li className="">
             <button
               onClick={handleLogout}
-              className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/logout" ? "bg-red-50 border border-red-400 font-bold" : "hover:border-red-400 hover:border"}`}
+              className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/logout" ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}
             >
               <TbLogout className="text-xl font-bold" />
               Logout
@@ -89,7 +89,7 @@ export default function Sidebar() {
           </li>
           <li className="">
             <Link href="/dashboard/courses">
-              <a className="relative flex items-center flex-col justify-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300">
+              <a className="relative flex items-center flex-col justify-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-blue-300">
                 <FiBook className="text-2xl font-bold" />
                 Courses
               </a>
@@ -97,7 +97,7 @@ export default function Sidebar() {
           </li>
           <li className="">
             <Link href="/dashboard/settings">
-              <a className="relative flex items-center flex-col justify-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300">
+              <a className="relative flex items-center flex-col justify-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-blue-300">
                 <BiCog className="text-2xl font-bold" />
                 Settings
               </a>
@@ -105,7 +105,7 @@ export default function Sidebar() {
           </li>
           <li className="">
             <Link href="/profile">
-              <a className="relative flex items-center flex-col justify-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-red-300">
+              <a className="relative flex items-center flex-col justify-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2 hover:bg-blue-300">
                 <AiOutlineUser className="text-2xl font-bold" />
                 Profile
               </a>

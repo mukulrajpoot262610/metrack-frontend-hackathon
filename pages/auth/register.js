@@ -110,7 +110,7 @@ const Register = () => {
               )}
             </label>
           </div>
-          <button className={`w-full mt-6 bg-red-100 btn btn-ghost hover:bg-red-300 ${loading && "loading"} `}>
+          <button className={`w-full mt-6 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"} `}>
             Register{" "}
           </button>
           <p className="mt-4 text-xs text-center">
@@ -124,8 +124,8 @@ const Register = () => {
         </form>
       </div>
       <div className="hidden h-full lg:block lg:w-2/3">
-        <div className="relative flex justify-center h-full overflow-hidden rounded-3xl bg-red-50">
-          <h1 className="absolute font-black text-red-200 uppercase text-9xl top-16">
+        <div className="relative flex justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
+          <h1 className="absolute font-black text-blue-200 uppercase text-9xl top-16">
             Welcome
           </h1>
           <img

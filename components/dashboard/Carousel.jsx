@@ -22,7 +22,7 @@ export default function Carousel() {
                 <img src="/like.png" className="h-10" />
                 <p className="font-semibold">4</p>
               </div>
-              <button className="capitalize border border-red-200 btn btn-sm btn-ghost hover:bg-red-50">
+              <button className="capitalize border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50">
                 continue watching
               </button>
             </div>
@@ -48,7 +48,7 @@ export default function Carousel() {
                 <img src="/like.png" className="h-10" />
                 <p className="font-semibold">4</p>
               </div>
-              <button className="capitalize border border-red-200 btn btn-sm btn-ghost hover:bg-red-50">
+              <button className="capitalize border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50">
                 continue watching
               </button>
             </div>
@@ -74,7 +74,7 @@ export default function Carousel() {
                 <img src="/like.png" className="h-10" />
                 <p className="font-semibold">4</p>
               </div>
-              <button className="capitalize border border-red-200 btn btn-sm btn-ghost hover:bg-red-50">
+              <button className="capitalize border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50">
                 continue watching
               </button>
             </div>
@@ -100,7 +100,7 @@ export default function Carousel() {
                 <img src="/like.png" className="h-10" />
                 <p className="font-semibold">4</p>
               </div>
-              <button className="capitalize border border-red-200 btn btn-sm btn-ghost hover:bg-red-50">
+              <button className="capitalize border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50">
                 continue watching
               </button>
             </div>

@@ -17,7 +17,7 @@ const CourseCard = ({ data }) => {
             <img src="/like.png" className="h-10" />
             <p className="font-semibold">{data?.respect}</p>
           </div>
-          <button className="border border-red-200 btn btn-ghost hover:bg-red-50">
+          <button className="border border-blue-200 btn btn-ghost hover:bg-blue-50">
             Enroll
           </button>
         </div>

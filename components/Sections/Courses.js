@@ -27,7 +27,7 @@ const COURSES = [
 
 const Courses = () => {
     return (
-        <div className='relative flex flex-col items-center justify-center w-full min-h-screen gap-4'>
+        <div className='relative flex my-32 flex-col items-center justify-center w-full min-h-screen gap-4'>
             <h1 className='text-3xl font-bold text-center lg:text-5xl'>Trending courses of the month</h1>
             <p className='text-lg font-medium text-center'>These are the selected courses from YouTube to build your focus on learning rather than finding courses.</p>
 
@@ -36,7 +36,7 @@ const Courses = () => {
                     COURSES.map(e => <Link href={`/courses/${e.slug}`} key={e.id}><CourseCard data={e} /></Link>)
                 }
             </div>
-            <button className='mt-10 bg-red-200 shadow-lg btn btn-ghost hover:bg-red-100'>View More</button>
+            <button className='mt-10 bg-blue-200 shadow-lg btn btn-ghost hover:bg-blue-100'>View More</button>
         </div>
     )
 }

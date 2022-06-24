@@ -16,7 +16,7 @@ const CourseDetail = ({ course }) => {
                         <img src={course?.channelImage} className="h-12 w-12 rounded-full" />
                         <div className='justify-between items-center flex w-full'>
                             <h1 className='font-medium text-gray-500 text-lg'>{course?.channel}</h1>
-                            <button className='btn btn-sm btn-ghost border border-red-300 hover:bg-red-200'>Enroll Now</button>
+                            <button className='btn btn-sm btn-ghost border border-blue-300 hover:bg-blue-200'>Enroll Now</button>
                         </div>
                     </div>
                 </div>
@@ -25,14 +25,14 @@ const CourseDetail = ({ course }) => {
 
             <div className='px-4 h-16 flex justify-between items-center w-full'>
                 <div className='flex justify-center items-center gap-6'>
-                    <h3 className='font-bold border-b border-red-300 cursor-pointer text-sm uppercase bg-red-50 text-red-300'>About</h3>
-                    <h3 className={`font-bold  border-red-300 cursor-pointer hover:border-b text-sm uppercase`}>Discussions</h3>
-                    <h3 className={`font-bold border-red-300 cursor-pointer hover:border-b text-sm uppercase`}>Projects & Resources</h3>
+                    <h3 className='font-bold border-b border-blue-300 cursor-pointer text-sm uppercase bg-blue-50 text-blue-300'>About</h3>
+                    <h3 className={`font-bold  border-blue-300 cursor-pointer hover:border-b text-sm uppercase`}>Discussions</h3>
+                    <h3 className={`font-bold border-blue-300 cursor-pointer hover:border-b text-sm uppercase`}>Projects & Resources</h3>
                 </div>
                 <div className='flex justify-center items-center gap-6'>
-                    <button className='btn btn-sm btn-ghost border border-red-300 hover:bg-red-200'>Enroll Now</button>
-                    <button className='btn btn-sm btn-ghost border border-red-300 hover:bg-red-200'>Save for later</button>
-                    <button className='btn btn-sm btn-ghost border border-red-300 hover:bg-red-200'>Share</button>
+                    <button className='btn btn-sm btn-ghost border border-blue-300 hover:bg-blue-200'>Enroll Now</button>
+                    <button className='btn btn-sm btn-ghost border border-blue-300 hover:bg-blue-200'>Save for later</button>
+                    <button className='btn btn-sm btn-ghost border border-blue-300 hover:bg-blue-200'>Share</button>
                 </div>
             </div>
 

@@ -33,7 +33,7 @@ export default function Timeline() {
         <div className="flex items-center w-full mb-8 right-timeline">
           <div className="order-1"></div>
           <div
-            className={`z-20 flex items-center order-1 w-8 h-8 transform -translate-x-1/2 rounded-full shadow-xl ${blue ? "bg-blue-500" : "bg-red-500"
+            className={`z-20 flex items-center order-1 w-8 h-8 transform -translate-x-1/2 rounded-full shadow-xl ${blue ? "bg-blue-500" : "bg-blue-500"
               }`}
           >
             <h1 className="mx-auto text-lg font-semibold text-white">
@@ -41,7 +41,7 @@ export default function Timeline() {
             </h1>
           </div>
           <div
-            className={`order-1 w-full px-6 py-4 rounded-lg shadow ${blue ? "bg-blue-500" : "bg-red-500"
+            className={`order-1 w-full px-6 py-4 rounded-lg shadow ${blue ? "bg-blue-500" : "bg-blue-500"
               } bg-opacity-20`}
           >
             <h3 className="mb-3 text-lg font-bold text-gray-800">{i?.title}</h3>

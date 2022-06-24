@@ -8,7 +8,7 @@ export default function SettingsContent() {
   return (
     <>
       <section className="col-span-9 text-base-content">
-        <div className="w-full p-4 space-y-8 bg-red-50 rounded-xl">
+        <div className="w-full p-4 space-y-8 bg-blue-50 rounded-xl">
           <section className="space-y-4">
             <h2 className="text-sm font-bold uppercase text-accent">
               Email Verification
