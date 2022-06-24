@@ -39,7 +39,7 @@ body {
 .video-container::after {
   padding-top: 56.25%;
   display: block;
-  content: '';
+  content: "";
 }
 
 .video-container iframe {
@@ -48,4 +48,42 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* custom styles for chat */
+
+.from {
+  @apply bg-accent p-2 rounded-xl inline text-accent-content rounded-tl-2xl my-2;
+}
+
+.to {
+  @apply bg-base-200 p-2 rounded-xl inline text-base-content rounded-bl-2xl my-2;
+}
+
+.custom-label {
+  @apply text-sm font-bold text-accent;
+}
+
+.custom-error {
+  @apply text-sm font-bold text-error;
+}
+
+/* width */
+.chat::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.chat::-webkit-scrollbar-track {
+  @apply bg-base-100;
+}
+
+/* Handle */
+.chat::-webkit-scrollbar-thumb {
+  @apply bg-accent;
+}
+
+/* Handle on hover */
+.chat::-webkit-scrollbar-thumb:hover {
+  @apply bg-warning;
 }
