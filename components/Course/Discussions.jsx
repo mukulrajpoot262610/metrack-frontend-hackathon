@@ -193,7 +193,7 @@ export default function Discussions({ id }) {
             spy={true}
             smooth={true}
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-full text-accent-content bg-accent">
+            <div className="flex items-center justify-center w-8 h-8 rounded-full shadow cursor-pointer text-accent-content bg-accent">
               <AiOutlineArrowUp className="w-6 h-6" />
             </div>
           </ScrollerLink>
