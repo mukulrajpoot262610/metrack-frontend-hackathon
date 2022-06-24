@@ -2,6 +2,8 @@ import React from "react";
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { FaArrowAltCircleRight, FaUsers } from 'react-icons/fa'
+
 export default function CourseContent({ courses }) {
 
   const router = useRouter()
@@ -9,20 +11,18 @@ export default function CourseContent({ courses }) {
 
   const elements = courses.map((data, j) => {
     return (
-      <div key={j} className="max-w-sm duration-200 shadow-xl cursor-pointer card bg-base-100 ">
+      <div key={j} className="max-w-sm duration-200 hover:shadow-lg border cursor-pointer card bg-base-100 border-t-0 border-black">
         <figure>
           <img src={data?.thumbnail} alt="Shoes" />
         </figure>
-        <div className="p-6 card-body">
-          <h2 className="font-bold card-title">{data?.name}</h2>
-          <div className="flex items-center gap-2">
-            <img src={data?.channelImage} className="h-8 w-8 border rounded-full" />
-            <h1 className="font-medium text-gray-500">{data?.channel}</h1>
-          </div>
-          <div className="flex justify-between items-center card-actions">
-            <div className="flex items-center gap-1">
-              <img src="/like.png" className="h-10" />
-              <p className="font-semibold">{data?.respect}</p>
+        <div className="p-4 card-body">
+          <h2 className="font-semibold card-title hover:underline capitalize text-lg">{data?.name}</h2>
+          <p className="text-gray-400 font-light">{data?.description}</p>
+
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <FaUsers className="text-xl" />
+              <p className="font-semibold flex items-center gap-1">{data?.respect} <span className="text-xs font-normal">students</span></p>
             </div>
             {
               path === '/dashboard/courses' && <button className="border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50">
@@ -30,9 +30,9 @@ export default function CourseContent({ courses }) {
               </button>
             }
             <Link href={`/explore/${data._id}`}>
-              <button className="border btn-sm border-blue-200 btn btn-ghost hover:bg-blue-50">
-                Enroll
-              </button>
+              <a className="flex items-center gap-2 text-base">
+                View <FaArrowAltCircleRight />
+              </a>
             </Link>
           </div>
         </div>

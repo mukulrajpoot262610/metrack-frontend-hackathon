@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { MdComputer } from "react-icons/md";
+import { MdOutlineDashboard } from "react-icons/md";
 import { TbDeviceMobile } from "react-icons/tb";
 
 
@@ -37,23 +37,15 @@ export default function ExploreSidebar({ selected, setSelected, courses }) {
                         }
                     </ul>
                 </div>
-                <div className="dropdown dropdown-top dropdown-left">
-                    <label tabIndex="0" className="font-bold uppercase flex flex-col items-center">
-                        <MdComputer className="text-2xl" />
-                        <p className="text-xs">
-                            Web
-                        </p>
-                    </label>
-                    <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-56">
-                        <li><a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${"selected === e.id " ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}>
-                            <MdComputer className="text-xl" />
-                            Web Development
-                        </a></li>
-                        <li><a className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${"selected === e.id " ? "bg-blue-50 border border-blue-400 font-bold" : "hover:border-blue-400 hover:border"}`}>
-                            <TbDeviceMobile className="text-xl" />
-                            Mobile Development
-                        </a></li>
-                    </ul>
+                <div className="">
+                    <Link href="/dashboard">
+                        <label tabIndex="0" className="font-bold uppercase flex flex-col items-center">
+                            <MdOutlineDashboard className="text-2xl" />
+                            <p className="text-xs">
+                                Home
+                            </p>
+                        </label>
+                    </Link>
                 </div>
             </section>
         </>
