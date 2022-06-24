@@ -7,58 +7,13 @@ import { FaVuejs, FaNodeJs, FaPython, FaLaptopCode } from 'react-icons/fa'
 import { HiOutlineSaveAs, HiChatAlt2 } from 'react-icons/hi'
 import Video from "./Tabs/Video";
 import About from "./Tabs/About";
-
-const COURSES = [
-  {
-    id: 0,
-    name: 'HTML/CSS',
-    logo: <SiHtml5 className="text-sm" />,
-  },
-  {
-    id: 1,
-    name: 'Javascript',
-    logo: <SiJavascript className="text-sm" />,
-  },
-  {
-    id: 2,
-    name: 'React',
-    logo: <SiReact className="text-sm" />,
-  },
-  {
-    id: 3,
-    name: 'Vue.js',
-    logo: <FaVuejs className="text-sm" />,
-  },
-  {
-    id: 4,
-    name: 'Angular',
-    logo: <SiAngular className="text-sm" />,
-  },
-  {
-    id: 5,
-    name: 'Node.js',
-    logo: <FaNodeJs className="text-sm" />,
-  },
-  {
-    id: 6,
-    name: 'Python',
-    logo: <FaPython className="text-sm" />,
-  },
-  {
-    id: 7,
-    name: 'Django',
-    logo: <SiDjango className="text-sm" />,
-  },
-  {
-    id: 8,
-    name: 'Flutter',
-    logo: <SiFlutter className="text-sm" />,
-  },
-]
+import { useSelector } from "react-redux";
+import LoginCard from "../Card/LoginCard";
 
 const CourseDetail = ({ course }) => {
 
   const [tabs, setTabs] = useState(0)
+  const { isAuth } = useSelector(state => state.auth)
 
   function truncateString(str, num) {
     if (str.length > num) {
@@ -102,10 +57,12 @@ const CourseDetail = ({ course }) => {
               </div>
             </div>
 
-            <div className="w-full lg:w-1/3 flex justify-start lg:justify-end gap-2">
-              <button className="btn btn-sm bg-blue-500 border-0 hover:bg-blue-400">Enroll Now</button>
-              <button className="btn btn-sm btn-ghost hover:bg-transparent flex items-center gap-1"><HiOutlineSaveAs className="text-xl" /> Save</button>
-            </div>
+            {
+              isAuth ? <div className="w-full lg:w-1/3 flex justify-start lg:justify-end gap-2">
+                <button className="btn btn-sm bg-blue-500 border-0 hover:bg-blue-400">Enroll Now</button>
+                <button className="btn btn-sm btn-ghost hover:bg-transparent flex items-center gap-1"><HiOutlineSaveAs className="text-xl" /> Save</button>
+              </div> : <div className="hidden lg:block"><LoginCard /> </div>
+            }
           </div>
 
           <div className="h-10"></div>
@@ -132,7 +89,7 @@ const CourseDetail = ({ course }) => {
               tabs === 1 && <About course={course} />
             }
           </div>
-          <div className="hidden lg:block lg:w-2/6 mt-80 z-50 pl-10">
+          <div className="hidden lg:block lg:w-2/6 mt-80 z-30 pl-10">
             <div className="sticky top-80 border p-6 rounded-xl">
               <h1 className="font-bold tracking-tight">Follow these steps to get started</h1>
               <ul className="steps steps-vertical">

@@ -19,6 +19,7 @@ export default function Discussions({ id }) {
   console.log(id, "id");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { isAuth } = useSelector(state => state.auth)
 
   useEffect(() => {
     if (!id) return;
@@ -37,10 +38,6 @@ export default function Discussions({ id }) {
       }
     })();
   }, [id]);
-
-  useEffect(() => {
-    console.log(data, "data data data");
-  }, [data]);
 
   useEffect(() => {
     socket.on("connect", () => {
@@ -68,7 +65,6 @@ export default function Discussions({ id }) {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    console.log("submit called", data);
     try {
       const res = await sendMessage({
         ...data,
@@ -197,6 +193,7 @@ export default function Discussions({ id }) {
             className="flex-1 w-full textarea textarea-bordered"
             {...register("message", { required: true })}
             value={msg}
+            disabled={!isAuth}
             onChange={(e) => setMsg(e.target.value)}
           />
           <div className="flex justify-end">
