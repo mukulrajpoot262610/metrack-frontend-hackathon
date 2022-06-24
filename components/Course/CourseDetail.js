@@ -6,6 +6,7 @@ import { SiHtml5, SiJavascript, SiReact, SiAngular, SiDjango, SiFlutter } from '
 import { FaVuejs, FaNodeJs, FaPython, FaLaptopCode } from 'react-icons/fa'
 import { HiOutlineSaveAs, HiChatAlt2 } from 'react-icons/hi'
 import Video from "./Tabs/Video";
+import About from "./Tabs/About";
 
 const COURSES = [
   {
@@ -127,8 +128,23 @@ const CourseDetail = ({ course }) => {
             {
               tabs === 0 && <Video course={course} />
             }
+            {
+              tabs === 1 && <About course={course} />
+            }
           </div>
-          <div className="hidden lg:block lg:w-2/6"></div>
+          <div className="hidden lg:block lg:w-2/6 mt-80 z-50 pl-10">
+            <div className="sticky top-80 border p-6 rounded-xl">
+              <h1 className="font-bold tracking-tight">Follow these steps to get started</h1>
+              <ul className="steps steps-vertical">
+                <li className="step">Enroll Course</li>
+                <li className="step">Watch Video</li>
+                <li className="step">Start Building Project</li>
+                <li className="step">Create a GitHub repository</li>
+                <li className="step">Deploy your project</li>
+                <li className="step">Submit your project</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
       </div>
