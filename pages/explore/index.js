@@ -1,10 +1,64 @@
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import CourseContent from "../../components/Common/CourseContent";
+import toast, { LoaderIcon } from "react-hot-toast";
+
+import ExploreComponent from "../../components/Explore/ExploreComponent";
+import ExploreSidebar from "../../components/Explore/ExploreSidebar";
 import { getPublishedCourses } from "../../services/api";
+
+import { SiHtml5, SiJavascript, SiReact, SiAngular, SiDjango, SiFlutter } from 'react-icons/si'
+import { FaVuejs, FaNodeJs, FaPython } from 'react-icons/fa'
+
+const COURSES = [
+  {
+    id: 0,
+    name: 'HTML/CSS',
+    logo: <SiHtml5 className="text-xl" />,
+  },
+  {
+    id: 1,
+    name: 'Javascript',
+    logo: <SiJavascript className="text-xl" />,
+  },
+  {
+    id: 2,
+    name: 'React',
+    logo: <SiReact className="text-xl" />,
+  },
+  {
+    id: 3,
+    name: 'Vue.js',
+    logo: <FaVuejs className="text-xl" />,
+  },
+  {
+    id: 4,
+    name: 'Angular',
+    logo: <SiAngular className="text-xl" />,
+  },
+  {
+    id: 5,
+    name: 'Node.js',
+    logo: <FaNodeJs className="text-xl" />,
+  },
+  {
+    id: 6,
+    name: 'Python',
+    logo: <FaPython className="text-xl" />,
+  },
+  {
+    id: 7,
+    name: 'Django',
+    logo: <SiDjango className="text-xl" />,
+  },
+  {
+    id: 8,
+    name: 'Flutter',
+    logo: <SiFlutter className="text-xl" />,
+  },
+]
 
 const Explore = () => {
 
+  const [selected, setSelected] = useState(0)
   const [response, setResponse] = useState([])
 
   useEffect(() => {
@@ -20,64 +74,12 @@ const Explore = () => {
     fetchData()
   }, [])
 
-
-  return (
-    <div className="flex items-start pt-20 justify-center min-h-screen gap-10 pb-10">
-      <div className="w-1/5 p-2 border-r">
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          All Classess
-        </h2>
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          Trending
-        </h2>
-        <h3 className="mt-4 text-xs font-bold text-gray-400 uppercase">
-          Technologies
-        </h3>
-        <hr className="mb-4" />
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          React
-        </h2>
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          Angular
-        </h2>
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          Vue
-        </h2>
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          Flutter
-        </h2>
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          Nodejs
-        </h2>
-        <h2 className="p-2 px-4 my-1 font-semibold cursor-pointer hover:bg-blue-50 rounded-xl">
-          Django
-        </h2>
-      </div>
-      <div className="w-4/5">
-        <div className="relative flex justify-end overflow-hidden bg-blue-50 h-96 rounded-3xl">
-          <h1 className="absolute font-black text-blue-200 uppercase -translate-y-1/2 text-9xl left-20 top-1/2">
-            React
-          </h1>
-          <img src="/hero_2.svg" className="w-1/2" />
-        </div>
-
-        <div className="flex items-center justify-end p-3">
-          <p className="text-xs font-bold text-gray-400 uppercase">Sort by:</p>
-          <select className="w-64 ml-4 select select-sm select-bordered">
-            <option disabled selected>
-              Who shot first?
-            </option>
-            <option>Han Solo</option>
-            <option>Greedo</option>
-          </select>
-        </div>
-        <hr />
-
-        <CourseContent courses={response} />
-
-      </div>
-    </div>
-  );
+  return <div className="grid grid-cols-12 gap-4 pb-10 pt-16">
+    <ExploreSidebar selected={selected} setSelected={setSelected} courses={COURSES} />
+    {
+      response.length === 0 ? <LoaderIcon /> : <ExploreComponent courses={COURSES} response={response} selected={selected} />
+    }
+  </div>;
 };
 
 export default Explore;

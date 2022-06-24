@@ -17,8 +17,8 @@ const Features = () => {
             <div className="collapse-title text-xl font-medium peer-checked:bg-blue-100 ">
               Specially Built for Generalists
             </div>
-            <div className="collapse-content bg-white peer-checked:bg-blue-100">
-              <p>tabindex= attribute is necessary to make the div focusable</p>
+            <div className="collapse-content bg-white peer-checked:bg-red-100">
+              <p>tabIndex= attribute is necessary to make the div focusable</p>
             </div>
           </div>
           <div className="collapse collapse-arrow rounded-3xl">
@@ -26,8 +26,8 @@ const Features = () => {
             <div className="collapse-title text-xl font-medium peer-checked:bg-blue-100 ">
               Specially Built for Generalists
             </div>
-            <div className="collapse-content bg-white peer-checked:bg-blue-100">
-              <p>tabindex= attribute is necessary to make the div focusable</p>
+            <div className="collapse-content bg-white peer-checked:bg-red-100">
+              <p>tabIndex= attribute is necessary to make the div focusable</p>
             </div>
           </div>
           <div className="collapse collapse-arrow rounded-3xl">
@@ -35,8 +35,8 @@ const Features = () => {
             <div className="collapse-title text-xl font-medium peer-checked:bg-blue-100 ">
               Specially Built for Generalists
             </div>
-            <div className="collapse-content bg-white peer-checked:bg-blue-100">
-              <p>tabindex= attribute is necessary to make the div focusable</p>
+            <div className="collapse-content bg-white peer-checked:bg-red-100">
+              <p>tabIndex= attribute is necessary to make the div focusable</p>
             </div>
           </div>
         </div>

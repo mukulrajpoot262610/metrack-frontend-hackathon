@@ -20,15 +20,15 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await signup(data);
       dispatch(setAuth(res.data));
       toast.success("LogIn Success 🎉");
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
-      setLoading(false)
-      console.log(err)
+      setLoading(false);
+      console.log(err);
       toast.error(err?.response?.data?.msg);
     }
   };

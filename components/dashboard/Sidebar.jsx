@@ -12,11 +12,10 @@ import { BiCog } from "react-icons/bi";
 import { useRouter } from "next/router";
 
 export default function Sidebar() {
-
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
-  const path = router.pathname
+  const path = router.pathname;
 
   const handleLogout = async (e) => {
     e.preventDefault();

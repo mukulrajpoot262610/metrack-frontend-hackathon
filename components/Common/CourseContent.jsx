@@ -19,7 +19,7 @@ export default function CourseContent({ courses }) {
             <img src={data?.channelImage} className="h-8 w-8 border rounded-full" />
             <h1 className="font-medium text-gray-500">{data?.channel}</h1>
           </div>
-          <div className="flex justify-between card-actions">
+          <div className="flex justify-between items-center card-actions">
             <div className="flex items-center gap-1">
               <img src="/like.png" className="h-10" />
               <p className="font-semibold">{data?.respect}</p>
@@ -30,7 +30,7 @@ export default function CourseContent({ courses }) {
               </button>
             }
             <Link href={`/explore/${data._id}`}>
-              <button className="border border-blue-200 btn btn-ghost hover:bg-blue-50">
+              <button className="border btn-sm border-blue-200 btn btn-ghost hover:bg-blue-50">
                 Enroll
               </button>
             </Link>
@@ -60,7 +60,7 @@ export default function CourseContent({ courses }) {
                   </Link>
                 </>
               }
-            </div> : <div className="grid grid-cols-1 gap-4 mt-4 z-20 sm:grid-cols-2 lg:grid-cols-3">
+            </div> : <div className="grid grid-cols-1 gap-6 mt-4 z-20 sm:grid-cols-2 lg:grid-cols-3">
               {elements}
             </div>
           }
