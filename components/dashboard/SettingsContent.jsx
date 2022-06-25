@@ -28,7 +28,7 @@ export default function SettingsContent() {
             <form>
               <input
                 type="text"
-                className="input input-bordered w-1/2"
+                className="w-1/2 input input-bordered"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />

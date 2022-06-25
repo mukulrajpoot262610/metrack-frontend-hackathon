@@ -36,6 +36,11 @@ export const getDiscussion = (id) => api.get(`/api/discussions/${id}`);
 export const sendMessage = (data) => api.post("/api/messages", data);
 export const addReply = (data) => api.post("/api/reply", data);
 
+// PROJECTS
+export const uploadProject = (data) => api.post("/api/projects", data);
+export const getProjects = () => api.get("/api/projects");
+export const addFeedback = (data) => api.post("/api/addFeedback", data);
+
 // UPDATE
 api.interceptors.response.use(
   (config) => {

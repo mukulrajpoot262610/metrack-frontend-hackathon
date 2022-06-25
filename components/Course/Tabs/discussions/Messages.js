@@ -3,6 +3,7 @@ import { formatDistance } from "date-fns";
 import Reply from "./Reply";
 import Replies from "./Replies";
 import { useSelector } from "react-redux";
+import ParseMarkdown from "../../../markdown/ParseMarkdown";
 
 export default function Messages({ data }) {
   const { isAuth, user } = useSelector((state) => state.auth);
@@ -56,7 +57,9 @@ function Message({ i, user }) {
                 </p>
               </section>
               <section id="message">
-                <p className="flex-1 text-sm">{i?.message}</p>
+                <p className="flex-1 text-sm">
+                  <ParseMarkdown>{i?.message}</ParseMarkdown>
+                </p>
               </section>
               <section id="details" className="flex items-center gap-4 text-xs">
                 {liked ? (

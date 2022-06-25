@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 import { getDiscussion, sendMessage } from "../../../../services/api";
 import { useSelector } from "react-redux";
 import Messages from "./Messages";
+import Editor from "../../../editor";
 
 // socket connection
 const socket = io("http://localhost:3001");
@@ -139,13 +140,7 @@ export default function Discussions({ id }) {
           </div>
         </div>
         <div className="flex-1">
-          <textarea
-            type="text"
-            value={msg}
-            onChange={(e) => setMsg(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="block w-full h-24 p-2 text-sm resize-none input textarea-bordered"
-          />
+          <Editor data={msg} setData={setMsg} />
         </div>
       </div>
       <div className="flex justify-end">

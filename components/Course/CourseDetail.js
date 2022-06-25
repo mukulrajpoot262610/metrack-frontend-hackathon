@@ -18,14 +18,14 @@ import { useSelector } from "react-redux";
 import LoginCard from "../Card/LoginCard";
 import { enrollCourse } from "../../services/api";
 import toast from "react-hot-toast";
-import Project from "./Tabs/project";
+import Projects from "./Tabs/project";
 
 const CourseDetail = ({ course }) => {
   const [tabs, setTabs] = useState(0);
   const { isAuth, user } = useSelector((state) => state.auth);
 
   function truncateString(str, num) {
-    if (str.length > num) {
+    if (str?.length > num) {
       return str.slice(0, num) + "...";
     } else {
       return str;
@@ -153,7 +153,7 @@ const CourseDetail = ({ course }) => {
             {tabs === 0 && <Video course={course} />}
             {tabs === 1 && <About course={course} />}
             {tabs === 2 && <Discussions id={course?.discussionId} />}
-            {tabs === 3 && <Project course={course} />}
+            {tabs === 3 && <Projects course={course} />}
           </div>
           <div className="z-30 hidden pl-10 lg:block lg:w-2/6 mt-80">
             <div className="sticky p-6 border top-80 rounded-xl">

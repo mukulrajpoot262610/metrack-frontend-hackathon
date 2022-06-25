@@ -49,11 +49,11 @@ export default function Reply({ message, user }) {
         </div>
         <div className="flex-1">
           <textarea
+            type="text"
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
             onKeyDown={handleKeyDown}
-            type="text"
-            className="w-full h-16 p-2 text-sm resize-none input textarea-bordered"
+            className="block w-full h-24 p-2 text-sm resize-none input textarea-bordered"
           />
         </div>
       </div>
