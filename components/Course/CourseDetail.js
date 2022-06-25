@@ -9,17 +9,29 @@ import Video from "./Tabs/Video";
 import About from "./Tabs/About";
 import { useSelector } from "react-redux";
 import LoginCard from "../Card/LoginCard";
+import { enrollCourse } from "../../services/api";
+import toast from "react-hot-toast";
 
 const CourseDetail = ({ course }) => {
 
   const [tabs, setTabs] = useState(0)
-  const { isAuth } = useSelector(state => state.auth)
+  const { isAuth, user } = useSelector(state => state.auth)
 
   function truncateString(str, num) {
     if (str.length > num) {
       return str.slice(0, num) + "...";
     } else {
       return str;
+    }
+  }
+
+  const handleEnroll = async () => {
+    try {
+      const { data } = await enrollCourse(course._id)
+      toast.success('Enrolled 🎉')
+    } catch (err) {
+      console.log(err)
+      toast.error(err?.response?.data?.msg)
     }
   }
 
@@ -47,20 +59,27 @@ const CourseDetail = ({ course }) => {
                       <img src="https://api.lorem.space/image/face?hash=84348" />
                     </div>
                   </div>
-                  <div className="avatar placeholder">
-                    <div className="w-6 bg-neutral-focus text-neutral-content">
-                      <span className="text-xs">+99</span>
+                  {
+                    course?.students?.length > 20 && <div className="avatar placeholder">
+                      <div className="w-6 bg-neutral-focus text-neutral-content">
+                        <span className="text-xs">+20</span>
+                      </div>
                     </div>
-                  </div>
+                  }
+
                 </div>
-                <h2 className="text-xs"><span className="font-bold">23</span> developers have joined this project.</h2>
+                <h2 className="text-xs"><span className="font-bold">{course?.students?.length}</span> developers have joined this course.</h2>
               </div>
             </div>
 
             {
               isAuth ? <div className="w-full lg:w-1/3 flex justify-start lg:justify-end gap-2">
-                <button className="btn btn-sm bg-blue-500 border-0 hover:bg-blue-400">Enroll Now</button>
-                <button className="btn btn-sm btn-ghost hover:bg-transparent flex items-center gap-1"><HiOutlineSaveAs className="text-xl" /> Save</button>
+                {
+                  course?.students?.includes(user._id) ? "" : <>
+                    <button className="btn btn-sm bg-blue-500 border-0 hover:bg-blue-400" onClick={handleEnroll}>Enroll Now</button>
+                    <button className="btn btn-sm btn-ghost hover:bg-transparent flex items-center gap-1"><HiOutlineSaveAs className="text-xl" /> Save</button>
+                  </>
+                }
               </div> : <div className="hidden lg:block"><LoginCard /> </div>
             }
           </div>

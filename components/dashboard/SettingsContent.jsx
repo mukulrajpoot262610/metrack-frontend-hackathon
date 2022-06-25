@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 
 export default function SettingsContent() {
   const { user } = useSelector((state) => state.auth);
-  const [email, setEmail] = useState(user?.email);
+  const [name, setName] = useState(user?.name);
 
   return (
     <>
-      <section className="col-span-9 text-base-content">
+      <section className="col-span-12 lg:col-span-9 text-base-content">
         <div className="w-full p-4 space-y-8 bg-blue-50 rounded-xl">
-          <section className="space-y-4">
+          <section className="space-y-1">
             <h2 className="text-sm font-bold uppercase text-accent">
               Email Verification
             </h2>
@@ -21,26 +21,26 @@ export default function SettingsContent() {
               )}
             </div>
           </section>
-          <section className="space-y-4">
+          <section className="space-y-1">
             <h2 className="text-sm font-bold uppercase text-accent">
-              Change Email
+              Change Name
             </h2>
             <form>
               <input
                 type="text"
-                className="input input-bordered"
-                value={email}
-                onChange={(e) => e.target.value}
+                className="input input-bordered w-1/2"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <button className="ml-2 btn btn-primary">Update</button>
             </form>
           </section>
-          <section className="space-y-4">
+          <section className="space-y-1">
             <h2 className="text-sm font-bold uppercase text-accent">
               Change Password
             </h2>
-            <form className="space-y-4">
-              <div className="space-y-2">
+            <form className="space-y-2">
+              <div className="space-y-1">
                 <label htmlFor="" className="text-sm text-accent">
                   Password
                 </label>
@@ -51,7 +51,7 @@ export default function SettingsContent() {
                   placeholder="password"
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label htmlFor="" className="text-sm text-accent">
                   New Password
                 </label>
@@ -65,7 +65,7 @@ export default function SettingsContent() {
               <button className="btn btn-primary">Update Password</button>
             </form>
           </section>
-          <section className="space-y-4">
+          <section className="space-y-2">
             <h2 className="text-sm font-bold text-accent">Email Preferences</h2>
             <form className="space-y-4">
               <div className="flex items-center gap-x-4">
@@ -94,7 +94,7 @@ export default function SettingsContent() {
               </div>
             </form>
           </section>
-          <section className="space-y-4">
+          <section className="space-y-1">
             <h2 className="text-sm font-bold text-error">Delete Account</h2>
             <div className="space-y-4">
               <p>

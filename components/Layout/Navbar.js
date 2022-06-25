@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/dist/client/link";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAngleDown } from "react-icons/fa";
+import { FiBook } from "react-icons/fi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
@@ -74,6 +75,14 @@ const Navbar = () => {
                     <a className="hover:bg-blue-50 active:bg-blue-300">
                       <MdOutlineDashboard className="text-base font-bold" />
                       Dashboard
+                    </a>
+                  </Link>
+                </li>
+                <li className="text-sm">
+                  <Link href="/explore">
+                    <a className="hover:bg-blue-50 active:bg-blue-300">
+                      <FiBook className="text-base font-bold" />
+                      Explore Courses
                     </a>
                   </Link>
                 </li>
