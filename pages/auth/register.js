@@ -7,11 +7,13 @@ import { register as signup } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
 import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Register = () => {
   const dispatch = useDispatch();
   const { isAuth } = UseRedirectOnAuth("/", true);
   const [loading, setLoading] = useState(false);
+  const [toggelFieldType, setToggleFieledType] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -97,12 +99,28 @@ const Register = () => {
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <input
-              type="text"
-              {...register("password", { required: true })}
-              placeholder="Type here"
-              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
-            />
+            <div className="relative w-full">
+              <input
+                type={toggelFieldType ? "text" : "password"}
+                placeholder="Password"
+                className={`input ${errors.password ? "input-error" : ""
+                  } input-bordered w-full`}
+                {...register("password", {
+                  required: true,
+                })}
+              />
+              {toggelFieldType ? (
+                <AiOutlineEyeInvisible
+                  className="absolute text-xl cursor-pointer top-4 right-3"
+                  onClick={() => setToggleFieledType(!toggelFieldType)}
+                />
+              ) : (
+                <AiOutlineEye
+                  className="absolute text-xl cursor-pointer top-4 right-3"
+                  onClick={() => setToggleFieledType(!toggelFieldType)}
+                />
+              )}
+            </div>
             <label className="">
               {errors.password ? (
                 <span className="text-red-500 label-text-alt">
