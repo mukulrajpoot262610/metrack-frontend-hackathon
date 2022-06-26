@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { BsGithub, BsGlobe } from "react-icons/bs";
 import { uploadProject } from "../../services/api";
+import uploadPic from "../../utils/uploadPic";
 import Editor from "../editor";
 
 export default function Submission() {
@@ -11,15 +12,49 @@ export default function Submission() {
   const [loading, setLoading] = useState(false);
   const { handleSubmit, register } = useForm();
   const [description, setDescription] = useState("");
+
+
   const router = useRouter();
   const { courseId } = router.query;
-  console.log(router?.query);
+
+  const [url, setUrl] = useState()
+  const [image, setImage] = useState()
+  const [media, setMedia] = useState()
+  const [imageLoading, setImageLoading] = useState(false);
+
+  const uploadImage = async () => {
+    if (!image) {
+      return toast.error('Please add a image')
+    }
+    setImageLoading(true)
+
+    try {
+      setUrl(await uploadPic(media))
+      setImageLoading(false)
+    } catch (err) {
+      setImageLoading(false)
+      toast.error('Error in Upload')
+    }
+
+  }
+
+  const captureImage = (e) => {
+    const file = e.target.files[0];
+    setMedia(file)
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function () {
+      setImage(reader.result)
+    }
+  }
 
   const onSubmit = async (data) => {
+
+    if (!courseId) {
+      return toast.error("course unavailable");
+    }
+
     try {
-      if (!courseId) {
-        return toast.error("course unavailable");
-      }
       const res = await uploadProject({ ...data, description, tags, courseId });
       toast.success("Project submitted");
       router.push(`/explore/${courseId}`);
@@ -55,11 +90,23 @@ export default function Submission() {
           </h3>
         </div>
         <section id="about" className="space-y-6">
-          <div
-            id="thumbnail"
-            className="w-full h-80 rounded-xl bg-base-200"
-          ></div>
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <div className="space-y-2">
+              <h2 className="text-xs font-bold text-blue-500 uppercase">
+                Thumbnail
+              </h2>
+              <label className="w-full lg:w-1/2 flex flex-col items-center p-1 text-blue rounded-lg border border-blue cursor-pointer">
+                {
+                  image ? <img src={image} alt="" className="rounded-lg" /> : <div className="m-4 flex flex-col items-center"><span className="text-5xl">+</span>
+                    <span className="text-xs">Select a file</span></div>
+                }
+                <input type='file' onChange={captureImage} className="hidden" />
+              </label>
+              <div onClick={uploadImage} className={`${imageLoading ? "loading" : ""} btn btn-sm w-fit mt-2 `}>
+                Upload
+              </div>
+            </div>
+
             <div className="space-y-2">
               <h2 className="text-xs font-bold text-blue-500 uppercase">
                 title
@@ -134,6 +181,7 @@ export default function Submission() {
                 />
               </div>
             </div>
+
             <div className="flex justify-end">
               <button className="btn btn-primary">upload</button>
             </div>
