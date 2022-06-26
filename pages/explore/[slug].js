@@ -10,6 +10,7 @@ const CourseDetailPage = () => {
   const [response, setResponse] = useState([]);
 
   useEffect(() => {
+    if (!id) return;
     const fetchData = async () => {
       try {
         const { data } = await getCourseDetail(id);

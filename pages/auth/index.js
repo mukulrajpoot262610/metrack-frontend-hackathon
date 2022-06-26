@@ -11,7 +11,7 @@ import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 const Login = () => {
   const dispatch = useDispatch();
   const { isAuth } = UseRedirectOnAuth("/", true);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const {
@@ -21,20 +21,20 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await login(data);
       dispatch(setAuth(res.data));
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
-      console.log(err)
-      setLoading(false)
+      console.log(err);
+      setLoading(false);
       toast.error(err?.response?.data?.msg || err?.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center pt-20 gap-20 pb-10">
+    <div className="flex items-center justify-center gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <h1 className="mb-10 text-3xl font-bold text-center uppercase">
           Log in to 100Tube
@@ -48,7 +48,9 @@ const Login = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.email ? "input-error" : ""}`}
+              className={`w-full input input-bordered ${
+                errors.email ? "input-error" : ""
+              }`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -72,7 +74,9 @@ const Login = () => {
               type="text"
               {...register("password", { required: true })}
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
+              className={`w-full input input-bordered ${
+                errors.password ? "input-error" : ""
+              }`}
             />
             <label className="label">
               {errors.password ? (
@@ -89,13 +93,19 @@ const Login = () => {
               </Link>
             </label>
           </div>
-          <button className={`w-full mt-6 ${loading && "loading"} bg-blue-100 btn btn-ghost hover:bg-blue-300`}>
+          <button
+            className={`w-full mt-6 ${
+              loading && "loading"
+            } bg-blue-100 btn btn-ghost hover:bg-blue-300`}
+          >
             Log In{" "}
           </button>
           <p className="mt-4 text-xs text-center">
             Don’t have an account?
             <Link href="/auth/register">
-              <span className={`ml-1 text-blue-400 cursor-pointer hover:underline`}>
+              <span
+                className={`ml-1 text-blue-400 cursor-pointer hover:underline`}
+              >
                 Register Now
               </span>
             </Link>

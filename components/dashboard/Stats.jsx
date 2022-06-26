@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Stats() {
+export default function Stats({ courses, projects }) {
   return (
-    <div className="bg-white rounded-box grid grid-cols-1 lg:grid-cols-3 shadow">
+    <div className="grid grid-cols-1 bg-white shadow rounded-box lg:grid-cols-3">
       <div className="stat">
-        <div className="stat-figure text-black">
+        <div className="text-black stat-figure">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -20,11 +20,11 @@ export default function Stats() {
           </svg>
         </div>
         <div className="stat-title">Courses</div>
-        <div className="stat-value">54</div>
+        <div className="stat-value">{courses}</div>
       </div>
 
       <div className="stat">
-        <div className="stat-figure text-black">
+        <div className="text-black stat-figure">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -39,12 +39,12 @@ export default function Stats() {
             ></path>
           </svg>
         </div>
-        <div className="stat-title">Completed</div>
-        <div className="stat-value">26</div>
+        <div className="stat-title">Appreciations</div>
+        <div className="stat-value">{projects}</div>
       </div>
 
       <div className="stat">
-        <div className="stat-figure text-black">
+        <div className="text-black stat-figure">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,7 +60,7 @@ export default function Stats() {
           </svg>
         </div>
         <div className="stat-title">Projects</div>
-        <div className="stat-value">12</div>
+        <div className="stat-value">{projects}</div>
       </div>
     </div>
   );

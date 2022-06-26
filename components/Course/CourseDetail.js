@@ -48,7 +48,7 @@ const CourseDetail = ({ course }) => {
         <header className="fixed left-0 z-40 w-full top-16 h-fit bg-blue-50">
           <div className="flex flex-col items-center justify-between w-10/12 gap-4 py-6 mx-auto lg:flex-row">
             <div className="w-full lg:w-2/3">
-              <h2 className="mt-3 text-xl font-bold capitalize lg:text-3xl">
+              <h2 className="mt-3 text-xl font-bold capitalize line-clamp-2 lg:text-3xl">
                 {truncateString(course?.name, 60)}
               </h2>
               <div className="flex items-center gap-1 mt-1">

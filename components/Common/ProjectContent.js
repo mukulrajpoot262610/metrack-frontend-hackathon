@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import CourseCard from "./CourseCard";
+import Project from "./Project";
 
-export default function CourseContent({ courses }) {
+export default function ProjectContent({ projects }) {
   const router = useRouter();
   const path = router.pathname;
 
@@ -16,28 +16,28 @@ export default function CourseContent({ courses }) {
     }
   }
 
-  const elements = courses.map((i) => {
-    return <CourseCard key={i._id} data={i} />;
+  const elements = projects.map((i) => {
+    return <Project key={i._id} project={i} />;
   });
 
   return (
     <section className="col-span-12 lg:col-span-9">
       <div className="w-full space-y-4 rounded-xl">
         <div className="space-y-2">
-          {path === "/dashboard/courses" && (
-            <h2 className="text-sm font-bold text-blue-400">
-              Enrolled Courses
-            </h2>
+          {path === "/dashboard/projects" && (
+            <h2 className="text-sm font-bold text-blue-400">submissions</h2>
           )}
 
-          {courses.length === 0 ? (
+          {projects.length === 0 ? (
             <div className="flex flex-col items-center justify-center w-full h-full mt-8">
               <img src="/no-data.svg" className="h-64" />
-              <h1 className="mt-8 text-2xl font-bold">No Courses Found...</h1>
-              {path === "/dashboard/courses" && (
+              <h1 className="mt-8 text-2xl font-bold">No projects Found...</h1>
+              {path === "/dashboard/projects" && (
                 <>
-                  <p className="my-2">Try Enrolling in some courses.</p>
-                  <Link href="/explore">
+                  <p className="my-2">
+                    Enroll in courses and build your own projects.
+                  </p>
+                  <Link href="/courses">
                     <button className="mt-6 border border-blue-300 btn btn-ghost hover:bg-blue-50">
                       Explore Courses
                     </button>
