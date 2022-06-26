@@ -24,7 +24,8 @@ export const verifyEmail = (data) => api.post("/api/verify-email", data);
 export const requestEmailVerification = () => api.get("/api/verify-email");
 
 // COURSE
-export const getPublishedCourses = (category) => api.get(`/api/get-all-course?category=${category}`);
+export const getPublishedCourses = (category) =>
+  api.get(`/api/get-all-course?category=${category}`);
 export const getCourseDetail = (id) => api.get(`/api/get-course/${id}`);
 export const enrollCourse = (id) => api.get(`/api/enroll-course/${id}`);
 
@@ -33,6 +34,12 @@ export const getDiscussion = (id) => api.get(`/api/discussions/${id}`);
 
 // MESSAGES
 export const sendMessage = (data) => api.post("/api/messages", data);
+export const addReply = (data) => api.post("/api/reply", data);
+
+// PROJECTS
+export const uploadProject = (data) => api.post("/api/projects", data);
+export const getProjects = () => api.get("/api/projects");
+export const addFeedback = (data) => api.post("/api/addFeedback", data);
 
 // UPDATE
 api.interceptors.response.use(
