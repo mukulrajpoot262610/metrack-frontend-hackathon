@@ -62,14 +62,13 @@ export default function Discussions({ id }) {
   // get discussion data
   useEffect(() => {
     if (!id) return;
+
     socket.emit("join", id);
     (async () => {
       setLoading(true);
       try {
         const res = await getDiscussion(id);
-        console.log(res, res?.data, res?.data?.data, "data data data");
         setData(res?.data?.data);
-        // console.log(res?.data?.data, "response", res);
       } catch (err) {
         console.log(err);
         toast.error(err?.response?.data?.msg);
@@ -152,6 +151,7 @@ export default function Discussions({ id }) {
           <button
             className="px-4 rounded-full btn btn-sm btn-primary"
             onClick={handleSend}
+            disabled={!isAuth}
           >
             Send
           </button>

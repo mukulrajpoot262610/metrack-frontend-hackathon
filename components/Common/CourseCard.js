@@ -49,12 +49,12 @@ export default function CourseCard({ data }) {
             </p>
           </div>
           {onDashboard ? (
-            <a
+            <Link
               href={`/explore/${data._id}`}
               className="text-xs border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50"
             >
               Continue Watching
-            </a>
+            </Link>
           ) : (
             <Link href={`/explore/${data._id}`}>
               <a className="flex items-center gap-2 text-base">

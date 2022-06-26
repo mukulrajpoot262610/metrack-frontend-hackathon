@@ -23,20 +23,18 @@ export default function Project({ project }) {
     );
   });
 
-  console.log(project)
-
   return (
     <>
       <label
         htmlFor={`project-modal-${project?._id}`}
-        className="bg-transparent cursor-pointer modal-button"
+        className="bg-transparent modal-button max-w-sm duration-200 border border-t-0 border-black cursor-pointer hover:shadow-lg card bg-base-100"
       >
         <div className="w-full overflow-hidden bg-blue-50 rounded-xl">
           <div className="h-40 overflow-hidden bg-base-200">
             <figure>
               <img
                 className="block w-full h-full"
-                src="https://images.unsplash.com/photo-1656100029860-b71a8be82ca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
+                src={project?.thumbnail}
                 alt="Shoes"
               />
             </figure>
@@ -68,7 +66,7 @@ export default function Project({ project }) {
                 <figure>
                   <img
                     className="block w-full h-full"
-                    src="https://images.unsplash.com/photo-1656100029860-b71a8be82ca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
+                    src={project?.thumbnail}
                     alt="Shoes"
                   />
                 </figure>
@@ -133,6 +131,7 @@ export default function Project({ project }) {
 }
 
 function WriteFeedback({ project, feedbacks, setFeedbacks }) {
+
   const { user, isAuth } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
@@ -174,6 +173,7 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
           onChange={(e) => setMsg(e.target.value)}
           onKeyDown={handleKeyDown}
           type="text"
+          disabled={!isAuth}
           placeholder="write your feedback"
           className="w-full h-16 p-2 text-sm resize-none input textarea-bordered"
         />
