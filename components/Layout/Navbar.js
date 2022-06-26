@@ -30,9 +30,12 @@ const Navbar = () => {
       <div className="flex items-center justify-between w-11/12 mx-auto lg:w-10/12 ">
         <div>
           <Link href="/">
-            <h1 className="text-xl font-bold cursor-pointer">
-              <span className="text-[#ECB3A0]">100</span>Tube
-            </h1>
+            <a className="flex items-center gap-2">
+              <img src="/logo.png" className="h-8 w-16 object-contain" />
+              <h1 className="uppercase tracking-tight font-bold hidden lg:block cursor-pointer">
+                <span className="text-blue-500 text-3xl">ME</span>Track
+              </h1>
+            </a>
           </Link>
         </div>
         {isAuth ? (

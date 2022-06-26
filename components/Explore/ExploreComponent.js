@@ -66,7 +66,7 @@ const ExploreComponent = ({ response, selected }) => {
                     {COURSES[selected].logo}
                 </div>
 
-                <div className="flex items-center justify-end p-3">
+                {/* <div className="flex items-center justify-end p-3">
                     <p className="text-xs font-bold text-gray-400 uppercase">Sort by:</p>
                     <select className="w-64 ml-4 select select-sm select-bordered">
                         <option disabled selected>
@@ -75,7 +75,7 @@ const ExploreComponent = ({ response, selected }) => {
                         <option>Han Solo</option>
                         <option>Greedo</option>
                     </select>
-                </div>
+                </div> */}
                 <hr />
 
                 <CourseContent courses={response} />

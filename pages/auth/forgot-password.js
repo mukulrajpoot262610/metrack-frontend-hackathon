@@ -88,7 +88,7 @@ const ForgetPassowrd = () => {
             PAssword
           </h1>
           <img
-            src="/forgot.png"
+            src="/auth/forget.png"
             className="z-20 object-cover object-top w-10/12 mt-40 rounded-3xl"
           />
         </div>

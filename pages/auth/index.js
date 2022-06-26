@@ -108,7 +108,7 @@ const Login = () => {
             Login
           </h1>
           <img
-            src="/hero.svg"
+            src="/auth/login.png"
             className="z-20 object-cover w-10/12 rounded-3xl"
           />
         </div>

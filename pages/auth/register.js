@@ -60,7 +60,7 @@ const Register = () => {
               })}
             />
             {errors.name && (
-              <label className="label">
+              <label className="">
                 <span className="text-red-500 label-text-alt">
                   Enter a valid name!
                 </span>
@@ -83,14 +83,14 @@ const Register = () => {
               })}
             />
             {errors.email && (
-              <label className="label">
+              <label className="">
                 <span className="text-red-500 label-text-alt">
                   Enter a valid Email Address!
                 </span>
               </label>
             )}
           </div>
-          <div className="w-full mt-2 form-control">
+          <div className="w-full form-control">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
@@ -100,7 +100,7 @@ const Register = () => {
               placeholder="Type here"
               className="w-full input input-bordered"
             />
-            <label className="label">
+            <label className="">
               {errors.password ? (
                 <span className="text-red-500 label-text-alt">
                   Password is required!
@@ -110,7 +110,7 @@ const Register = () => {
               )}
             </label>
           </div>
-          <button className={`w-full mt-6 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"} `}>
+          <button className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"} `}>
             Register{" "}
           </button>
           <p className="mt-4 text-xs text-center">
@@ -124,13 +124,13 @@ const Register = () => {
         </form>
       </div>
       <div className="hidden h-full lg:block lg:w-2/3">
-        <div className="relative flex justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
-          <h1 className="absolute font-black text-blue-200 uppercase text-9xl top-16">
+        <div className="relative flex justify-center items-end h-full overflow-hidden rounded-3xl bg-blue-50">
+          <h1 className="absolute font-black text-blue-200 uppercase text-9xl top-20">
             Welcome
           </h1>
           <img
-            src="/hero.svg"
-            className="z-20 object-cover w-10/12 rounded-3xl"
+            src="/auth/404.svg"
+            className="z-20 object-contain w-10/12 rounded-3xl"
           />
         </div>
       </div>
