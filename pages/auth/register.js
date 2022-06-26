@@ -34,13 +34,16 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pb-10">
+    <div className="flex items-center justify-center h-screen gap-20 pb-10 min-h-screen">
       <div className="w-full p-6 lg:w-1/3">
-        <h1 className="text-3xl font-bold text-center uppercase ">
-          Welcome to 100Tube
-        </h1>
-        <p className="mt-2 mb-8 text-xs text-center">
-          Join 100Tube for Free and explore the new learing experience
+        <a className="flex items-center flex-col gap-2 mb-2">
+          <img src="/logo.png" className="h-12 w-24 object-contain" />
+          <h1 className="uppercase tracking-tight text-3xl font-bold cursor-pointer text-center">
+            Welcome to <span className="text-blue-500">ME</span>Track
+          </h1>
+        </a>
+        <p className="mb-4 text-xs text-center">
+          Join Metrack for Free and explore the new learing experience
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +54,7 @@ const Register = () => {
             <input
               type="text"
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.name ? "input-error" : ""}`}
               {...register("name", {
                 required: true,
                 pattern: {
@@ -74,7 +77,7 @@ const Register = () => {
             <input
               type="text"
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.email ? "input-error" : ""}`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -98,7 +101,7 @@ const Register = () => {
               type="text"
               {...register("password", { required: true })}
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
             />
             <label className="">
               {errors.password ? (
@@ -123,7 +126,7 @@ const Register = () => {
           </p>
         </form>
       </div>
-      <div className="hidden h-full lg:block lg:w-2/3">
+      <div className="hidden h-full lg:w-2/3">
         <div className="relative flex justify-center items-end h-full overflow-hidden rounded-3xl bg-blue-50">
           <h1 className="absolute font-black text-blue-200 uppercase text-9xl top-20">
             Welcome

@@ -52,10 +52,13 @@ const ResetPassowrd = () => {
   return (
     <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
-        <h1 className="text-3xl font-bold text-center uppercase">
-          Reset Password
-        </h1>
-        <p className="mt-2 mb-10 text-xs text-center">
+        <a className="flex items-center flex-col gap-2">
+          <img src="/logo.png" className="h-12 w-24 object-contain" />
+          <h1 className="uppercase tracking-tight text-3xl font-bold cursor-pointer text-center">
+            Reset PAssword
+          </h1>
+        </a>
+        <p className="mb-6 text-xs text-center">
           Make a new password for your 100Tube account.
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -67,9 +70,9 @@ const ResetPassowrd = () => {
               type="text"
               {...register("password", { required: true })}
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
             />
-            <label className="label">
+            <label className="">
               {errors.password ? (
                 <span className="text-red-500 label-text-alt">
                   Password is required!
@@ -80,14 +83,14 @@ const ResetPassowrd = () => {
             </label>
           </div>
           <div className="w-full mt-2 form-control">
-            <label className="label">
+            <label className="">
               <span className="label-text">Confirm Password</span>
             </label>
             <input
               type="text"
               {...register("confirmPassword", { required: true })}
               placeholder="Type here"
-              className="w-full input input-bordered"
+              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
             />
             <label className="label">
               {errors.password ? (
@@ -107,7 +110,7 @@ const ResetPassowrd = () => {
           </button>
         </form>
       </div>
-      <div className="hidden h-full lg:block lg:w-2/3">
+      <div className="hidden h-full lg:w-2/3">
         <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
           <h1 className="absolute z-10 font-black text-blue-200 uppercase text-9xl top-16">
             Forgot

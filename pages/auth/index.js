@@ -34,11 +34,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center pt-20 gap-20 pb-10">
+    <div className="flex items-center justify-center pt-20 gap-20 pb-10 min-h-screen">
       <div className="w-full p-6 lg:w-1/3">
-        <h1 className="mb-10 text-3xl font-bold text-center uppercase">
-          Log in to 100Tube
-        </h1>
+        <a className="flex items-center flex-col gap-2 mb-6">
+          <img src="/logo.png" className="h-12 w-24 object-contain" />
+          <h1 className="uppercase tracking-tight text-3xl font-bold cursor-pointer text-center">
+            Welcome Back to <span className="text-blue-500">ME</span>Track
+          </h1>
+        </a>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full form-control">
@@ -102,7 +105,7 @@ const Login = () => {
           </p>
         </form>
       </div>
-      <div className="hidden h-full lg:block lg:w-2/3">
+      <div className="hidden h-full lg:w-2/3">
         <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
           <h1 className="absolute z-10 font-black text-blue-200 uppercase text-9xl top-16">
             Login

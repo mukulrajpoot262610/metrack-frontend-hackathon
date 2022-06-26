@@ -13,7 +13,7 @@ const VerifyEmail = () => {
           {/* <span className="font-bold">mukul@gmail.com</span>. */}
         </p>
 
-        {/* <p className="my-4 text-center">
+        <p className="my-4 text-center">
           If you have not received the verification link please check your
           &apos;Spam&apos; or &apos;Junk&apos; folder. Still don&apos;t see it?{" "}
           <br />{" "}
@@ -21,14 +21,14 @@ const VerifyEmail = () => {
             Resend the verification link
           </span>
           .
-        </p> */}
-        {/*
+        </p>
+
         <p className="text-center">
           Wrong email address?{" "}
           <span className="font-bold text-blue-400 cursor-pointer hover:underline">
             Change email{" "}
           </span>
-        </p> */}
+        </p>
 
         <div className="flex items-center justify-center mt-6 ">
           <Link href="/auth">
@@ -38,7 +38,8 @@ const VerifyEmail = () => {
           </Link>
         </div>
       </div>
-      <div className="hidden h-full lg:block lg:w-2/3">
+
+      <div className="hidden h-full lg:w-2/3">
         <div className="relative flex justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
           <h1 className="absolute font-black text-blue-200 uppercase text-8xl top-12">
             Verification
