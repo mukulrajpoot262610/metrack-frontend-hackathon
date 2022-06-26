@@ -12,7 +12,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 const Login = () => {
   const dispatch = useDispatch();
   const { isAuth } = UseRedirectOnAuth("/", true);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [toggelFieldType, setToggleFieledType] = useState(false);
 
@@ -23,14 +23,14 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await login(data);
       dispatch(setAuth(res.data));
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
-      console.log(err)
-      setLoading(false)
+      console.log(err);
+      setLoading(false);
       toast.error(err?.response?.data?.msg || err?.message);
     }
   };
@@ -53,7 +53,8 @@ const Login = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.email ? "input-error" : ""}`}
+              className={`w-full input input-bordered ${errors.email ? "input-error" : ""
+                }`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -105,13 +106,18 @@ const Login = () => {
               )}
             </label>
           </div>
-          <button className={`w-full mt-6 ${loading && "loading"} bg-blue-100 btn btn-ghost hover:bg-blue-300`}>
+          <button
+            className={`w-full mt-6 ${loading && "loading"
+              } bg-blue-100 btn btn-ghost hover:bg-blue-300`}
+          >
             Log In{" "}
           </button>
           <p className="mt-4 text-xs text-center">
             Don’t have an account?
             <Link href="/auth/register">
-              <span className={`ml-1 text-blue-400 cursor-pointer hover:underline`}>
+              <span
+                className={`ml-1 text-blue-400 cursor-pointer hover:underline`}
+              >
                 Register Now
               </span>
             </Link>

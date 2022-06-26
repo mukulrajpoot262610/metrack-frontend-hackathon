@@ -25,14 +25,13 @@ const Register = () => {
     setLoading(true);
     try {
       const res = await signup(data);
-      dispatch(setAuth(res.data));
-      toast.success("LogIn Success 🎉");
-      router.push('/auth/verify')
-      setLoading(false);
+      router.push("/auth/verify");
+      toast.success("Check your mail 🎉");
     } catch (err) {
-      setLoading(false);
       console.log(err);
       toast.error(err?.response?.data?.msg);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,7 +128,10 @@ const Register = () => {
               )}
             </label>
           </div>
-          <button className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"} `}>
+          <button
+            className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"
+              } `}
+          >
             Register{" "}
           </button>
           <p className="mt-4 text-xs text-center">

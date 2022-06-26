@@ -1,9 +1,35 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { updatePassword } from "../../services/api";
 
 export default function SettingsContent() {
   const { user } = useSelector((state) => state.auth);
   const [name, setName] = useState(user?.name);
+  const [loading, setLoading] = useState(false);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const changePassword = async (data) => {
+    setLoading(true);
+    try {
+      const res = await updatePassword(data);
+      toast.success("Password changed");
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.response?.data?.msg);
+    } finally {
+      setOldPassword("");
+      setNewPassword("");
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -39,7 +65,7 @@ export default function SettingsContent() {
             <h2 className="text-sm font-bold uppercase text-accent">
               Change Password
             </h2>
-            <form className="space-y-2">
+            <form onSubmit={handleSubmit(changePassword)} className="space-y-2">
               <div className="space-y-1">
                 <label htmlFor="" className="text-sm text-accent">
                   Password
@@ -47,9 +73,24 @@ export default function SettingsContent() {
                 <br />
                 <input
                   type="text"
+                  value={oldPassword}
+                  {...register("oldPassword", {
+                    required: true,
+                  })}
+                  onChange={(e) => setOldPassword(e.target.value)}
                   className="input input-bordered"
-                  placeholder="password"
+                  placeholder="old password"
                 />
+                <br />
+                <label className="">
+                  {errors.oldPassword ? (
+                    <span className="text-red-500 label-text-alt">
+                      Old password is required!
+                    </span>
+                  ) : (
+                    <span className="label-text-alt"></span>
+                  )}
+                </label>
               </div>
               <div className="space-y-1">
                 <label htmlFor="" className="text-sm text-accent">
@@ -58,11 +99,31 @@ export default function SettingsContent() {
                 <br />
                 <input
                   type="text"
+                  {...register("newPassword", {
+                    required: true,
+                  })}
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
                   className="input input-bordered"
                   placeholder="new password"
                 />
+                <br />
+                <label className="">
+                  {errors.newPassword ? (
+                    <span className="text-red-500 label-text-alt">
+                      New password is required!
+                    </span>
+                  ) : (
+                    <span className="label-text-alt"></span>
+                  )}
+                </label>
               </div>
-              <button className="btn btn-primary">Update Password</button>
+              <button
+                type="submit"
+                className={`btn ${loading ? "btn-disabled" : "btn-primary"}`}
+              >
+                {loading ? "Updating" : "Update Password"}
+              </button>
             </form>
           </section>
           <section className="space-y-2">
