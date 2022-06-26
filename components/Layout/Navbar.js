@@ -31,7 +31,7 @@ const Navbar = () => {
         <div>
           <Link href="/">
             <a className="flex items-center gap-2">
-              <img src="/logo.png" className="h-8 w-16 object-contain" />
+              <img src="/logo.png" className="h-6 w-12 object-contain" />
               <h1 className="uppercase tracking-tight font-bold hidden lg:block cursor-pointer">
                 <span className="text-blue-500 text-3xl">ME</span>Track
               </h1>

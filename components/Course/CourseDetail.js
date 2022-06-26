@@ -14,15 +14,17 @@ import { FaVuejs, FaNodeJs, FaPython, FaLaptopCode } from "react-icons/fa";
 import { HiOutlineSaveAs, HiChatAlt2 } from "react-icons/hi";
 import Video from "./Tabs/Video";
 import About from "./Tabs/About";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginCard from "../Card/LoginCard";
 import { enrollCourse } from "../../services/api";
 import toast from "react-hot-toast";
 import Projects from "./Tabs/project";
+import { setAuth } from "../../redux/authSlice";
 
 const CourseDetail = ({ course }) => {
   const [tabs, setTabs] = useState(0);
   const { isAuth, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
 
   function truncateString(str, num) {
     if (str?.length > num) {
@@ -36,6 +38,7 @@ const CourseDetail = ({ course }) => {
     try {
       const { data } = await enrollCourse(course._id);
       toast.success("Enrolled 🎉");
+      dispatch(setAuth(data))
     } catch (err) {
       console.log(err);
       toast.error(err?.response?.data?.msg);
@@ -85,7 +88,7 @@ const CourseDetail = ({ course }) => {
 
             {isAuth ? (
               <div className="flex justify-start w-full gap-2 lg:w-1/3 lg:justify-end">
-                {course?.students?.includes(user._id) ? (
+                {user?.courseEnrolled?.includes(course._id) ? (
                   ""
                 ) : (
                   <>
@@ -114,33 +117,29 @@ const CourseDetail = ({ course }) => {
             <div className="flex">
               <a
                 onClick={() => setTabs(0)}
-                className={`${
-                  tabs === 0 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 0 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <MdVideoLibrary /> Video
               </a>
               <a
                 onClick={() => setTabs(1)}
-                className={`${
-                  tabs === 1 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 1 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <MdOutlineDescription /> About
               </a>
               <a
                 onClick={() => setTabs(2)}
-                className={`${
-                  tabs === 2 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-36`}
+                className={`${tabs === 2 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-36`}
               >
                 <HiChatAlt2 /> Discussion
               </a>
               <a
                 onClick={() => setTabs(3)}
-                className={`${
-                  tabs === 3 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 3 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <FaLaptopCode /> Projects
               </a>
