@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Timeline() {
+
   const data = [
     {
       title: "Enrolled in Blockchain Crash Course",
@@ -25,6 +26,7 @@ export default function Timeline() {
   ];
 
   let blue = false;
+
   const elements = data.map((i, j) => {
     blue = !blue;
     return (
@@ -53,7 +55,8 @@ export default function Timeline() {
       </div>
     );
   });
+
   return (
-    <div className="container w-full h-full max-w-3xl mx-auto">{elements}</div>
+    <div className="container w-full h-full mx-auto my-10">{elements}</div>
   );
 }

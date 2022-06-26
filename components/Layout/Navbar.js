@@ -116,7 +116,7 @@ const Navbar = () => {
             </Link>
             <Link href="/auth/register">
               <button className="font-bold border border-blue-300 btn btn-ghost hover:bg-blue-50">
-                Resigter
+                Register
               </button>
             </Link>
           </div>

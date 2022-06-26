@@ -9,15 +9,6 @@ import { Toaster } from "react-hot-toast";
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await refresh();
-        dispatch(setAuth(res.data));
-      } catch (err) { }
-    })();
-  }, []);
-
   return (
     <>
       <Head>

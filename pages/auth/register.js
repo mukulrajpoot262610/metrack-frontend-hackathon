@@ -27,6 +27,7 @@ const Register = () => {
       const res = await signup(data);
       dispatch(setAuth(res.data));
       toast.success("LogIn Success 🎉");
+      router.push('/auth/verify')
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -59,9 +60,6 @@ const Register = () => {
               className={`w-full input input-bordered ${errors.name ? "input-error" : ""}`}
               {...register("name", {
                 required: true,
-                pattern: {
-                  value: /^[a-z ,.'-]+$/i,
-                },
               })}
             />
             {errors.name && (
