@@ -25,19 +25,19 @@ export default function ProjectContent({ projects }) {
       <div className="w-full space-y-4 rounded-xl">
         <div className="space-y-2">
           {path === "/dashboard/projects" && (
-            <h2 className="text-sm font-bold text-blue-400">submissions</h2>
+            <h2 className="text-sm font-bold text-blue-400 uppercase">Submissions</h2>
           )}
 
           {projects.length === 0 ? (
             <div className="flex flex-col items-center justify-center w-full h-full mt-8">
-              <img src="/no-data.svg" className="h-64" />
+              <img src="/no-data.svg" className="h-40 mt-10" />
               <h1 className="mt-8 text-2xl font-bold">No projects Found...</h1>
               {path === "/dashboard/projects" && (
                 <>
                   <p className="my-2">
                     Enroll in courses and build your own projects.
                   </p>
-                  <Link href="/courses">
+                  <Link href="/explore">
                     <button className="mt-6 border border-blue-300 btn btn-ghost hover:bg-blue-50">
                       Explore Courses
                     </button>

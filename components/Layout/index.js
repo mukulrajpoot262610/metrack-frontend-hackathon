@@ -1,25 +1,23 @@
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "./Navbar";
-import { useDispatch } from "react-redux";
-import { refresh } from "../../services/api";
-import { setAuth } from "../../redux/authSlice";
+import Loader from './Loader'
 import { Toaster } from "react-hot-toast";
+import { useLoadingWithRefresh } from '../../hooks/useLoadingWithRefresh'
 
 const Layout = ({ children }) => {
-  const dispatch = useDispatch();
+  const { loading } = useLoadingWithRefresh()
 
-  return (
-    <>
-      <Head>
-        <title>SkillsTube</title>
-      </Head>
-      <Navbar />
-      <main className="w-11/12 min-h-screen mx-auto lg:w-10/12">
-        {children}
-      </main>
-      <Toaster />
-    </>
+  return (loading ? <Loader /> : <>
+    <Head>
+      <title>SkillsTube</title>
+    </Head>
+    <Navbar />
+    <main className="w-11/12 min-h-screen mx-auto lg:w-10/12">
+      {children}
+    </main>
+    <Toaster />
+  </>
   );
 };
 

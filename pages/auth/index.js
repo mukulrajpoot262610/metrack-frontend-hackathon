@@ -6,12 +6,10 @@ import { login } from "../../services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
-import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isAuth } = UseRedirectOnAuth("/", true);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [toggelFieldType, setToggleFieledType] = useState(false);
@@ -27,6 +25,7 @@ const Login = () => {
     try {
       const res = await login(data);
       dispatch(setAuth(res.data));
+      router.push('/dashboard')
       setLoading(false);
     } catch (err) {
       console.log(err);

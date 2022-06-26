@@ -8,6 +8,7 @@ import uploadPic from "../../utils/uploadPic";
 import Editor from "../editor";
 
 export default function Submission() {
+
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
   const { handleSubmit, register } = useForm();
@@ -55,7 +56,7 @@ export default function Submission() {
     }
 
     try {
-      const res = await uploadProject({ ...data, description, tags, courseId });
+      const res = await uploadProject({ ...data, description, tags, courseId, url });
       toast.success("Project submitted");
       router.push(`/explore/${courseId}`);
     } catch (err) {

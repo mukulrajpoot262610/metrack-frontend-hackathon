@@ -22,12 +22,12 @@ export default function CourseCard({ data }) {
 
   return (
     <div
-      key={i._id}
+      key={data._id}
       className="max-w-sm duration-200 border border-t-0 border-black cursor-pointer hover:shadow-lg card bg-base-100"
     >
       <Link href={`/explore/${data._id}`}>
         <figure className="aspect-w-2 aspect-h-1">
-          <img src={data?.thumbnail} alt="Shoes" />
+          <img src={data?.thumbnail} alt="Shoes" className="object-cover" />
         </figure>
       </Link>
       <div className="p-4 card-body">
@@ -44,7 +44,7 @@ export default function CourseCard({ data }) {
           <div className="flex items-center gap-2">
             <FaUsers className="text-xl" />
             <p className="flex items-center gap-1 font-semibold">
-              {data?.students?.length || 0}{" "}
+              {data?.students?.length || 0}
               <span className="text-xs font-normal">students</span>
             </p>
           </div>

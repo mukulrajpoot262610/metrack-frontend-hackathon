@@ -6,12 +6,10 @@ import { useForm } from "react-hook-form";
 import { register as signup } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
-import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { isAuth } = UseRedirectOnAuth("/", true);
   const [loading, setLoading] = useState(false);
   const [toggelFieldType, setToggleFieledType] = useState(false);
   const router = useRouter();

@@ -23,6 +23,8 @@ export default function Project({ project }) {
     );
   });
 
+  console.log(project)
+
   return (
     <>
       <label
@@ -77,13 +79,13 @@ export default function Project({ project }) {
               </p>
               <div className="space-x-4">
                 {project?.githubUrl ? (
-                  <a className="btn btn-primary">
+                  <a href={project?.githubUrl} target="_blan" className="btn btn-primary">
                     <BsGithub className="w-6 h-6 pr-2" />
                     Github
                   </a>
                 ) : null}
                 {project?.webUrl ? (
-                  <a className="btn btn-primary">
+                  <a a href={project?.webUrl} target="_blan" className="btn btn-primary">
                     <BsGlobe className="w-6 h-6 pr-2" />
                     View Live
                   </a>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import CourseContent from "../../components/Common/CourseContent";
 import Sidebar from "../../components/dashboard/Sidebar";
-import UseRedirectOnAuth from "../../hooks/UseIsAuthenticated";
 import { getEnrolledCourses } from "../../services/api";
 import toast from "react-hot-toast";
+import { ProtectedRoute } from "../../utils/ProtectedRoute";
 
 export default function EnrolledCourses() {
-  const { user, isAuth } = UseRedirectOnAuth();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -24,10 +23,12 @@ export default function EnrolledCourses() {
 
   return (
     <>
-      <div className="grid grid-cols-12 gap-4 pt-4 pb-10 mt-16">
-        <Sidebar />
-        <CourseContent courses={data} />
-      </div>
+      <ProtectedRoute>
+        <div className="grid grid-cols-12 gap-4 pt-4 pb-10 mt-16">
+          <Sidebar />
+          <CourseContent courses={data} />
+        </div>
+      </ProtectedRoute>
     </>
   );
 }

@@ -25,14 +25,14 @@ export default function CourseContent({ courses }) {
       <div className="w-full space-y-4 rounded-xl">
         <div className="space-y-2">
           {path === "/dashboard/courses" && (
-            <h2 className="text-sm font-bold text-blue-400">
+            <h2 className="text-sm font-bold text-blue-400 uppercase">
               Enrolled Courses
             </h2>
           )}
 
           {courses.length === 0 ? (
             <div className="flex flex-col items-center justify-center w-full h-full mt-8">
-              <img src="/no-data.svg" className="h-64" />
+              <img src="/no-data.svg" className="h-40 mt-10" />
               <h1 className="mt-8 text-2xl font-bold">No Courses Found...</h1>
               {path === "/dashboard/courses" && (
                 <>
