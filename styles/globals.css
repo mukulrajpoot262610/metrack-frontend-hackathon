@@ -8,6 +8,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.custom-overlay {
+  @apply border border-blue-300 bg-gray-50 rounded-xl border-opacity-10;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

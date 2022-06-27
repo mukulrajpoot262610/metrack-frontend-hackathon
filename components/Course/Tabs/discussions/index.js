@@ -8,7 +8,8 @@ import Messages from "./Messages";
 import Editor from "../../../editor";
 
 // socket connection
-const socket = io("https://api.metrack.tech");
+// const socket = io("https://api.metrack.tech");
+const socket = io("http://localhost:3001");
 
 export default function Discussions({ id }) {
   const { isAuth, user } = useSelector((state) => state.auth);
