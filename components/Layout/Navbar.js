@@ -3,16 +3,19 @@ import Link from "next/dist/client/link";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAngleDown } from "react-icons/fa";
 import { FiBook } from "react-icons/fi";
+import { BiCog } from "react-icons/bi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { logout } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
 import toast from "react-hot-toast";
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
   const { isAuth, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const router = useRouter()
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -20,6 +23,7 @@ const Navbar = () => {
       await logout();
       dispatch(setAuth({ data: null }));
       toast.success("logged out");
+      router.replace('/')
     } catch (e) {
       toast.error("unable to logout");
     }
@@ -52,7 +56,7 @@ const Navbar = () => {
               >
                 <div className="cursor-pointer avatar">
                   <div className="w-10 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
-                    <img src="https://api.lorem.space/image/face?hash=47449" />
+                    <img src={user?.avatar ? user?.avatar : "/profile.png"} className="object-top" />
                   </div>
                 </div>
                 <FaAngleDown className="cursor-pointer" />
@@ -64,7 +68,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <div className="cursor-pointer avatar">
                     <div className="w-20 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
-                      <img src="https://api.lorem.space/image/face?hash=47449" />
+                      <img src={user?.avatar ? user?.avatar : "/profile.png"} className="object-top" />
                     </div>
                   </div>
                   <div>
@@ -94,6 +98,14 @@ const Navbar = () => {
                     <a className="hover:bg-blue-50 active:bg-blue-300">
                       <AiOutlineUser className="text-base font-bold" />
                       Profile
+                    </a>
+                  </Link>
+                </li>
+                <li className="text-sm">
+                  <Link href="/dashboard/settings">
+                    <a className="hover:bg-blue-50 active:bg-blue-300">
+                      <BiCog className="text-base font-bold" />
+                      Settings
                     </a>
                   </Link>
                 </li>

@@ -17,6 +17,7 @@ export default function Reply({ message, user }) {
         sender: {
           _id: user.id,
           name: user.name,
+          avatar: user.avatar,
         },
       });
       toast.success("Message Sent 🎉");
@@ -42,7 +43,7 @@ export default function Reply({ message, user }) {
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
-              src="https://api.lorem.space/image/face?hash=47449"
+              src={user?.avatar}
               className="object-cover w-8 h-8 rounded-full"
             />
           </div>

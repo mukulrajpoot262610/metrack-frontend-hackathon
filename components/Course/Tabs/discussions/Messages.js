@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import ParseMarkdown from "../../../markdown/ParseMarkdown";
 
 export default function Messages({ data }) {
-  const { isAuth, user } = useSelector((state) => state.auth);
+  const { isAuth, user } = useSelector(state => state.auth);
 
   const messages = data?.chat?.map((i) => {
     return (
@@ -32,18 +32,17 @@ function Message({ i, user }) {
     <>
       <div>
         <div
-          className={`${
-            i?.user?._id === user?._id
-              ? "w-full bg-transparent"
-              : "w-full bg-transparent"
-          }`}
+          className={`${i?.user?._id === user?._id
+            ? "w-full bg-transparent"
+            : "w-full bg-transparent"
+            }`}
         >
           <div className="flex gap-4">
             <div className="">
-              <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
+              <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2 overflow-hidden">
                 <img
-                  src="https://api.lorem.space/image/face?hash=47449"
-                  className="object-cover w-8 h-8 rounded-full"
+                  src={i?.user?.avatar}
+                  className=""
                 />
               </div>
             </div>

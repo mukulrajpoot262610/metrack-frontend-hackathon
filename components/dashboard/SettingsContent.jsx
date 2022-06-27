@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
-import { updatePassword } from "../../services/api";
+import { useSelector, useDispatch } from "react-redux";
+import { updatePassword, updateAvatar } from "../../services/api";
+import { setAuth } from '../../redux/authSlice'
+import uploadPic from '../../utils/uploadPic'
 
 export default function SettingsContent() {
   const { user } = useSelector((state) => state.auth);
@@ -16,8 +18,15 @@ export default function SettingsContent() {
     formState: { errors },
   } = useForm();
 
+  const [url, setUrl] = useState()
+  const [image, setImage] = useState()
+  const [media, setMedia] = useState()
+  const [imageLoading, setImageLoading] = useState(false);
+  const dispatch = useDispatch()
+
   const changePassword = async (data) => {
     setLoading(true);
+
     try {
       const res = await updatePassword(data);
       toast.success("Password changed");
@@ -31,20 +40,58 @@ export default function SettingsContent() {
     }
   };
 
+  const uploadImage = async () => {
+    if (!image) {
+      return toast.error('Please add a image')
+    }
+    setImageLoading(true)
+
+    try {
+
+      const { data } = await updateAvatar({
+        id: user._id,
+        url: await uploadPic(media)
+      })
+
+      dispatch(setAuth(data))
+      toast.success('Updated')
+      setImageLoading(false)
+
+    } catch (err) {
+      console.log(err)
+      setImageLoading(false)
+      toast.error('Error in Upload')
+    }
+  }
+
+  const captureImage = (e) => {
+    const file = e.target.files[0];
+    setMedia(file)
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function () {
+      setImage(reader.result)
+    }
+  }
+
+
   return (
     <>
       <section className="col-span-12 lg:col-span-9 text-base-content">
         <div className="w-full p-4 space-y-8 bg-blue-50 rounded-xl">
           <section className="space-y-1">
             <h2 className="text-sm font-bold uppercase text-accent">
-              Email Verification
+              Upload Image
             </h2>
-            <div>
-              {user && user?.verified ? (
-                <button className="btn-disabled btn">Email Verified</button>
-              ) : (
-                <button className="btn-primary btn">Verify email</button>
-              )}
+            <label className="w-full lg:w-1/2 flex flex-col items-center p-1 text-blue rounded-lg border border-blue cursor-pointer">
+              {
+                image ? <img src={image} alt="" className="rounded-lg" /> : <div className="m-4 flex flex-col items-center"><span className="text-5xl">+</span>
+                  <span className="text-xs">Select a file</span></div>
+              }
+              <input type='file' onChange={captureImage} className="hidden" />
+            </label>
+            <div onClick={uploadImage} className={`${imageLoading ? "loading" : ""} btn bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-2 `}>
+              Upload
             </div>
           </section>
           <section className="space-y-1">
@@ -58,7 +105,7 @@ export default function SettingsContent() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <button className="ml-2 btn btn-primary">Update</button>
+              <button className="ml-2 btn bg-blue-500 hover:bg-blue-400 border-0">Update</button>
             </form>
           </section>
           <section className="space-y-1">
@@ -120,7 +167,7 @@ export default function SettingsContent() {
               </div>
               <button
                 type="submit"
-                className={`btn ${loading ? "btn-disabled" : "btn-primary"}`}
+                className={`btn ${loading ? "btn-disabled" : "bg-blue-500 hover:bg-blue-400 border-0"}`}
               >
                 {loading ? "Updating" : "Update Password"}
               </button>
@@ -155,7 +202,7 @@ export default function SettingsContent() {
               </div>
             </form>
           </section>
-          <section className="space-y-1">
+          {/* <section className="space-y-1">
             <h2 className="text-sm font-bold text-error">Delete Account</h2>
             <div className="space-y-4">
               <p>
@@ -166,7 +213,7 @@ export default function SettingsContent() {
               </p>
               <button className="btn btn-error">Delete Account</button>
             </div>
-          </section>
+          </section> */}
         </div>
       </section>
     </>

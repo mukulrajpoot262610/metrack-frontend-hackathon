@@ -53,7 +53,7 @@ export default function CourseCard({ data }) {
               href={`/explore/${data._id}`}
               className="text-xs border border-blue-200 btn btn-sm btn-ghost hover:bg-blue-50"
             >
-              Continue Watching
+              Continue
             </Link>
           ) : (
             <Link href={`/explore/${data._id}`}>

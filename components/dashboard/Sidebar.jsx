@@ -23,6 +23,7 @@ export default function Sidebar() {
       await logout();
       dispatch(setAuth({ data: null }));
       toast.success("logged out");
+      router.replace('/')
     } catch (e) {
       toast.error("unable to logout");
     }

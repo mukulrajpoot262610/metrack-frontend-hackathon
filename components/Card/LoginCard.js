@@ -37,9 +37,8 @@ const LoginCard = () => {
           <input
             type="text"
             placeholder="Email here"
-            className={`w-full input input-sm input-bordered ${
-              errors.email ? "input-error" : ""
-            }`}
+            className={`w-full input input-sm input-bordered ${errors.email ? "input-error" : ""
+              }`}
             {...register("email", {
               required: true,
               pattern: {
@@ -60,9 +59,8 @@ const LoginCard = () => {
             type="password"
             {...register("password", { required: true })}
             placeholder="Password"
-            className={`w-full input input-sm input-bordered ${
-              errors.password ? "input-error" : ""
-            }`}
+            className={`w-full input input-sm input-bordered ${errors.password ? "input-error" : ""
+              }`}
           />
           <label className="flex justify-between items-center my-0.5">
             {errors.password ? (
@@ -74,15 +72,13 @@ const LoginCard = () => {
             )}
             <Link href="/auth/forgot-password">
               <span className="cursor-pointer label-text-alt hover:underline">
-                Forget Password?
               </span>
             </Link>
           </label>
         </div>
         <button
-          className={`w-full ${
-            loading && "loading"
-          } bg-blue-100 btn btn-ghost hover:bg-blue-300 btn-sm`}
+          className={`w-full ${loading && "loading"
+            } bg-blue-100 btn btn-ghost hover:bg-blue-300 btn-sm`}
         >
           Log In{" "}
         </button>
