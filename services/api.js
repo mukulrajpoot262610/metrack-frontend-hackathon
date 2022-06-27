@@ -42,6 +42,10 @@ export const getProjects = () => api.get("/api/projects");
 export const addFeedback = (data) => api.post("/api/addFeedback", data);
 export const updatePassword = (data) => api.post("/api/update-password", data);
 
+// PROFILE
+export const getProfile = (id) => api.post(`/api/profile/${id}`);
+export const updateProfile = (data) => api.put(`/api/profile`, data);
+
 // UPDATE
 api.interceptors.response.use(
   (config) => {

@@ -12,10 +12,14 @@ import { useContext } from "react";
 import { EditorStateContext } from ".";
 
 export const PreviewBtn = ({ preview, setPreview }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    setPreview((preview) => !preview);
+  };
   return (
     <button
+      onClick={handleClick}
       className="lowercase btn btn-sm border-base-content border-opacity-10 btn-square btn-ghost bg-base-300"
-      onClick={() => setPreview((preview) => !preview)}
     >
       {!preview ? (
         <HiOutlineEye className="w-5 h-5 text-base-content" />

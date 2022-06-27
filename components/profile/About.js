@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
+import ParseMarkdown from "../markdown/ParseMarkdown";
 
-const About = () => {
-    return (
-        <div className='px-4 py-3'>
-            <h1 className='font-semibold'>About Me</h1>
-            <p className='mt-2 text-sm'>Freelance Web Developer weuifbweioubf we8ufgweiufg8we7g f978wegf98we7gf98we7gfwe87fg98we7fg08we 7f98we tf807we tf087we @upwork</p>
+const About = ({ profile }) => {
+  return (
+    <div className="px-4 py-2 space-y-6 custom-overlay">
+      <h2 className="py-2 font-semibold text-blue-500 border-b">About Me</h2>
+      <div>
+        <ParseMarkdown>
+          {profile?.about ||
+            "Describe what you are good at. Update your profile."}
+        </ParseMarkdown>
+      </div>
+    </div>
+  );
+};
 
-            <hr className='my-3' />
-            <h1 className='font-semibold'>Experience</h1>
-        </div>
-    )
-}
-
-export default About
+export default About;
