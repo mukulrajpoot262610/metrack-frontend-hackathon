@@ -1,17 +1,14 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { AiOutlineUser } from "react-icons/ai";
-import { BiCog } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import Timeline from "./Timeline";
-import { FaCamera, FaEdit, FaGithub, FaLinkedinIn, FaInstagram, FaStackOverflow, FaGlobe, FaFacebookF, FaMediumM, FaTwitter, FaYoutube, FaPinterest } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn, FaInstagram, FaStackOverflow, FaGlobe, FaFacebookF, FaMediumM, FaTwitter, FaYoutube, FaPinterest } from 'react-icons/fa'
 import { ImMail4 } from 'react-icons/im'
 import { MdEdit } from 'react-icons/md'
 import About from "./About";
 import Stats from "./Stats";
 
 export default function Profile() {
-  const { user, isAuth } = useSelector((state) => state.auth);
 
   const [selected, setSelected] = useState(0)
 
