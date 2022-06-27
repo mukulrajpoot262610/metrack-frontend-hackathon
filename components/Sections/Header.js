@@ -12,13 +12,9 @@ const Header = () => {
             100X
           </span>
         </h1>
-        <p className="z-20 max-w-2xl mt-2 text-sm text-gray-400 md:text-lg">
+        <p className="z-20 max-w-xl mt-2 text-sm text-gray-400 md:text-lg">
           YouTube is great place to learn anything, but it does not offer a
           complete learning experience since it is designed for entertaining.
-        </p>
-        <p className="z-20 max-w-2xl mt-2 text-sm text-gray-400 md:text-lg">
-          So, We combined amazing YouTube content with complete learning
-          experience.
         </p>
         <Link href="/explore">
           <button className="mt-8 bg-blue-200 btn btn-ghost btn-wide hover:bg-blue-100">

@@ -68,7 +68,7 @@ const Explore = () => {
         setResponse(data.data)
       } catch (err) {
         console.log(err)
-        toast.error(err.response.data.msg)
+        toast.error(err?.response?.data?.msg)
       }
     }
     fetchData()
