@@ -9,13 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.2",
+    "axios": "^0.27.2",
     "daisyui": "^2.15.4",
+    "date-fns": "^2.28.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-multi-carousel": "^2.8.1"
+    "react-hook-form": "^7.32.1",
+    "react-hot-toast": "^2.2.0",
+    "react-icons": "^4.4.0",
+    "react-markdown": "^8.0.3",
+    "react-multi-carousel": "^2.8.1",
+    "react-redux": "^8.0.2",
+    "react-scroll": "^1.8.7",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^3.0.1",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.7",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",

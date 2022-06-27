@@ -24,7 +24,7 @@ const responsive = {
 
 const Channels = () => {
     return (
-        <main className='flex flex-col bg-red-50 rounded-3xl p-10'>
+        <main className='flex flex-col bg-blue-50 rounded-3xl p-10 my-32'>
             <h1 className='text-center text-2xl font-bold mb-10'>Top Educators from amazing YouTube community</h1>
             <Carousel
                 arrows={false}

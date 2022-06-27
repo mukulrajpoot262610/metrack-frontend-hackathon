@@ -27,16 +27,16 @@ const COURSES = [
 
 const Courses = () => {
     return (
-        <div className='relative mt-20 gap-4 w-full min-h-screen flex justify-center items-center flex-col'>
-            <h1 className='text-3xl lg:text-5xl font-bold text-center'>Trending courses of the month</h1>
-            <p className='font-medium text-lg text-center'>These are the selected courses from YouTube to build your focus on learning rather than finding courses.</p>
+        <div className='relative flex my-32 flex-col items-center justify-center w-full min-h-screen gap-4'>
+            <h1 className='text-3xl font-bold text-center lg:text-5xl'>Trending courses of the month</h1>
+            <p className='text-lg font-medium text-center'>These are the selected courses from YouTube to build your focus on learning rather than finding courses.</p>
 
-            <div className='mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 '>
+            <div className='grid grid-cols-1 gap-8 mt-10 md:grid-cols-2 lg:grid-cols-3 '>
                 {
                     COURSES.map(e => <Link href={`/courses/${e.slug}`} key={e.id}><CourseCard data={e} /></Link>)
                 }
             </div>
-            <button className='btn btn-ghost bg-red-200 mt-10 hover:bg-red-100 shadow-lg'>View More</button>
+            <button className='mt-10 bg-blue-200 shadow-lg btn btn-ghost hover:bg-blue-100'>View More</button>
         </div>
     )
 }

@@ -1,19 +1,24 @@
-import Head from 'next/head'
-import React from 'react'
-import Navbar from './Navbar'
+import Head from "next/head";
+import React from "react";
+import Navbar from "./Navbar";
+import Loader from './Loader'
+import { Toaster } from "react-hot-toast";
+import { useLoadingWithRefresh } from '../../hooks/useLoadingWithRefresh'
 
 const Layout = ({ children }) => {
-    return (
-        <>
-            <Head>
-                <title>SkillsTube</title>
-            </Head>
-            <Navbar />
-            <main className='min-h-screen w-11/12 lg:w-10/12 mx-auto'>
-                {children}
-            </main>
-        </>
-    )
-}
+  const { loading } = useLoadingWithRefresh()
 
-export default Layout
+  return (loading ? <Loader /> : <>
+    <Head>
+      <title>SkillsTube</title>
+    </Head>
+    <Navbar />
+    <main className="w-11/12 min-h-screen mx-auto lg:w-10/12">
+      {children}
+    </main>
+    <Toaster />
+  </>
+  );
+};
+
+export default Layout;

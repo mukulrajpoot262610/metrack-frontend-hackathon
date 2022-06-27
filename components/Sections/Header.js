@@ -1,24 +1,54 @@
-import React from 'react'
+import React from "react";
+import Link from 'next/link'
 
 const Header = () => {
-    return (
-        <header className='relative mt-20 lg:gap-20 w-full h-screen flex justify-center items-center flex-col lg:flex-row'>
-            <div className='w-full lg:w-1/2 h-full flex justify-center flex-col items-start'>
-                <h1 className='text-4xl md:text-6xl z-20 font-bold max-w-5xl'>We increase your learning experience by <span className='font-extrabold text-transparent text-6xl md:text-9xl bg-clip-text bg-gradient-to-r from-red-200 to-red-300'>100X</span></h1>
-                <p className='mt-2 z-20 text-sm md:text-lg max-w-2xl text-gray-400'>YouTube is great place to learn anything, but it does not offer a complete learning experience since it is designed for entertaining.</p>
-                <p className='mt-2 z-20 text-sm md:text-lg max-w-2xl text-gray-400'>So, We combined amazing YouTube content with complete learning experience.</p>
-                <button className='btn mt-8 lg:mb-16 bg-red-200 btn-ghost btn-wide hover:bg-red-100'>Join Now</button>
-            </div>
-            <div className='w-full md:w-11/12 lg:w-1/2 h-full relative p-2'>
-                <img src='/overlay/react.webp' className='absolute h-40 -top-10 md:top-0 -left-10 md:-left-20' />
-                <img src='/overlay/code.webp' className='absolute h-48 bottom-0 md:bottom-10 -right-10 md:-right-5' />
-                <img src='/overlay/django.webp' className='absolute h-40 bottom-0 md:bottom-20 -left-10 md:-left-16' />
-                <div className='w-full h-5/6 rounded-3xl bg-red-50'>
-                    <img src='/hero.svg' className='h-full w-full object-cover rounded-3xl' />
-                </div>
-            </div>
-        </header>
-    )
-}
+  return (
+    <header className="relative flex flex-col items-center justify-center w-full min-h-screen lg:gap-20 lg:flex-row">
 
-export default Header
+      <div className="flex flex-col items-start justify-center w-full h-full lg:w-1/2">
+        <h1 className="z-20 max-w-5xl text-4xl font-bold md:text-6xl">
+          We increase your learning experience by{" "}
+          <span className="text-6xl font-extrabold text-transparent md:text-8xl bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300">
+            100X
+          </span>
+        </h1>
+        <p className="z-20 max-w-2xl mt-2 text-sm text-gray-400 md:text-lg">
+          YouTube is great place to learn anything, but it does not offer a
+          complete learning experience since it is designed for entertaining.
+        </p>
+        <p className="z-20 max-w-2xl mt-2 text-sm text-gray-400 md:text-lg">
+          So, We combined amazing YouTube content with complete learning
+          experience.
+        </p>
+        <Link href="/explore">
+          <button className="mt-8 bg-blue-200 btn btn-ghost btn-wide hover:bg-blue-100">
+            Explore Courses
+          </button>
+        </Link>
+      </div>
+
+      <div className="relative w-full mt-10 lg:mt-0 h-full p-2 md:w-11/12 lg:w-1/2">
+        <img
+          src="/overlay/react.webp"
+          className="absolute h-40 -top-10 md:top-0 -left-10 md:-left-20"
+        />
+        <img
+          src="/overlay/code.webp"
+          className="absolute -bottom-20 h-48 md:-bottom-28 -right-10 md:-right-10"
+        />
+        <img
+          src="/overlay/django.webp"
+          className="absolute bottom-0 hidden lg:block h-48 md:-bottom-20 -left-10 md:-left-16"
+        />
+        <div className="w-full h-5/6 rounded-3xl bg-blue-50">
+          <img
+            src="/hero.png"
+            className="object-cover object-top h-64  md:h-96 w-full lg:h-full rounded-3xl"
+          />
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
