@@ -22,7 +22,6 @@ import Tabs from "./Tabs";
 import User from "./User";
 
 export default function Profile({ data, user }) {
-  console.log({ profile: data });
   return (
     <div className="grid grid-cols-4 gap-4">
       <section id="profile" className="col-span-4 md:col-span-1">

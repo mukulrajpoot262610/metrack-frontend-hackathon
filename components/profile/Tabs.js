@@ -4,11 +4,12 @@ import About from "./About";
 import ProjectContent from "../Common/ProjectContent";
 import { useSelector } from "react-redux";
 import Edit from "./Edit";
+import Timeline from "./Timeline";
 
 export default function Tabs({ courses, projects, profile }) {
   const { isAuth } = useSelector((state) => state.auth);
   return (
-    <Tab.Group defaultIndex={1}>
+    <Tab.Group defaultIndex={0}>
       <Tab.List className="flex justify-center border border-blue-300 bg-gray-50 rounded-xl border-opacity-10 md:gap-x-5">
         <Tab as={Fragment}>
           {({ selected }) => (
@@ -62,7 +63,9 @@ export default function Tabs({ courses, projects, profile }) {
         <Tab.Panel>
           <About profile={profile} />
         </Tab.Panel>
-        <Tab.Panel>timeline</Tab.Panel>
+        <Tab.Panel>
+          <Timeline projects={projects} courses={courses} />
+        </Tab.Panel>
         <Tab.Panel>
           <ProjectContent projects={projects} cols={2} />
         </Tab.Panel>
