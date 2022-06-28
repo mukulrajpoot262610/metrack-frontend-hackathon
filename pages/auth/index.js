@@ -25,21 +25,21 @@ const Login = () => {
     try {
       const res = await login(data);
       dispatch(setAuth(res.data));
-      router.push('/dashboard')
+      router.push("/dashboard");
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setLoading(false);
       toast.error(err?.response?.data?.msg || err?.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center pt-20 gap-20 pb-10 min-h-screen">
+    <div className="flex items-center justify-center min-h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
-        <a className="flex items-center flex-col gap-2 mb-6">
-          <img src="/logo.png" className="h-12 w-24 object-contain" />
-          <h1 className="uppercase tracking-tight text-3xl font-bold cursor-pointer text-center">
+        <a className="flex flex-col items-center gap-2 mb-6">
+          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Welcome Back to <span className="text-blue-500">ME</span>Track
           </h1>
         </a>
@@ -52,8 +52,9 @@ const Login = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.email ? "input-error" : ""
-                }`}
+              className={`w-full input input-bordered ${
+                errors.email ? "input-error" : ""
+              }`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -77,8 +78,9 @@ const Login = () => {
               <input
                 type={toggelFieldType ? "text" : "password"}
                 placeholder="Password"
-                className={`input ${errors.password ? "input-error" : ""
-                  } input-bordered w-full`}
+                className={`input ${
+                  errors.password ? "input-error" : ""
+                } input-bordered w-full`}
                 {...register("password", {
                   required: true,
                 })}
@@ -106,8 +108,9 @@ const Login = () => {
             </label>
           </div>
           <button
-            className={`w-full mt-6 ${loading && "loading"
-              } bg-blue-100 btn btn-ghost hover:bg-blue-300`}
+            className={`w-full mt-6 ${
+              loading && "loading"
+            } bg-blue-100 btn btn-ghost hover:bg-blue-300`}
           >
             Log In{" "}
           </button>

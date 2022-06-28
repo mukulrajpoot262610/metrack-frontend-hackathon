@@ -14,11 +14,11 @@ export default function Dashboard() {
       try {
         const { data } = await getEnrolledCourses();
         const projects = await getProjects();
-        console.log(projects, data, "projects");
+        // console.log(projects, data, "projects");
         setData(data?.data || []);
         setProjects(projects?.data?.data || []);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };
