@@ -34,7 +34,7 @@ export default function Project({ project }) {
           <div className="overflow-hidden bg-base-200">
             <figure className="aspect-w-2 aspect-h-1">
               <img
-                className="block w-full h-full object-cover"
+                className="block object-cover w-full h-full"
                 src={project?.thumbnail || "/project.png"}
                 alt="Shoes"
               />
@@ -53,7 +53,7 @@ export default function Project({ project }) {
         id={`project-modal-${project?._id}`}
         className="modal-toggle"
       />
-      <div className="modal backdrop-blur-md">
+      <div className="p-4 modal md:p-0 backdrop-blur-md">
         <div className="relative w-full max-w-6xl modal-box backdrop-blur-md">
           <div className="grid w-full h-full grid-cols-1 gap-x-6 gap-y-4 md:grid-cols-2">
             <h3 className="col-span-1 text-lg font-bold md:col-span-2">
@@ -61,7 +61,7 @@ export default function Project({ project }) {
             </h3>
             <section id="details" className="space-y-4">
               <div
-                className="overflow-hidden rounded-lg h-60 bg-blue-50"
+                className="overflow-hidden rounded-lg bg-blue-50"
                 id="thumbnail"
               >
                 <figure>
@@ -81,7 +81,7 @@ export default function Project({ project }) {
                   <a
                     href={project?.githubUrl}
                     target="_blan"
-                    className="btn bg-blue-500 hover:bg-blue-400 border-0"
+                    className="bg-blue-500 border-0 btn hover:bg-blue-400"
                   >
                     <BsGithub className="w-6 h-6 pr-2" />
                     Github
@@ -92,7 +92,7 @@ export default function Project({ project }) {
                     a
                     href={project?.webUrl}
                     target="_blan"
-                    className="btn bg-blue-500 hover:bg-blue-400 border-0"
+                    className="bg-blue-500 border-0 btn hover:bg-blue-400"
                   >
                     <BsGlobe className="w-6 h-6 pr-2" />
                     View Live
@@ -163,7 +163,7 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
       }
       setFeedbacks([{ message: msg, user }, ...feedbacks]);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);
@@ -189,7 +189,10 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
           </>
         ) : (
           <>
-            <button onClick={submitMsg} className="btn btn-sm bg-blue-500 hover:bg-blue-400 border-0">
+            <button
+              onClick={submitMsg}
+              className="bg-blue-500 border-0 btn btn-sm hover:bg-blue-400"
+            >
               send
             </button>
           </>

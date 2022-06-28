@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { updatePassword, updateAvatar } from "../../services/api";
-import { setAuth } from '../../redux/authSlice'
-import uploadPic from '../../utils/uploadPic'
+import { setAuth } from "../../redux/authSlice";
+import uploadPic from "../../utils/uploadPic";
 
 export default function SettingsContent() {
   const { user } = useSelector((state) => state.auth);
@@ -18,11 +18,11 @@ export default function SettingsContent() {
     formState: { errors },
   } = useForm();
 
-  const [url, setUrl] = useState()
-  const [image, setImage] = useState()
-  const [media, setMedia] = useState()
+  const [url, setUrl] = useState();
+  const [image, setImage] = useState();
+  const [media, setMedia] = useState();
   const [imageLoading, setImageLoading] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const changePassword = async (data) => {
     setLoading(true);
@@ -31,7 +31,7 @@ export default function SettingsContent() {
       const res = await updatePassword(data);
       toast.success("Password changed");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setOldPassword("");
@@ -42,38 +42,35 @@ export default function SettingsContent() {
 
   const uploadImage = async () => {
     if (!image) {
-      return toast.error('Please add a image')
+      return toast.error("Please add a image");
     }
-    setImageLoading(true)
+    setImageLoading(true);
 
     try {
-
       const { data } = await updateAvatar({
         id: user._id,
-        url: await uploadPic(media)
-      })
+        url: await uploadPic(media),
+      });
 
-      dispatch(setAuth(data))
-      toast.success('Updated')
-      setImageLoading(false)
-
+      dispatch(setAuth(data));
+      toast.success("Updated");
+      setImageLoading(false);
     } catch (err) {
-      console.log(err)
-      setImageLoading(false)
-      toast.error('Error in Upload')
+      // console.log(err);
+      setImageLoading(false);
+      toast.error("Error in Upload");
     }
-  }
+  };
 
   const captureImage = (e) => {
     const file = e.target.files[0];
-    setMedia(file)
+    setMedia(file);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function () {
-      setImage(reader.result)
-    }
-  }
-
+      setImage(reader.result);
+    };
+  };
 
   return (
     <>
@@ -83,14 +80,23 @@ export default function SettingsContent() {
             <h2 className="text-sm font-bold uppercase text-accent">
               Upload Image
             </h2>
-            <label className="w-full lg:w-1/2 flex flex-col items-center p-1 text-blue rounded-lg border border-blue cursor-pointer">
-              {
-                image ? <img src={image} alt="" className="rounded-lg" /> : <div className="m-4 flex flex-col items-center"><span className="text-5xl">+</span>
-                  <span className="text-xs">Select a file</span></div>
-              }
-              <input type='file' onChange={captureImage} className="hidden" />
+            <label className="flex flex-col items-center w-full p-1 border rounded-lg cursor-pointer lg:w-1/2 text-blue border-blue">
+              {image ? (
+                <img src={image} alt="" className="rounded-lg" />
+              ) : (
+                <div className="flex flex-col items-center m-4">
+                  <span className="text-5xl">+</span>
+                  <span className="text-xs">Select a file</span>
+                </div>
+              )}
+              <input type="file" onChange={captureImage} className="hidden" />
             </label>
-            <div onClick={uploadImage} className={`${imageLoading ? "loading" : ""} btn bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-2 `}>
+            <div
+              onClick={uploadImage}
+              className={`${
+                imageLoading ? "loading" : ""
+              } btn bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-2 `}
+            >
               Upload
             </div>
           </section>
@@ -105,7 +111,9 @@ export default function SettingsContent() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <button className="ml-2 btn bg-blue-500 hover:bg-blue-400 border-0">Update</button>
+              <button className="ml-2 bg-blue-500 border-0 btn hover:bg-blue-400">
+                Update
+              </button>
             </form>
           </section>
           <section className="space-y-1">
@@ -167,7 +175,11 @@ export default function SettingsContent() {
               </div>
               <button
                 type="submit"
-                className={`btn ${loading ? "btn-disabled" : "bg-blue-500 hover:bg-blue-400 border-0"}`}
+                className={`btn ${
+                  loading
+                    ? "btn-disabled"
+                    : "bg-blue-500 hover:bg-blue-400 border-0"
+                }`}
               >
                 {loading ? "Updating" : "Update Password"}
               </button>

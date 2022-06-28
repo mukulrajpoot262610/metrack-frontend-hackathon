@@ -9,16 +9,16 @@ export default function ProfilePage() {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     if (!user) return;
-    console.log(user);
+    // console.log(user);
     const fetchData = async () => {
       try {
         const { data } = await getProfile(user._id);
         setData(data?.data || {});
-        console.log({ data });
+        // console.log({ data });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };

@@ -40,7 +40,7 @@ const CourseDetail = ({ course }) => {
       toast.success("Enrolled 🎉");
       dispatch(setAuth(data));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     }
   };
