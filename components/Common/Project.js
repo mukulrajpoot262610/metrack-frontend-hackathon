@@ -15,7 +15,7 @@ export default function Project({ project }) {
         {i && (
           <p
             key={i}
-            className="p-1 px-2 text-sm border border-blue-500 border-opacity-50 rounded-lg bg-base-200"
+            className="p-1 px-2 text-sm border border-blue-500 border-opacity-50 rounded-lg"
           >
             {i}
           </p>
@@ -30,19 +30,19 @@ export default function Project({ project }) {
         htmlFor={`project-modal-${project?._id}`}
         className="max-w-sm duration-200 bg-transparent border border-t-0 border-black cursor-pointer modal-button hover:shadow-lg card bg-base-100"
       >
-        <div className="w-full overflow-hidden bg-blue-50 rounded-xl">
-          <div className="h-40 overflow-hidden bg-base-200">
-            <figure>
+        <div className="w-full overflow-hidden rounded-xl">
+          <div className="overflow-hidden bg-base-200">
+            <figure className="aspect-w-2 aspect-h-1">
               <img
-                className="block w-full h-full"
+                className="block w-full h-full object-cover"
                 src={project?.thumbnail || "/project.png"}
                 alt="Shoes"
               />
             </figure>
           </div>
-          <div className="p-2 pb-4 space-y-2">
+          <div className="p-2 pb-4 space-y-1">
             <h2 className="font-bold line-clamp-1">{project?.title}</h2>
-            <p className="text-sm line-clamp-2 text-base-content text-opacity-70">
+            <p className="text-xs line-clamp-3 text-base-content text-opacity-70">
               {project?.description}
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function Project({ project }) {
       />
       <div className="modal backdrop-blur-md">
         <div className="relative w-full max-w-6xl modal-box backdrop-blur-md">
-          <div className="grid w-full h-full grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid w-full h-full grid-cols-1 gap-x-6 gap-y-4 md:grid-cols-2">
             <h3 className="col-span-1 text-lg font-bold md:col-span-2">
               <h2 className="text-2xl font-bold">{project?.title}</h2>
             </h3>
@@ -81,7 +81,7 @@ export default function Project({ project }) {
                   <a
                     href={project?.githubUrl}
                     target="_blan"
-                    className="btn btn-primary"
+                    className="btn bg-blue-500 hover:bg-blue-400 border-0"
                   >
                     <BsGithub className="w-6 h-6 pr-2" />
                     Github
@@ -92,7 +92,7 @@ export default function Project({ project }) {
                     a
                     href={project?.webUrl}
                     target="_blan"
-                    className="btn btn-primary"
+                    className="btn bg-blue-500 hover:bg-blue-400 border-0"
                   >
                     <BsGlobe className="w-6 h-6 pr-2" />
                     View Live
@@ -189,7 +189,7 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
           </>
         ) : (
           <>
-            <button onClick={submitMsg} className="btn btn-sm btn-primary">
+            <button onClick={submitMsg} className="btn btn-sm bg-blue-500 hover:bg-blue-400 border-0">
               send
             </button>
           </>
@@ -211,7 +211,7 @@ function Feedbacks({ feedbacks }) {
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
-              src="https://api.lorem.space/image/face?hash=47449"
+              src={i?.user?.avatar ? i?.user?.avatar : "/profile.png"}
               className="object-cover w-8 h-8 rounded-full"
             />
           </div>
