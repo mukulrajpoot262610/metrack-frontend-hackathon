@@ -1,7 +1,7 @@
 <h1 align="center">Me-Track Full-Stack Application</h1>
 <p align="center"> This is a Linode X Hashnode project built using Next.js and Express deployed on Linode. </p>
 
-![Screenshot 2022-06-27 221132](https://user-images.githubusercontent.com/73209159/175992193-5f261112-6f97-49cf-8b60-6374a668d198.png)
+![Me-Track](https://user-images.githubusercontent.com/73209159/176242823-405d5f2f-ba4b-45ee-b898-b3ab110fd075.png)
 
 ## 🔗 Links
 
