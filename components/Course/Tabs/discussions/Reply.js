@@ -41,7 +41,7 @@ export default function Reply({ message, user }) {
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
-              src={user?.avatar}
+              src={user?.avatar || "/profile.png"}
               className="object-cover w-8 h-8 rounded-full"
             />
           </div>

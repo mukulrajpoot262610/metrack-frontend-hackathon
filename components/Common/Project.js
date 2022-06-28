@@ -8,7 +8,7 @@ import ParseMarkdown from "../markdown/ParseMarkdown";
 
 export default function Project({ project }) {
   const [feedbacks, setFeedbacks] = useState(project.feedbacks);
-  const { user } = useSelector(state => state.auth)
+  const { user } = useSelector((state) => state.auth);
   const tags = project?.tags.map((i) => {
     return (
       <>
@@ -35,7 +35,7 @@ export default function Project({ project }) {
             <figure>
               <img
                 className="block w-full h-full"
-                src={project?.thumbnail}
+                src={project?.thumbnail || "/project.png"}
                 alt="Shoes"
               />
             </figure>
@@ -67,7 +67,7 @@ export default function Project({ project }) {
                 <figure>
                   <img
                     className="block w-full h-full"
-                    src={project?.thumbnail}
+                    src={project?.thumbnail || "/project.png"}
                     alt="Shoes"
                   />
                 </figure>
@@ -103,7 +103,10 @@ export default function Project({ project }) {
             <section id="feedback" className="space-y-4">
               <div className="flex gap-2 cursor-pointer">
                 <div className="w-12 h-12 overflow-hidden rounded-full avatar ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
-                  <img src={user?.avatar ? user?.avatar : "/profile.png"} className="object-top" />
+                  <img
+                    src={user?.avatar ? user?.avatar : "/profile.png"}
+                    className="object-top"
+                  />
                 </div>
                 <div className="flex-1">
                   <h2 className="text-lg font-bold">{project?.userId?.name}</h2>
