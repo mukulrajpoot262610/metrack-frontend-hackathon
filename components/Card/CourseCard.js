@@ -4,7 +4,7 @@ const CourseCard = ({ data }) => {
   return (
     <div className="max-w-sm duration-200 shadow-xl cursor-pointer card bg-base-100 hover:-translate-y-3">
       <figure>
-        <img src={data?.thumbnail} alt="Shoes" />
+        <img src={data?.thumbnail} alt="image" />
       </figure>
       <div className="p-6 card-body">
         <h2 className="font-bold card-title">{data?.name}</h2>
