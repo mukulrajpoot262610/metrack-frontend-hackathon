@@ -83,7 +83,7 @@ function Dropdown({ user, handleLogout }) {
   });
 
   return (
-    <div className="">
+    <div className="flex items-center">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="flex items-center justify-center gap-2">
