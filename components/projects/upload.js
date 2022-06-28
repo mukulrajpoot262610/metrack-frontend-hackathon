@@ -8,55 +8,62 @@ import uploadPic from "../../utils/uploadPic";
 import Editor from "../editor";
 
 export default function Submission() {
-
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
   const { handleSubmit, register } = useForm();
   const [description, setDescription] = useState("");
 
-
   const router = useRouter();
   const { courseId } = router.query;
 
-  const [url, setUrl] = useState()
-  const [image, setImage] = useState()
-  const [media, setMedia] = useState()
+  const [url, setUrl] = useState("");
+  const [image, setImage] = useState();
+  const [media, setMedia] = useState();
   const [imageLoading, setImageLoading] = useState(false);
 
   const uploadImage = async () => {
     if (!image) {
-      return toast.error('Please add a image')
+      return toast.error("Please add a image");
     }
-    setImageLoading(true)
+    setImageLoading(true);
 
     try {
-      setUrl(await uploadPic(media))
-      setImageLoading(false)
+      const uploadedPic = await uploadPic(media);
+      setUrl(uploadedPic);
+      console.log({ uploadedPic });
+      toast.success("Image uploaded. Continue editing!");
+      setImageLoading(false);
     } catch (err) {
-      setImageLoading(false)
-      toast.error('Error in Upload')
+      setImageLoading(false);
+      toast.error("Error in Upload");
     }
-
-  }
+  };
 
   const captureImage = (e) => {
     const file = e.target.files[0];
-    setMedia(file)
+    setMedia(file);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function () {
-      setImage(reader.result)
-    }
-  }
+      setImage(reader.result);
+    };
+  };
 
   const onSubmit = async (data) => {
-
     if (!courseId) {
       return toast.error("course unavailable");
     }
 
     try {
-      const res = await uploadProject({ ...data, description, tags, courseId, url });
+      console.log({ url });
+      const res = await uploadProject({
+        ...data,
+        description,
+        tags,
+        thumbnail: url,
+        courseId,
+        url,
+      });
       toast.success("Project submitted");
       router.push(`/explore/${courseId}`);
     } catch (err) {
@@ -96,14 +103,23 @@ export default function Submission() {
               <h2 className="text-xs font-bold text-blue-500 uppercase">
                 Thumbnail
               </h2>
-              <label className="w-full lg:w-1/2 flex flex-col items-center p-1 text-blue rounded-lg border border-blue cursor-pointer">
-                {
-                  image ? <img src={image} alt="" className="rounded-lg" /> : <div className="m-4 flex flex-col items-center"><span className="text-5xl">+</span>
-                    <span className="text-xs">Select a file</span></div>
-                }
-                <input type='file' onChange={captureImage} className="hidden" />
+              <label className="flex flex-col items-center w-full p-1 border rounded-lg cursor-pointer lg:w-1/2 text-blue border-blue">
+                {image ? (
+                  <img src={image} alt="" className="rounded-lg" />
+                ) : (
+                  <div className="flex flex-col items-center m-4">
+                    <span className="text-5xl">+</span>
+                    <span className="text-xs">Select a file</span>
+                  </div>
+                )}
+                <input type="file" onChange={captureImage} className="hidden" />
               </label>
-              <div onClick={uploadImage} className={`${imageLoading ? "loading" : ""} btn btn-sm w-fit mt-2 `}>
+              <div
+                onClick={uploadImage}
+                className={`${
+                  imageLoading ? "loading" : ""
+                } btn btn-sm w-fit mt-2 `}
+              >
                 Upload
               </div>
             </div>

@@ -43,7 +43,7 @@ const Team = () => {
                                 <div className="w-full">
                                     <h2 className="title-font font-medium text-lg textWhite">Amit</h2>
                                     <h3 className="text-gray-500 mb-3">Full-Stack Developer</h3>
-                                    <p className="mb-4">I specialize in JavaScript and have professional experience working with React, Next JS, node, express React.</p>
+                                    <p className="mb-4">I built more than 10 websites and web apps, most of which are live, serving thousands of people on the internet.</p>
                                     <span className="flex flex-wrap justify-center items-center gap-2 text-xl">
                                         <a href='https://github.com/alsoamit' target="_blan">
                                             <FaGithub />

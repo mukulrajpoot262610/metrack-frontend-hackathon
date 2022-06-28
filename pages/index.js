@@ -9,20 +9,6 @@ import Team from "../components/Sections/Team";
 
 export default function Home() {
 
-  const [response, setResponse] = useState([])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const { data } = await getPublishedCourses(COURSES[selected].name)
-  //       setResponse(data.data)
-  //     } catch (err) {
-  //       console.log(err)
-  //       toast.error(err?.response?.data?.msg)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [])
 
   return (
     <div className="overflow-hidden">

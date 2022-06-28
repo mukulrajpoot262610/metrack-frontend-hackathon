@@ -24,14 +24,14 @@ const COURSES = [
         respect: 0
     },
     {
-        id: 1,
-        name: 'Build and Deploy a Modern Full Stack Social Media App | FULL COURSE',
-        channel: 'Javascript Mastery',
-        description: 'With all advanced Social Media features, such as Google Authentication, create, edit, delete and save posts, like and comment on other people\'s posts, search and filter images and much more, ShareMe is the best Image Sharing Social Media App that you can currently find on YouTube and on the entire internet.You\'ll also learn how to work with Sanity. Sanity.io is the platform for structured content. It allows you to manage text, images, and all other data using APIs.',
-        thumbnail: 'https://img.youtube.com/vi/1RHDhtbqo94/maxresdefault.jpg',
-        video: 'https://www.youtube.com/watch?v=1RHDhtbqo94',
-        image: 'https://yt3.ggpht.com/wg1TITEoPfxvBGfzuqWyt3bqm_qu35ZhMswUv3feetU3xNX_6wsAXZF40OlPIgY4TmqbqCmAZ1U=s176-c-k-c0x00ffffff-no-rj-mo',
-        respect: 0
+        id: 2,
+        name: 'HTML & CSS Project Tutorial - Build a Recipes Website',
+        channel: 'freeCodeCamp.org',
+        description: 'In this HTML and CSS project tutorial, you will improve your HTML and CSS skills by building a recipes website.',
+        thumbnail: 'https://img.youtube.com/vi/-8LTPIJBGwQ/maxresdefault.jpg',
+        video: 'https://www.youtube.com/embed/-8LTPIJBGwQ&t=1s',
+        image: 'https://yt3.ggpht.com/ytc/AKedOLRR2uNiXJiFH-XRmtGgkdICxTuDJxCPJidKFRNCNg=s48-c-k-c0x00ffffff-no-rj',
+        student: ["0", "s"]
     },
 ]
 
