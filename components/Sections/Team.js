@@ -39,7 +39,7 @@ const Team = () => {
                         </div>
                         <div className="p-4 lg:w-1/4 w-full">
                             <div className="h-full flex flex-col items-center text-center">
-                                <img alt="team" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://cdn.discordapp.com/attachments/987256512118399026/991008488169832458/CodiSource_1.png" />
+                                <img alt="team" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://cdn.discordapp.com/attachments/987256512118399026/991299914699112538/CodiSource_2.png" />
                                 <div className="w-full">
                                     <h2 className="title-font font-medium text-lg textWhite">Amit</h2>
                                     <h3 className="text-gray-500 mb-3">Full-Stack Developer</h3>
