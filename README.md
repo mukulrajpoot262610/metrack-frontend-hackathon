@@ -13,22 +13,33 @@ Deployed Links: [Front-End](https://metrack.tech) / [Back-End](https://api.metra
 
 ## 🏹 Problem
 
-`YouTube` is a very handy platform for learning anything. A wide variety of programming tutorials can be found on `YouTube` covering almost any topic. 
-It is possible to learn more from `YouTube` videos than from paid courses. But `YouTube` is not designed for learning. Here are some problems we face on `YouTube as a learning platform`, you might also have 
+Youtube has enough resources to learn any skill online. But it's not at all collaborative and you can't track what you're learning. Particularly for developers, it is very important to follow a defined roadmap, get peer support through online discussions, and be able to see what others are building.
 
-* Selecting best video from YouTube 
+But, all you get there is unorganized random chats. **Youtube is full of unorganized resources.**
 
-Most often when we watch any programming tutorial on youtube, we get stuck on a problem and there is no one to help. You look into the comments but to be honest most of them are shitty. If this platform didn't exist, I would have gave up on the project. 
+## 💡 Idea
+The idea is to build a collaborative website where people can share their projects and get real-time feedback. They should also be able to discuss all the minor doubts and errors that one gets while watching a coding tutorial. So, you don't lack motivation and give up on your project eventually.
+
+Don't forget, engagement with the community is very important to learn any skill faster.
 
 ## 💡 Solution
+MeTrack is a website where you can find top-rated tech videos and tutorials in the form of a course.
 
-The website that I'm presenting to you is highly useful for the students who are learning to code. 
+This is how we solve this problem for our fellow developers who are learning to code.
 
-* You can enroll in hand-picked best courses from Youtube.
-* Now once you're enrolled, you can watch the video, take notes and discuss with other peers on the platform.
-* Here you can ask doubts in the doubts panel and have chitchat in the discussions. 
-* You can also see what others have built in the projects section. 
+* Hand-picked youtube tutorials for developers.
 
+* Peer support: Realtime discussion panel to ask your doubts.
+
+* See the projects others have built by following the tutorial.
+
+* Building in public: Upload your projects and get feedback from others.
+
+* Proof of Work: Show your profile to potential clients and recruiters to grab the opportunity.
+
+In other words,
+
+MeTrack helps you sail through the endless ocean of tech resources on YouTube.
 <div align="center">
   
 Isn't it amazing?🤩
