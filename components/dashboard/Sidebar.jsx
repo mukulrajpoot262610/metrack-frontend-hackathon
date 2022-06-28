@@ -23,7 +23,7 @@ export default function Sidebar() {
       await logout();
       dispatch(setAuth({ data: null }));
       toast.success("logged out");
-      router.replace('/')
+      router.replace("/");
     } catch (e) {
       toast.error("unable to logout");
     }
@@ -36,10 +36,11 @@ export default function Sidebar() {
           <li className="">
             <Link href="/dashboard">
               <a
-                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard"
-                  ? "bg-blue-50 font-bold"
-                  : "hover:bg-blue-50"
-                  }`}
+                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                  path === "/dashboard"
+                    ? "bg-blue-50 font-bold"
+                    : "hover:bg-blue-50"
+                }`}
               >
                 <MdOutlineDashboard className="text-xl font-bold" />
                 Dashboard
@@ -49,10 +50,11 @@ export default function Sidebar() {
           <li className="">
             <Link href="/dashboard/projects">
               <a
-                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/projects"
-                  ? "bg-blue-50 font-bold"
-                  : "hover:bg-blue-50"
-                  }`}
+                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                  path === "/dashboard/projects"
+                    ? "bg-blue-50 font-bold"
+                    : "hover:bg-blue-50"
+                }`}
               >
                 <AiOutlineProject className="text-xl font-bold" />
                 Projects
@@ -62,10 +64,11 @@ export default function Sidebar() {
           <li className="">
             <Link href="/dashboard/courses">
               <a
-                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/courses"
-                  ? "bg-blue-50 font-bold"
-                  : "hover:bg-blue-50"
-                  }`}
+                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                  path === "/dashboard/courses"
+                    ? "bg-blue-50 font-bold"
+                    : "hover:bg-blue-50"
+                }`}
               >
                 <FiBook className="text-xl font-bold" />
                 Courses
@@ -75,10 +78,11 @@ export default function Sidebar() {
           <li className="">
             <Link href="/dashboard/settings">
               <a
-                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/dashboard/settings"
-                  ? "bg-blue-50 font-bold"
-                  : "hover:bg-blue-50"
-                  }`}
+                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                  path === "/dashboard/settings"
+                    ? "bg-blue-50 font-bold"
+                    : "hover:bg-blue-50"
+                }`}
               >
                 <BiCog className="text-xl font-bold" />
                 Settings
@@ -88,10 +92,11 @@ export default function Sidebar() {
           <li className="">
             <Link href="/profile">
               <a
-                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/profile"
-                  ? "bg-blue-50 font-bold"
-                  : "hover:bg-blue-50"
-                  }`}
+                className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                  path === "/profile"
+                    ? "bg-blue-50 font-bold"
+                    : "hover:bg-blue-50"
+                }`}
               >
                 <AiOutlineUser className="text-xl font-bold" />
                 Profile
@@ -101,8 +106,9 @@ export default function Sidebar() {
           <li className="">
             <button
               onClick={handleLogout}
-              className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${path === "/logout" ? "bg-blue-50 font-bold" : "hover:bg-blue-50"
-                }`}
+              className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                path === "/logout" ? "bg-blue-50 font-bold" : "hover:bg-blue-50"
+              }`}
             >
               <TbLogout className="text-xl font-bold" />
               Logout
