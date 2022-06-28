@@ -19,7 +19,21 @@ const Video = ({ course }) => {
 
             <section className="my-4 text-accent-content">
                 <p className="font-bold">Introduction</p>
-                <p className="text-sm mt-1">At Me-Track, you can learn any skills and show your skills to potential clients, Interviewer.</p>
+                <p className="text-sm mt-1">MeTrack is a website where you can find top-rated tech videos and tutorials in the form of a course.</p>
+                <p className="text-sm mt-3">
+                    This is how we solve this problem for our fellow developers who are learning to code.</p>
+
+                <ul className='list-disc ml-8 text-sm mt-3 flex flex-col gap-2'>
+                    <li>Hand-picked youtube tutorials for developers.</li>
+                    <li>**Peer support**: *Realtime discussion panel *to ask your doubts.</li>
+                    <li>See the projects others have built by following the tutorial.</li>
+                    <li>**Building in public**: Upload your projects and get feedback from others.</li>
+                    <li>**Proof of Work**: Show your profile to potential clients and recruiters to grab the opportunity.</li>
+                </ul>
+                <p className="text-sm mt-3">
+                    In other words,
+
+                    MeTrack helps you sail through the endless ocean of tech resources on YouTube. </p>
             </section>
 
         </div>

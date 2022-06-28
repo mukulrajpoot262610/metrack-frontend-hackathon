@@ -30,7 +30,6 @@ export default function Submission() {
     try {
       const uploadedPic = await uploadPic(media);
       setUrl(uploadedPic);
-      // console.log({ uploadedPic });
       toast.success("Image uploaded. Continue editing!");
       setImageLoading(false);
     } catch (err) {
@@ -54,8 +53,15 @@ export default function Submission() {
       return toast.error("course unavailable");
     }
 
+    if (!url) {
+      return toast.error('Please add a project thumbnail')
+    }
+
+    if (!title) {
+      return toast.error('Please add a project title')
+    }
+
     try {
-      // console.log({ url });
       const res = await uploadProject({
         ...data,
         description,
@@ -116,9 +122,8 @@ export default function Submission() {
               </label>
               <div
                 onClick={uploadImage}
-                className={`${
-                  imageLoading ? "loading" : ""
-                } btn btn-sm w-fit mt-2 `}
+                className={`${imageLoading ? "loading" : ""
+                  } btn btn-sm w-fit mt-2 `}
               >
                 Upload
               </div>

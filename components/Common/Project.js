@@ -2,6 +2,8 @@ import { format, formatDistance } from "date-fns";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { BsGithub, BsGlobe } from "react-icons/bs";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { BiCommentDots } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { addFeedback } from "../../services/api";
 import ParseMarkdown from "../markdown/ParseMarkdown";
@@ -9,20 +11,23 @@ import ParseMarkdown from "../markdown/ParseMarkdown";
 export default function Project({ project }) {
   const [feedbacks, setFeedbacks] = useState(project.feedbacks);
   const { user } = useSelector((state) => state.auth);
+
   const tags = project?.tags.map((i) => {
     return (
       <>
         {i && (
           <p
             key={i}
-            className="p-1 px-2 text-sm border border-blue-500 border-opacity-50 rounded-lg"
+            className="p-1 px-2 text-xs tracking-tight bg-blue-50 border border-blue-500 border-opacity-50 rounded-lg font-bold uppercase"
           >
-            {i}
+            #{i}
           </p>
         )}
       </>
     );
   });
+
+  console.log(project)
 
   return (
     <>
@@ -46,19 +51,30 @@ export default function Project({ project }) {
               {project?.description}
             </p>
           </div>
+          <div className="h-6 w-full"></div>
+          <div className="absolute bottom-2 right-4 flex items-center justify-center gap-2">
+            <div className="flex items-center gap-2">
+              <BiCommentDots className="text-xl" />
+              <p className="text-sm font-bold">{project?.feedbacks?.length || 0}</p>
+            </div>
+          </div>
         </div>
       </label>
+
       <input
         type="checkbox"
         id={`project-modal-${project?._id}`}
         className="modal-toggle"
       />
+
       <div className="p-4 modal md:p-0 backdrop-blur-md">
-        <div className="relative w-full max-w-6xl modal-box backdrop-blur-md">
+        <div className="relative w-full max-w-6xl modal-box rounded-lg backdrop-blur-md">
+
           <div className="grid w-full h-full grid-cols-1 gap-x-6 gap-y-4 md:grid-cols-2">
-            <h3 className="col-span-1 text-lg font-bold md:col-span-2">
-              <h2 className="text-2xl font-bold">{project?.title}</h2>
+            <h3 className="col-span-1 mb-6 text-lg font-bold md:col-span-2">
+              <h2 className="text-2xl tracking-tight capitalize font-bold">Project: {project?.title}</h2>
             </h3>
+
             <section id="details" className="space-y-4">
               <div
                 className="overflow-hidden rounded-lg bg-blue-50"
@@ -100,7 +116,9 @@ export default function Project({ project }) {
                 ) : null}
               </div>
             </section>
+
             <section id="feedback" className="space-y-4">
+
               <div className="flex gap-2 cursor-pointer">
                 <div className="w-12 h-12 overflow-hidden rounded-full avatar ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
                   <img
@@ -108,7 +126,7 @@ export default function Project({ project }) {
                     className="object-top"
                   />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 ml-2">
                   <h2 className="text-lg font-bold">{project?.userId?.name}</h2>
                   <p className="text-sm text-base-content text-opacity-80">
                     submitted{" "}
@@ -121,6 +139,7 @@ export default function Project({ project }) {
                   </p>
                 </div>
               </div>
+
               <WriteFeedback
                 project={project}
                 feedbacks={feedbacks}
@@ -128,15 +147,18 @@ export default function Project({ project }) {
               />
               <Feedbacks feedbacks={feedbacks} />
             </section>
+
             <div className="absolute top-0 modal-action right-4">
               <label
                 htmlFor={`project-modal-${project?._id}`}
-                className="btn btn-sm"
+                className="btn btn-sm btn-square"
               >
                 X
               </label>
             </div>
+
           </div>
+
         </div>
       </div>
     </>
@@ -189,12 +211,15 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
           </>
         ) : (
           <>
-            <button
-              onClick={submitMsg}
-              className="bg-blue-500 border-0 btn btn-sm hover:bg-blue-400"
-            >
-              send
-            </button>
+            {
+              msg && <button
+                onClick={submitMsg}
+                className="bg-blue-500 border-0 btn btn-sm hover:bg-blue-400"
+              >
+                send
+              </button>
+            }
+
           </>
         )}
       </div>
@@ -207,7 +232,11 @@ function Feedbacks({ feedbacks }) {
   if (!feedbacks) {
     feedbacks = [];
   }
+
+  console.log(feedbacks)
+
   const { user, isAuth } = useSelector((state) => state.auth);
+
   const elements = feedbacks.map((i, j) => (
     <div key={j}>
       <div className="flex gap-4">
@@ -219,7 +248,7 @@ function Feedbacks({ feedbacks }) {
             />
           </div>
         </div>
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 space-y-1">
           <section id="user" className="flex items-center justify-start flex-1">
             <p className="pr-2 text-sm font-bold">
               {i?.user?._id === user?._id ? "You" : i?.user?.name}
@@ -233,5 +262,5 @@ function Feedbacks({ feedbacks }) {
     </div>
   ));
 
-  return <div className="space-y-4">{elements}</div>;
+  return <div className="space-y-6">{elements}</div>;
 }
