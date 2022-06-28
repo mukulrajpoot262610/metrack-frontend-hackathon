@@ -17,7 +17,7 @@ export default function Messages({ data }) {
   });
 
   return (
-    <div id="messages" className="space-y-4">
+    <div id="messages" className="max-w-full space-y-4">
       {messages}
     </div>
   );
@@ -44,7 +44,7 @@ function Message({ i, user }) {
                 <img src={i?.user?.avatar || "/profile.png"} className="" />
               </div>
             </div>
-            <div className="flex-1 space-y-4">
+            <div className="flex-wrap flex-1 w-full space-y-4">
               <section
                 id="user"
                 className="flex items-center justify-start flex-1"
@@ -53,8 +53,8 @@ function Message({ i, user }) {
                   {i?.user?._id === user?._id ? "You" : i?.user?.name}
                 </p>
               </section>
-              <section id="message">
-                <p className="flex-1 text-sm">
+              <section id="message" className="max-w-full">
+                <p className="flex-1 text-sm break-all">
                   <ParseMarkdown>{i?.message}</ParseMarkdown>
                 </p>
               </section>
