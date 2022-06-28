@@ -48,13 +48,6 @@ export default function Discussions({ id }) {
   };
 
   // handle keydown on msg box
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      submitMsg();
-    }
-  };
-
-  // handle keydown on msg box
   const handleSend = (e) => {
     e.preventDefault();
     submitMsg();

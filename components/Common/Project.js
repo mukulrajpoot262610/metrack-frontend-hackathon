@@ -27,7 +27,7 @@ export default function Project({ project }) {
     <>
       <label
         htmlFor={`project-modal-${project?._id}`}
-        className="bg-transparent modal-button max-w-sm duration-200 border border-t-0 border-black cursor-pointer hover:shadow-lg card bg-base-100"
+        className="max-w-sm duration-200 bg-transparent border border-t-0 border-black cursor-pointer modal-button hover:shadow-lg card bg-base-100"
       >
         <div className="w-full overflow-hidden bg-blue-50 rounded-xl">
           <div className="h-40 overflow-hidden bg-base-200">
@@ -52,7 +52,7 @@ export default function Project({ project }) {
         id={`project-modal-${project?._id}`}
         className="modal-toggle"
       />
-      <div className="modal">
+      <div className="modal backdrop-blur-md">
         <div className="relative w-full max-w-6xl modal-box backdrop-blur-md">
           <div className="grid w-full h-full grid-cols-1 gap-4 md:grid-cols-2">
             <h3 className="col-span-1 text-lg font-bold md:col-span-2">
@@ -77,13 +77,22 @@ export default function Project({ project }) {
               </p>
               <div className="space-x-4">
                 {project?.githubUrl ? (
-                  <a href={project?.githubUrl} target="_blan" className="btn btn-primary">
+                  <a
+                    href={project?.githubUrl}
+                    target="_blan"
+                    className="btn btn-primary"
+                  >
                     <BsGithub className="w-6 h-6 pr-2" />
                     Github
                   </a>
                 ) : null}
                 {project?.webUrl ? (
-                  <a a href={project?.webUrl} target="_blan" className="btn btn-primary">
+                  <a
+                    a
+                    href={project?.webUrl}
+                    target="_blan"
+                    className="btn btn-primary"
+                  >
                     <BsGlobe className="w-6 h-6 pr-2" />
                     View Live
                   </a>
@@ -131,7 +140,6 @@ export default function Project({ project }) {
 }
 
 function WriteFeedback({ project, feedbacks, setFeedbacks }) {
-
   const { user, isAuth } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
@@ -158,25 +166,30 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
     }
   };
 
-  // handle keydown on msg box
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      submitMsg();
-    }
-  };
-
   return (
     <>
       <div className="gap-4">
         <textarea
           value={msg}
           onChange={(e) => setMsg(e.target.value)}
-          onKeyDown={handleKeyDown}
           type="text"
           disabled={!isAuth}
           placeholder="write your feedback"
           className="w-full h-16 p-2 text-sm resize-none input textarea-bordered"
         />
+      </div>
+      <div className="flex justify-end">
+        {loading ? (
+          <>
+            <button className="btn btn-sm btn-disabled">sending</button>
+          </>
+        ) : (
+          <>
+            <button onClick={submitMsg} className="btn btn-sm btn-primary">
+              send
+            </button>
+          </>
+        )}
       </div>
     </>
   );

@@ -19,7 +19,7 @@ export default function Reply({ message, user }) {
           name: user.name,
         },
       });
-      toast.success("Message Sent 🎉");
+      toast.success("Reply Sent 🎉");
       setMsg("");
     } catch (err) {
       console.log(err);
@@ -31,9 +31,7 @@ export default function Reply({ message, user }) {
 
   // handle keydown on msg box
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      submitMsg();
-    }
+    e.preventDefault();
   };
 
   return (
@@ -52,10 +50,22 @@ export default function Reply({ message, user }) {
             type="text"
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="block w-full h-24 p-2 text-sm resize-none input textarea-bordered"
+            className="block w-full h-16 p-2 text-sm resize-none input textarea-bordered"
           />
         </div>
+      </div>
+      <div className="flex justify-end mt-4">
+        {loading ? (
+          <>
+            <button className="btn btn-sm btn-disabled">sending</button>
+          </>
+        ) : (
+          <>
+            <button onClick={submitMsg} className="btn btn-sm btn-primary">
+              send
+            </button>
+          </>
+        )}
       </div>
     </>
   );
