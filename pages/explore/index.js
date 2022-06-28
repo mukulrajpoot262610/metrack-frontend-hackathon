@@ -18,7 +18,7 @@ import { FaVuejs, FaNodeJs, FaPython } from "react-icons/fa";
 const COURSES = [
   {
     id: 0,
-    name: "HTML/CSS",
+    name: "HTMLCSS",
     logo: <SiHtml5 className="text-xl" />,
   },
   {
@@ -33,7 +33,7 @@ const COURSES = [
   },
   {
     id: 3,
-    name: "Vue.js",
+    name: "Vue",
     logo: <FaVuejs className="text-xl" />,
   },
   {
@@ -43,7 +43,7 @@ const COURSES = [
   },
   {
     id: 5,
-    name: "Node.js",
+    name: "Node",
     logo: <FaNodeJs className="text-xl" />,
   },
   {
