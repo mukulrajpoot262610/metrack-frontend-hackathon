@@ -30,7 +30,7 @@ export default function Submission() {
     try {
       const uploadedPic = await uploadPic(media);
       setUrl(uploadedPic);
-      console.log({ uploadedPic });
+      // console.log({ uploadedPic });
       toast.success("Image uploaded. Continue editing!");
       setImageLoading(false);
     } catch (err) {
@@ -55,7 +55,7 @@ export default function Submission() {
     }
 
     try {
-      console.log({ url });
+      // console.log({ url });
       const res = await uploadProject({
         ...data,
         description,
@@ -67,7 +67,7 @@ export default function Submission() {
       toast.success("Project submitted");
       router.push(`/explore/${courseId}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);

@@ -17,7 +17,7 @@ export default function Discussions({ id }) {
   const [loading, setLoading] = useState(false);
   const [sendingMsg, setSendingMsg] = useState(false);
   const [msg, setMsg] = useState("");
-  console.log(id, "id");
+  // console.log(id, "id");
 
   // send message to the server
   const submitMsg = async () => {
@@ -29,7 +29,7 @@ export default function Discussions({ id }) {
         return toast.error("empty message");
       }
       setSendingMsg(true);
-      console.log(user, "user");
+      // console.log(user, "user");
       const res = await sendMessage({
         message: msg,
         discussionId: id,
@@ -41,7 +41,7 @@ export default function Discussions({ id }) {
       });
       toast.success("Message Sent 🎉");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);
@@ -65,7 +65,7 @@ export default function Discussions({ id }) {
         const res = await getDiscussion(id);
         setData(res?.data?.data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         toast.error(err?.response?.data?.msg);
       } finally {
         setLoading(false);
@@ -76,18 +76,18 @@ export default function Discussions({ id }) {
   // socket listeners
   useEffect(() => {
     socket.on("connect", () => {
-      toast.success("connected");
+      // toast.success("connected");
       id && socket.emit("join", id);
     });
     socket.on("disconnect", () => {
-      toast.error("disconnected");
+      // toast.error("disconnected");
     });
     socket.on("connect_error", () => {
-      toast.error("unable to connect");
+      // toast.error("unable to connect");
     });
 
     socket.on("update:reply", (payload) => {
-      console.log(payload, "payload");
+      // console.log(payload, "payload");
       setData((data) => {
         let chat = data?.chat || [];
         const updatedChat = chat.map((i) => {
@@ -103,7 +103,7 @@ export default function Discussions({ id }) {
     });
 
     socket.on("update:message", (payload) => {
-      console.log(payload, "payload");
+      // console.log(payload, "payload");
       setData((data) => {
         return {
           ...data,

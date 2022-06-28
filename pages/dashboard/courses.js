@@ -14,7 +14,7 @@ export default function EnrolledCourses() {
         const { data } = await getEnrolledCourses();
         setData(data?.data || []);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };

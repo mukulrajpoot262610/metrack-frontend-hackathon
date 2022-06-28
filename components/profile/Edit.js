@@ -24,7 +24,7 @@ export default function Edit({ profile }) {
       toast.success("profile updated");
       Router.reload();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);
@@ -33,38 +33,35 @@ export default function Edit({ profile }) {
 
   const uploadImage = async () => {
     if (!image) {
-      return toast.error('Please add a image')
+      return toast.error("Please add a image");
     }
-    setImageLoading(true)
+    setImageLoading(true);
 
     try {
-
       const { data } = await updateAvatar({
         id: user._id,
-        url: await uploadPic(media)
-      })
+        url: await uploadPic(media),
+      });
 
-      dispatch(setAuth(data))
-      toast.success('Updated')
-      setImageLoading(false)
-
+      dispatch(setAuth(data));
+      toast.success("Updated");
+      setImageLoading(false);
     } catch (err) {
-      console.log(err)
-      setImageLoading(false)
-      toast.error('Error in Upload')
+      // console.log(err);
+      setImageLoading(false);
+      toast.error("Error in Upload");
     }
-  }
+  };
 
   const captureImage = (e) => {
     const file = e.target.files[0];
-    setMedia(file)
+    setMedia(file);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function () {
-      setImage(reader.result)
-    }
-  }
-
+      setImage(reader.result);
+    };
+  };
 
   return (
     <div className="p-4 custom-overlay">

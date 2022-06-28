@@ -23,7 +23,7 @@ export default function Reply({ message, user }) {
       toast.success("Reply Sent 🎉");
       setMsg("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);
