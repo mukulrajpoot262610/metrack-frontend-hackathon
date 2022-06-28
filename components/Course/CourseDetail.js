@@ -58,17 +58,17 @@ const CourseDetail = ({ course }) => {
                 <div className="-space-x-4 avatar-group ring-0">
                   <div className="avatar">
                     <div className="w-6">
-                      <img src="https://api.lorem.space/image/face?hash=4818" />
+                      <img src="/profile.png" className="object-top" />
                     </div>
                   </div>
                   <div className="avatar">
                     <div className="w-6">
-                      <img src="https://api.lorem.space/image/face?hash=40311" />
+                      <img src="/profile.png" className="object-top" />
                     </div>
                   </div>
                   <div className="avatar">
                     <div className="w-6">
-                      <img src="https://api.lorem.space/image/face?hash=84348" />
+                      <img src="/profile.png" className="object-top" />
                     </div>
                   </div>
                   {course?.students?.length > 20 && (

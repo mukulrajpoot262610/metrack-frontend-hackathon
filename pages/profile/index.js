@@ -23,7 +23,7 @@ export default function ProfilePage() {
       }
     };
     fetchData();
-  }, []);
+  }, [user]);
 
   return (
     <div className="pb-10 mt-20">

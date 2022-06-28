@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Me-Track Full-Stack Application</h1>
+<p align="center"> This is a Linode X Hashnode project built using Next.js and Express deployed on Linode. </p>
 
-## Getting Started
+![Screenshot 2022-06-27 221132](https://user-images.githubusercontent.com/73209159/175992193-5f261112-6f97-49cf-8b60-6374a668d198.png)
 
-First, run the development server:
+## 🔗 Links
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+GitHub: [Front-End](https://github.com/mukulrajpoot262610/metrack-frontend-hackathon) / [Back-End](https://github.com/alsoamit/metrack-api) / [Admin-Panel](https://github.com/mukulrajpoot262610/metrack-admin)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Hashnode Article: Coming Soon
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Deployed Links: [Front-End](https://metrack.tech) / [Back-End](https://api.metrack.tech) / [Admin-Panel](https://admin.metrack.tech)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🏹 Problem
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`YouTube` is a very handy platform for learning anything. A wide variety of programming tutorials can be found on `YouTube` covering almost any topic. 
+It is possible to learn more from `YouTube` videos than from paid courses. But `YouTube` is not designed for learning. Here are some problems we face on `YouTube as a learning platform`, you might also have 
 
-## Learn More
+* Selecting best video from YouTube 
 
-To learn more about Next.js, take a look at the following resources:
+Most often when we watch any programming tutorial on youtube, we get stuck on a problem and there is no one to help. You look into the comments but to be honest most of them are shitty. If this platform didn't exist, I would have gave up on the project. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💡 Solution
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The website that I'm presenting to you is highly useful for the students who are learning to code. 
 
-## Deploy on Vercel
+* You can enroll in hand-picked best courses from Youtube.
+* Now once you're enrolled, you can watch the video, take notes and discuss with other peers on the platform.
+* Here you can ask doubts in the doubts panel and have chitchat in the discussions. 
+* You can also see what others have built in the projects section. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<div align="center">
+  
+Isn't it amazing?🤩
+  
+![Screenshot 2022-06-27 221132](https://media.giphy.com/media/PNuPpI1yRcdDjvpSEs/giphy.gif)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We are already accepting signups. Go [Register](https://metrack.tech) Now
+
+</div>
+
+## 🧑‍💻 Technologies used
+
+#### Front-end
+1. Next.js
+2. Tailwind CSS ( DaisyUI )
+3. Redux Toolkit
+
+#### Backend
+1. Node.js
+2. Express.js
+3. Web Sockets ( Socket.io )
+
+#### Database
+1. MongoDB Atlas
+
+#### Deployment
+1. Linode
+2. Vercel
+
+## 🧑‍💻 Team
+
+1. [mukulrajpoot262610](https://github.com/mukulrajpoot262610)
+2. [alsoamit](https://github.com/alsoamit)

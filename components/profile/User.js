@@ -8,8 +8,10 @@ export default function User({ user, profile }) {
       <section className="flex justify-center">
         <div
           id="profile-pic"
-          className="w-32 h-32 bg-white rounded-full ring-2 ring-blue-500 ring-offset-4"
-        ></div>
+          className="w-32 h-32 bg-white overflow-hidden rounded-full ring-2 ring-blue-500 ring-offset-4"
+        >
+          <img src={user?.avatar ? user?.avatar : "/profile.png"} />
+        </div>
       </section>
       <section className="py-6">
         <h2 className="text-xl font-bold text-center">{user?.name}</h2>

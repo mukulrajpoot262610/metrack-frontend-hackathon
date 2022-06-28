@@ -9,7 +9,7 @@ import Editor from "../../../editor";
 
 // socket connection
 // const socket = io("https://api.metrack.tech");
-const socket = io("http://localhost:3001");
+const socket = io(process.env.NEXT_PUBLIC_API_URL);
 
 export default function Discussions({ id }) {
   const { isAuth, user } = useSelector((state) => state.auth);
@@ -36,6 +36,7 @@ export default function Discussions({ id }) {
         sender: {
           _id: user._id,
           name: user.name,
+          avatar: user.avatar,
         },
       });
       toast.success("Message Sent 🎉");
@@ -127,7 +128,7 @@ export default function Discussions({ id }) {
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
-              src="https://api.lorem.space/image/face?hash=47449"
+              src={user?.avatar}
               className="object-cover w-8 h-8 rounded-full"
             />
           </div>

@@ -19,12 +19,13 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (payload) => {
     setLoading(true);
     try {
-      const res = await signup(data);
-      router.push("/auth/verify");
-      toast.success("Check your mail 🎉");
+      const { data } = await signup(payload);
+      router.push("/dashboard");
+      toast.success("Registration Success 🎉");
+      dispatch(setAuth(data))
     } catch (err) {
       console.log(err);
       toast.error(err?.response?.data?.msg);
