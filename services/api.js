@@ -46,6 +46,7 @@ export const updatePassword = (data) => api.post("/api/update-password", data);
 export const getProfile = (id) => api.post(`/api/profile/${id}`);
 export const updateProfile = (data) => api.put(`/api/profile`, data);
 export const updateAvatar = (data) => api.post(`/api/set-avatar`, data);
+export const updateUsername = (data) => api.post(`/api/set-username`, data);
 
 // UPDATE
 api.interceptors.response.use(

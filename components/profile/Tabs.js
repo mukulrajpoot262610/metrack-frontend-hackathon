@@ -7,16 +7,18 @@ import Edit from "./Edit";
 import Timeline from "./Timeline";
 
 export default function Tabs({ courses, projects, profile }) {
+
   const { isAuth } = useSelector((state) => state.auth);
+
   return (
     <Tab.Group defaultIndex={0}>
+
       <Tab.List className="flex justify-center border border-blue-300 bg-gray-50 rounded-xl border-opacity-10 md:gap-x-5">
         <Tab as={Fragment}>
           {({ selected }) => (
             <button
-              className={`px-4 outline-none p-2 text-xs md:text-base text-base-content ${
-                selected ? "border-b-4 border-blue-500 text-blue-500" : ""
-              }`}
+              className={`px-4 outline-none p-2 text-xs tracking-tight text-base-content uppercase ${selected ? "border-b-2 border-blue-500 text-blue-500 font-bold" : ""
+                }`}
             >
               About
             </button>
@@ -25,9 +27,8 @@ export default function Tabs({ courses, projects, profile }) {
         <Tab as={Fragment}>
           {({ selected }) => (
             <button
-              className={`px-4 outline-none p-2 text-xs md:text-base text-base-content ${
-                selected ? "border-b-4 border-blue-500 text-blue-500" : ""
-              }`}
+              className={`px-4 outline-none p-2 text-xs tracking-tight text-base-content uppercase ${selected ? "border-b-2 border-blue-500 text-blue-500 font-bold" : ""
+                }`}
             >
               Timeline
             </button>
@@ -36,9 +37,8 @@ export default function Tabs({ courses, projects, profile }) {
         <Tab as={Fragment}>
           {({ selected }) => (
             <button
-              className={`px-4 outline-none p-2 text-xs md:text-base text-base-content ${
-                selected ? "border-b-4 border-blue-500 text-blue-500" : ""
-              }`}
+              className={`px-4 outline-none p-2 text-xs tracking-tight text-base-content uppercase ${selected ? "border-b-2 border-blue-500 text-blue-500 font-bold" : ""
+                }`}
             >
               Submissions
             </button>
@@ -48,9 +48,8 @@ export default function Tabs({ courses, projects, profile }) {
           <Tab as={Fragment}>
             {({ selected }) => (
               <button
-                className={`px-4 outline-none p-2 text-xs md:text-base text-base-content ${
-                  selected ? "border-b-4 border-blue-500 text-blue-500" : ""
-                }`}
+                className={`px-4 outline-none p-2 text-xs tracking-tight text-base-content uppercase ${selected ? "border-b-2 border-blue-500 text-blue-500 font-bold" : ""
+                  }`}
               >
                 Edit
               </button>

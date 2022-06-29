@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-import { updatePassword, updateAvatar } from "../../services/api";
+import { updatePassword, updateAvatar, updateUsername } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
 import uploadPic from "../../utils/uploadPic";
 
 export default function SettingsContent() {
   const { user } = useSelector((state) => state.auth);
   const [name, setName] = useState(user?.name);
+  const [username, setUsername] = useState(user?.username);
   const [loading, setLoading] = useState(false);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -36,6 +37,25 @@ export default function SettingsContent() {
     } finally {
       setOldPassword("");
       setNewPassword("");
+      setLoading(false);
+    }
+  };
+
+  const changeUsername = async (e) => {
+    e.preventDefault()
+    setLoading(true);
+
+    if (!username) {
+      return toast.error("Add a username")
+    }
+
+    try {
+      const { data } = await updateUsername({ id: user._id, username });
+      toast.success("Username changed");
+      dispatch(setAuth(data));
+    } catch (err) {
+      toast.error(err?.response?.data?.msg);
+    } finally {
       setLoading(false);
     }
   };
@@ -93,9 +113,8 @@ export default function SettingsContent() {
             </label>
             <div
               onClick={uploadImage}
-              className={`${
-                imageLoading ? "loading" : ""
-              } btn bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-2 `}
+              className={`${imageLoading ? "loading" : ""
+                } btn bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-2 `}
             >
               Upload
             </div>
@@ -116,6 +135,23 @@ export default function SettingsContent() {
               </button>
             </form>
           </section>
+          <section className="space-y-1">
+            <h2 className="text-sm font-bold uppercase text-accent">
+              Change Username
+            </h2>
+            <form onSubmit={changeUsername}>
+              <input
+                type="text"
+                className="w-1/2 input input-bordered"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <button className="ml-2 bg-blue-500 border-0 btn hover:bg-blue-400">
+                Update
+              </button>
+            </form>
+          </section>
+
           <section className="space-y-1">
             <h2 className="text-sm font-bold uppercase text-accent">
               Change Password
@@ -175,11 +211,10 @@ export default function SettingsContent() {
               </div>
               <button
                 type="submit"
-                className={`btn ${
-                  loading
-                    ? "btn-disabled"
-                    : "bg-blue-500 hover:bg-blue-400 border-0"
-                }`}
+                className={`btn ${loading
+                  ? "btn-disabled"
+                  : "bg-blue-500 hover:bg-blue-400 border-0"
+                  }`}
               >
                 {loading ? "Updating" : "Update Password"}
               </button>

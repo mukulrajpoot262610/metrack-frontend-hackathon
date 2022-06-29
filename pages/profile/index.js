@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Profile from "../../components/profile";
+import ProfileComponent from "../../components/profile";
 import { useSelector } from "react-redux";
 import { getProfile } from "../../services/api";
 import toast from "react-hot-toast";
@@ -27,7 +27,7 @@ export default function ProfilePage() {
 
   return (
     <div className="pb-10 mt-20">
-      <Profile data={data} user={user} />
+      <ProfileComponent data={data} user={user} />
     </div>
   );
 }

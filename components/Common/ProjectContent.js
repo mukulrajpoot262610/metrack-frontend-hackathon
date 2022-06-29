@@ -34,18 +34,6 @@ export default function ProjectContent({ projects, cols = 3 }) {
             <div className="flex flex-col items-center justify-center w-full h-full mt-8">
               <img src="/no-data.svg" className="h-40 mt-10" />
               <h1 className="mt-8 text-2xl font-bold">No projects Found...</h1>
-              {path === "/profile" && (
-                <>
-                  <p className="my-2">
-                    Enroll in courses and build your own projects.
-                  </p>
-                  <Link href="/explore">
-                    <button className="mt-6 border border-blue-300 btn btn-ghost hover:bg-blue-50">
-                      Explore Courses
-                    </button>
-                  </Link>
-                </>
-              )}
             </div>
           ) : (
             <>
