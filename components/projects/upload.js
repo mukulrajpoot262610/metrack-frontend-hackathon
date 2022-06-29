@@ -54,11 +54,11 @@ export default function Submission() {
     }
 
     if (!url) {
-      return toast.error('Please add a project thumbnail')
+      return toast.error("Please add a project thumbnail");
     }
 
-    if (!title) {
-      return toast.error('Please add a project title')
+    if (!data?.title) {
+      return toast.error("Please add a project title");
     }
 
     try {
@@ -122,8 +122,9 @@ export default function Submission() {
               </label>
               <div
                 onClick={uploadImage}
-                className={`${imageLoading ? "loading" : ""
-                  } btn btn-sm w-fit mt-2 `}
+                className={`${
+                  imageLoading ? "loading" : ""
+                } btn btn-sm w-fit mt-2 `}
               >
                 Upload
               </div>
