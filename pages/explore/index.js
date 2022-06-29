@@ -73,7 +73,6 @@ const Explore = () => {
         const { data } = await getPublishedCourses(COURSES[selected].name);
         setResponse(data.data);
       } catch (err) {
-        // console.log(err)
         toast.error(err?.response?.data?.msg);
       }
     };

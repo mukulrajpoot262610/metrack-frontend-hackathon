@@ -1,18 +1,21 @@
 import React from "react";
-import Link from "next/dist/client/link";
+import Link from "next/link";
+import { useRouter } from 'next/router'
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+
 import { FaAngleDown } from "react-icons/fa";
 import { FiBook } from "react-icons/fi";
 import { BiCog } from "react-icons/bi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
+
 import { logout } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
-import toast from "react-hot-toast";
-import { useRouter } from 'next/router'
 
 const Navbar = () => {
+
   const { isAuth, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const router = useRouter()

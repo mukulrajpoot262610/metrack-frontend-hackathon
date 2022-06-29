@@ -18,7 +18,6 @@ import {
 } from "react-icons/fa";
 import ParseMarkdown from '../components/markdown/ParseMarkdown';
 import ProjectContent from '../components/Common/ProjectContent';
-import Stats from '../components/profile/Stats';
 
 const Profile = () => {
 
@@ -134,10 +133,16 @@ const Profile = () => {
                   <div className="p-2">
                     <h1 className="font-bold text-xl uppercase text-blue-500">Info</h1>
                     <hr />
-                    <Stats
-                      courses={profile?.courses?.length}
-                      projects={profile?.projects?.length}
-                    />
+                    <section className="grid grid-cols-2">
+                      <div className="flex flex-col items-center p-4">
+                        <h2 className="text-3xl font-bold text-blue-500">{projects || 0}</h2>
+                        <p className="uppercase text-xs font-bold">projects</p>
+                      </div>
+                      <div className="flex flex-col items-center p-4">
+                        <h2 className="text-3xl font-bold text-blue-500">{courses || 0}</h2>
+                        <p className="uppercase text-xs font-bold">courses</p>
+                      </div>
+                    </section>
                   </div>
                   <div className="p-2">
                     <h1 className="font-bold text-xl uppercase text-blue-500">Skills</h1>

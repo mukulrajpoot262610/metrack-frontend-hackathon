@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import CourseCard from '../Common/CourseCard'
+import CourseCard from '../Card/CourseCard'
 
 const COURSES = [
     {

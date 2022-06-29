@@ -1,20 +1,22 @@
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/router";
+
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlineUser, AiOutlineProject } from "react-icons/ai";
 import { FiBook } from "react-icons/fi";
-import toast from "react-hot-toast";
-import { setAuth } from "../../redux/authSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../services/api";
 import { TbLogout } from "react-icons/tb";
 import { BiCog } from "react-icons/bi";
-import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+
+import { setAuth } from "../../redux/authSlice";
+import { useDispatch } from "react-redux";
+import { logout } from "../../services/api";
 
 export default function Sidebar() {
+
   const dispatch = useDispatch();
   const router = useRouter();
-
   const path = router.pathname;
 
   const handleLogout = async (e) => {

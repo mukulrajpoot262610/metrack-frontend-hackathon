@@ -2,19 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import CourseCard from "./CourseCard";
+import CourseCard from "../Card/CourseCard";
 
 export default function CourseContent({ courses }) {
   const router = useRouter();
   const path = router.pathname;
-
-  function truncateString(str, num) {
-    if (str.length > num) {
-      return str.slice(0, num) + "...";
-    } else {
-      return str;
-    }
-  }
 
   const elements = courses.map((i) => {
     return <CourseCard key={i._id} data={i} />;

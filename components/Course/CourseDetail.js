@@ -1,27 +1,21 @@
 import React, { useState } from "react";
-import Discussions from "./Tabs/discussions";
-
-import { MdVideoLibrary, MdOutlineDescription } from "react-icons/md";
-import {
-  SiHtml5,
-  SiJavascript,
-  SiReact,
-  SiAngular,
-  SiDjango,
-  SiFlutter,
-} from "react-icons/si";
-import { FaVuejs, FaNodeJs, FaPython, FaLaptopCode } from "react-icons/fa";
-import { HiOutlineSaveAs, HiChatAlt2 } from "react-icons/hi";
-import Video from "./Tabs/Video";
-import About from "./Tabs/About";
-import { useDispatch, useSelector } from "react-redux";
-import LoginCard from "../Card/LoginCard";
-import { enrollCourse } from "../../services/api";
 import toast from "react-hot-toast";
+import { MdVideoLibrary, MdOutlineDescription } from "react-icons/md";
+import { HiOutlineSaveAs, HiChatAlt2 } from "react-icons/hi";
+import { FaLaptopCode } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+
+import LoginCard from "../Card/LoginCard";
 import Projects from "./Tabs/project";
+import About from "./Tabs/About";
+import Video from "./Tabs/Video";
+import Discussions from "./Tabs/Discussions";
+
+import { enrollCourse } from "../../services/api";
 import { setAuth } from "../../redux/authSlice";
 
 const CourseDetail = ({ course }) => {
+
   const [tabs, setTabs] = useState(0);
   const { isAuth, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -40,7 +34,6 @@ const CourseDetail = ({ course }) => {
       toast.success("Enrolled 🎉");
       dispatch(setAuth(data));
     } catch (err) {
-      // console.log(err);
       toast.error(err?.response?.data?.msg);
     }
   };
@@ -117,33 +110,29 @@ const CourseDetail = ({ course }) => {
             <div className="flex">
               <a
                 onClick={() => setTabs(0)}
-                className={`${
-                  tabs === 0 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 0 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <MdVideoLibrary /> Video
               </a>
               <a
                 onClick={() => setTabs(1)}
-                className={`${
-                  tabs === 1 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 1 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <MdOutlineDescription /> About
               </a>
               <a
                 onClick={() => setTabs(2)}
-                className={`${
-                  tabs === 2 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-36`}
+                className={`${tabs === 2 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-36`}
               >
                 <HiChatAlt2 /> Discussion
               </a>
               <a
                 onClick={() => setTabs(3)}
-                className={`${
-                  tabs === 3 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 3 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <FaLaptopCode /> Projects
               </a>

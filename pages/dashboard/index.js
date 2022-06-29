@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import DashboardComponent from "../../components/dashboard/DashboardComponent";
-import Sidebar from "../../components/dashboard/Sidebar";
+
+import DashboardComponent from "../../components/Dashboard/DashboardComponent";
+import Sidebar from "../../components/Common/Sidebar";
 import { getEnrolledCourses, getProjects } from "../../services/api";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
 
-export default function Dashboard() {
+export default function DashboardPage() {
+
   const [data, setData] = useState([]);
   const [projects, setProjects] = useState([]);
 
@@ -14,11 +16,9 @@ export default function Dashboard() {
       try {
         const { data } = await getEnrolledCourses();
         const projects = await getProjects();
-        // console.log(projects, data, "projects");
         setData(data?.data || []);
         setProjects(projects?.data?.data || []);
       } catch (err) {
-        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };

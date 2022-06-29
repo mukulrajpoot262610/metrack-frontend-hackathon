@@ -1,23 +1,15 @@
 import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
-import Project from "./Project";
+import ProjectCard from "../Card/ProjectCard";
 
 export default function ProjectContent({ projects, cols = 3 }) {
+
   const router = useRouter();
   const path = router.pathname;
 
-  function truncateString(str, num) {
-    if (str.length > num) {
-      return str.slice(0, num) + "...";
-    } else {
-      return str;
-    }
-  }
-
   const elements = projects.map((i) => {
-    return <Project key={i._id} project={i} />;
+    return <ProjectCard key={i._id} project={i} />;
   });
 
   return (

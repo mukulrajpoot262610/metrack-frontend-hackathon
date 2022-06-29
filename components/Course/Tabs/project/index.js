@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import Project from "../../../Common/Project";
+import ProjectCard from "../../../Card/ProjectCard";
 
 export default function Projects({ course }) {
 
   const { user } = useSelector(state => state.auth)
 
   const elements = course?.projects.map((i) => {
-    return <Project project={i} key={i._id} />;
+    return <ProjectCard project={i} key={i._id} />;
   });
 
   return (

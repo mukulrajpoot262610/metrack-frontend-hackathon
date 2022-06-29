@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
-import { TbDeviceMobile } from "react-icons/tb";
 
 export default function ExploreSidebar({ selected, setSelected, courses }) {
+
   return (
     <>
       <section className="hidden lg:block lg:col-span-3">
@@ -12,11 +12,10 @@ export default function ExploreSidebar({ selected, setSelected, courses }) {
             courses?.map((e) => (
               <li onClick={() => setSelected(e.id)} key={e.id} className="">
                 <a
-                  className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
-                    selected === e.id
-                      ? "bg-blue-50 border-blue-400 font-bold"
-                      : "hover:bg-blue-50"
-                  }`}
+                  className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${selected === e.id
+                    ? "bg-blue-50 border-blue-400 font-bold"
+                    : "hover:bg-blue-50"
+                    }`}
                 >
                   {e.logo}
                   {e.name} Courses
@@ -43,11 +42,10 @@ export default function ExploreSidebar({ selected, setSelected, courses }) {
               courses.map((e) => (
                 <li onClick={() => setSelected(e.id)} key={e.id}>
                   <a
-                    className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
-                      selected === e.id
-                        ? "bg-blue-50 border border-blue-400 font-bold"
-                        : "hover:border-blue-400 hover:border"
-                    }`}
+                    className={`relative flex items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${selected === e.id
+                      ? "bg-blue-50 border border-blue-400 font-bold"
+                      : "hover:border-blue-400 hover:border"
+                      }`}
                   >
                     {e.logo}
                     {e.name} Courses

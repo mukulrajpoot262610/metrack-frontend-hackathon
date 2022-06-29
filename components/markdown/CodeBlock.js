@@ -1,10 +1,9 @@
-// components/codeblock.js
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
-// import CopyToClipboardBtn from "utils/CopyToClipboardBtn";
 
 const CodeBlock = {
+
   code({ node, inline, className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || "");
     return !inline && match ? (
@@ -29,7 +28,7 @@ const CodeBlock = {
         {children}
       </code>
     );
-  },
+  }
 };
 
 export default CodeBlock;

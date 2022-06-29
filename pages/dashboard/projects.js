@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/dashboard/Sidebar";
 import toast from "react-hot-toast";
+
+import Sidebar from "../../components/Common/Sidebar";
 import ProjectContent from "../../components/Common/ProjectContent";
 import { getProjects } from "../../services/api";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
@@ -14,7 +15,6 @@ export default function EnrolledCourses() {
         const { data } = await getProjects();
         setProjects(data?.data || []);
       } catch (err) {
-        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };

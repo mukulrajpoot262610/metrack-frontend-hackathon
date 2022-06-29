@@ -1,8 +1,8 @@
 import React from 'react'
-import CourseContent from '../Common/CourseContent'
-
 import { SiHtml5, SiJavascript, SiReact, SiAngular, SiDjango, SiFlutter } from 'react-icons/si'
 import { FaVuejs, FaNodeJs, FaPython } from 'react-icons/fa'
+
+import CourseContent from '../Common/CourseContent'
 
 const COURSES = [
     {
@@ -52,9 +52,6 @@ const COURSES = [
     },
 ]
 
-
-
-
 const ExploreComponent = ({ response, selected }) => {
     return (
         <section className="col-span-12 lg:col-span-9 mt-4">
@@ -65,21 +62,8 @@ const ExploreComponent = ({ response, selected }) => {
                     </h1>
                     {COURSES[selected].logo}
                 </div>
-
-                {/* <div className="flex items-center justify-end p-3">
-                    <p className="text-xs font-bold text-gray-400 uppercase">Sort by:</p>
-                    <select className="w-64 ml-4 select select-sm select-bordered">
-                        <option disabled selected>
-                            Who shot first?
-                        </option>
-                        <option>Han Solo</option>
-                        <option>Greedo</option>
-                    </select>
-                </div> */}
                 <hr />
-
                 <CourseContent courses={response} />
-
             </div>
         </section>
     )

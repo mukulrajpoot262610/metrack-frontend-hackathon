@@ -1,14 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
-import { getDiscussion, sendMessage } from "../../../../services/api";
 import { useSelector } from "react-redux";
+
+import { getDiscussion, sendMessage } from "../../../../services/api";
 import Messages from "./Messages";
 import Editor from "../../../editor";
 
-// socket connection
-// const socket = io("https://api.metrack.tech");
 const socket = io(process.env.NEXT_PUBLIC_API_URL);
 
 export default function Discussions({ id }) {
@@ -17,9 +15,7 @@ export default function Discussions({ id }) {
   const [loading, setLoading] = useState(false);
   const [sendingMsg, setSendingMsg] = useState(false);
   const [msg, setMsg] = useState("");
-  // console.log(id, "id");
 
-  // send message to the server
   const submitMsg = async () => {
     try {
       if (sendingMsg) {
@@ -29,7 +25,6 @@ export default function Discussions({ id }) {
         return toast.error("empty message");
       }
       setSendingMsg(true);
-      // console.log(user, "user");
       const res = await sendMessage({
         message: msg,
         discussionId: id,
@@ -41,20 +36,17 @@ export default function Discussions({ id }) {
       });
       toast.success("Message Sent 🎉");
     } catch (err) {
-      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);
     }
   };
 
-  // handle keydown on msg box
   const handleSend = (e) => {
     e.preventDefault();
     submitMsg();
   };
 
-  // get discussion data
   useEffect(() => {
     if (!id) return;
 
@@ -65,7 +57,6 @@ export default function Discussions({ id }) {
         const res = await getDiscussion(id);
         setData(res?.data?.data);
       } catch (err) {
-        // console.log(err);
         toast.error(err?.response?.data?.msg);
       } finally {
         setLoading(false);

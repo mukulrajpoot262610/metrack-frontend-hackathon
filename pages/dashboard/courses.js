@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CourseContent from "../../components/Common/CourseContent";
-import Sidebar from "../../components/dashboard/Sidebar";
-import { getEnrolledCourses } from "../../services/api";
 import toast from "react-hot-toast";
+
+import CourseContent from "../../components/Common/CourseContent";
+import Sidebar from "../../components/common/Sidebar";
+import { getEnrolledCourses } from "../../services/api";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
 
 export default function EnrolledCourses() {
@@ -14,7 +15,6 @@ export default function EnrolledCourses() {
         const { data } = await getEnrolledCourses();
         setData(data?.data || []);
       } catch (err) {
-        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };
