@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
 import { useForm } from "react-hook-form";
-import { login } from "../../services/api";
-import { useDispatch, useSelector } from "react-redux";
-import { setAuth } from "../../redux/authSlice";
+import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
+import { login } from "../../services/api";
+import { setAuth } from "../../redux/authSlice";
+
 const Login = () => {
+
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [toggelFieldType, setToggleFieledType] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -28,7 +27,6 @@ const Login = () => {
       router.push("/dashboard");
       setLoading(false);
     } catch (err) {
-      // console.log(err);
       setLoading(false);
       toast.error(err?.response?.data?.msg || err?.message);
     }
@@ -52,9 +50,8 @@ const Login = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${
-                errors.email ? "input-error" : ""
-              }`}
+              className={`w-full input input-bordered ${errors.email ? "input-error" : ""
+                }`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -78,9 +75,8 @@ const Login = () => {
               <input
                 type={toggelFieldType ? "text" : "password"}
                 placeholder="Password"
-                className={`input ${
-                  errors.password ? "input-error" : ""
-                } input-bordered w-full`}
+                className={`input ${errors.password ? "input-error" : ""
+                  } input-bordered w-full`}
                 {...register("password", {
                   required: true,
                 })}
@@ -108,9 +104,8 @@ const Login = () => {
             </label>
           </div>
           <button
-            className={`w-full mt-6 ${
-              loading && "loading"
-            } bg-blue-100 btn btn-ghost hover:bg-blue-300`}
+            className={`w-full mt-6 ${loading && "loading"
+              } bg-blue-100 btn btn-ghost hover:bg-blue-300`}
           >
             Log In{" "}
           </button>
