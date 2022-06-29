@@ -69,6 +69,38 @@ We are already accepting signups. Go [Register](https://metrack.tech) Now
 1. Linode
 2. Vercel
 
+## Folder Structure
+
+```
+.
+|-- components
+|   |-- card
+|   |-- common
+|   |-- course
+|   |-- explore
+|   |-- layout
+|   |-- sections
+|   |-- dashboard
+|   |-- editor
+|   |-- markdown
+|   |-- profile
+|   `-- projects
+|-- hooks
+|-- pages
+|   |-- API
+|   |-- auth
+|   |-- dashboard
+|   |-- explore
+|   |-- profile
+|   `-- project
+|-- public
+|   |-- auth
+|   `-- overlay
+|-- redux
+|-- services
+`--  styles
+```
+
 ## 🧑‍💻 Team
 
 1. [mukulrajpoot262610](https://github.com/mukulrajpoot262610)
