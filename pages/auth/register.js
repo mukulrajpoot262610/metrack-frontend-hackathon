@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-import { register as signup } from "../../services/api";
-import { setAuth } from "../../redux/authSlice";
+
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
+import { setAuth } from "../../redux/authSlice";
+import { register as signup } from "../../services/api";
+
 const Register = () => {
+
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [toggelFieldType, setToggleFieledType] = useState(false);
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -27,7 +31,6 @@ const Register = () => {
       toast.success("Registration Success 🎉");
       dispatch(setAuth(data));
     } catch (err) {
-      // console.log(err);
       toast.error(err?.response?.data?.msg);
     } finally {
       setLoading(false);
@@ -55,9 +58,8 @@ const Register = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${
-                errors.name ? "input-error" : ""
-              }`}
+              className={`w-full input input-bordered ${errors.name ? "input-error" : ""
+                }`}
               {...register("name", {
                 required: true,
               })}
@@ -77,9 +79,8 @@ const Register = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${
-                errors.email ? "input-error" : ""
-              }`}
+              className={`w-full input input-bordered ${errors.email ? "input-error" : ""
+                }`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -103,9 +104,8 @@ const Register = () => {
               <input
                 type={toggelFieldType ? "text" : "password"}
                 placeholder="Password"
-                className={`input ${
-                  errors.password ? "input-error" : ""
-                } input-bordered w-full`}
+                className={`input ${errors.password ? "input-error" : ""
+                  } input-bordered w-full`}
                 {...register("password", {
                   required: true,
                 })}
@@ -133,9 +133,8 @@ const Register = () => {
             </label>
           </div>
           <button
-            className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${
-              loading && "loading"
-            } `}
+            className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"
+              } `}
           >
             Register{" "}
           </button>
