@@ -1,8 +1,7 @@
-import { format, formatDistance } from "date-fns";
+import { formatDistance } from "date-fns";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { BsGithub, BsGlobe } from "react-icons/bs";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { BiCommentDots } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { addFeedback } from "services/api";
