@@ -1,24 +1,6 @@
-import Image from "next/image";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import Timeline from "./Timeline";
-import {
-  FaGithub,
-  FaLinkedinIn,
-  FaInstagram,
-  FaStackOverflow,
-  FaGlobe,
-  FaFacebookF,
-  FaMediumM,
-  FaTwitter,
-  FaYoutube,
-  FaPinterest,
-} from "react-icons/fa";
-import { ImMail4 } from "react-icons/im";
-import { MdEdit } from "react-icons/md";
-import About from "./About";
+import React from "react";
 import Stats from "./Stats";
-import Tabs from "./tabs";
+import Tabs from "./Tabs";
 import User from "./User";
 
 export default function Profile({ data, user }) {

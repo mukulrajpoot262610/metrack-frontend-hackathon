@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import Discussions from "./tabs/discussions";
 
 import { MdVideoLibrary, MdOutlineDescription } from "react-icons/md";
-import {
-  SiHtml5,
-  SiJavascript,
-  SiReact,
-  SiAngular,
-  SiDjango,
-  SiFlutter,
-} from "react-icons/si";
-import { FaVuejs, FaNodeJs, FaPython, FaLaptopCode } from "react-icons/fa";
+import { FaLaptopCode } from "react-icons/fa";
 import { HiOutlineSaveAs, HiChatAlt2 } from "react-icons/hi";
 import Video from "./tabs/Video";
 import About from "./tabs/About";

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsGithub, BsGlobe, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiHashnode } from "react-icons/si";
 export default function User({ user, profile }) {
   // console.log(user, profile);
