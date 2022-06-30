@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { resetPassword, verifyMagicToken } from "../../services/api";
+import { resetPassword, verifyMagicToken } from "services/api";
 
 const ResetPassowrd = () => {
   const { isAuth } = useSelector((state) => state.auth);
@@ -52,9 +52,9 @@ const ResetPassowrd = () => {
   return (
     <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
-        <a className="flex items-center flex-col gap-2">
-          <img src="/logo.png" className="h-12 w-24 object-contain" />
-          <h1 className="uppercase tracking-tight text-3xl font-bold cursor-pointer text-center">
+        <a className="flex flex-col items-center gap-2">
+          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Reset PAssword
           </h1>
         </a>
@@ -70,7 +70,9 @@ const ResetPassowrd = () => {
               type="text"
               {...register("password", { required: true })}
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
+              className={`w-full input input-bordered ${
+                errors.password ? "input-error" : ""
+              }`}
             />
             <label className="">
               {errors.password ? (
@@ -90,7 +92,9 @@ const ResetPassowrd = () => {
               type="text"
               {...register("confirmPassword", { required: true })}
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.password ? "input-error" : ""}`}
+              className={`w-full input input-bordered ${
+                errors.password ? "input-error" : ""
+              }`}
             />
             <label className="label">
               {errors.password ? (

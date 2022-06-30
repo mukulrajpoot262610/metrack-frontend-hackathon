@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { register as signup } from "../../services/api";
-import { setAuth } from "../../redux/authSlice";
+import { register as signup } from "services/api";
+import { setAuth } from "redux/authSlice";
 import toast from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 

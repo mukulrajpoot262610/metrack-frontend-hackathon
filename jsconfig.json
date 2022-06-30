@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+      "baseUrl": "src"
+    },
+    "include": ["src", "src/componensrc/reduxrviceservices", "redux", "src/components"]
+}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { forgotPassword } from "../../services/api";
+import { forgotPassword } from "services/api";
 import toast from "react-hot-toast";
 
 const ForgetPassowrd = () => {
@@ -33,11 +33,11 @@ const ForgetPassowrd = () => {
   }, [isAuth, router]);
 
   return (
-    <div className="flex items-center justify-center h-screen gap-20 pb-10 min-h-screen">
+    <div className="flex items-center justify-center h-screen min-h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
-        <a className="flex items-center flex-col gap-2">
-          <img src="/logo.png" className="h-12 w-24 object-contain" />
-          <h1 className="uppercase tracking-tight text-3xl font-bold cursor-pointer text-center">
+        <a className="flex flex-col items-center gap-2">
+          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Forgot Password
           </h1>
         </a>
@@ -53,7 +53,9 @@ const ForgetPassowrd = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${errors.email ? "input-error" : ""}`}
+              className={`w-full input input-bordered ${
+                errors.email ? "input-error" : ""
+              }`}
               {...register("email", {
                 required: true,
                 pattern: {

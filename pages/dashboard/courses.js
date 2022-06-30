@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CourseContent from "../../components/Common/CourseContent";
-import Sidebar from "../../components/dashboard/Sidebar";
-import { getEnrolledCourses } from "../../services/api";
+import CourseContent from "components/common/CourseContent";
+import Sidebar from "components/dashboard/Sidebar";
+import { getEnrolledCourses } from "services/api";
 import toast from "react-hot-toast";
-import { ProtectedRoute } from "../../utils/ProtectedRoute";
+import { ProtectedRoute } from "utils/ProtectedRoute";
 
 export default function EnrolledCourses() {
   const [data, setData] = useState([]);

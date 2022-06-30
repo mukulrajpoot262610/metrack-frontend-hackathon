@@ -1,15 +1,12 @@
-import { useState } from "react";
-import Channels from "../components/Sections/Channels";
-import Courses from "../components/Sections/Courses";
-import Features from "../components/Sections/Features";
-import HashnodeArticle from "../components/Sections/HashnodeArticle";
-import HashnodeLike from "../components/Sections/HashnodeLike";
-import Header from "../components/Sections/Header";
-import Team from "../components/Sections/Team";
+import Channels from "components/sections/Channels";
+import Courses from "components/sections/Courses";
+import Features from "components/sections/Features";
+import HashnodeArticle from "components/sections/HashnodeArticle";
+import HashnodeLike from "components/sections/HashnodeLike";
+import Header from "components/sections/Header";
+import Team from "components/sections/Team";
 
 export default function Home() {
-
-
   return (
     <div className="overflow-hidden">
       <Header />
@@ -20,5 +17,5 @@ export default function Home() {
       <Team />
       <HashnodeLike />
     </div>
-  )
+  );
 }

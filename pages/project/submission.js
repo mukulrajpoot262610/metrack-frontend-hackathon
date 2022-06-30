@@ -1,6 +1,6 @@
 import React from "react";
-import Submission from "../../components/projects/upload";
-import { ProtectedRoute } from '../../utils/ProtectedRoute'
+import Submission from "components/projects/upload";
+import { ProtectedRoute } from "utils/ProtectedRoute";
 
 export default function upload() {
   return (

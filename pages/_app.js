@@ -1,9 +1,9 @@
-import Layout from "../components/Layout";
-import "../styles/globals.css";
+import Layout from "components/layout";
+import "styles/globals.css";
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
+import { store } from "redux/store";
 import { useEffect } from "react";
-import * as ga from "../lib/ga";
+import * as ga from "lib/ga";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {

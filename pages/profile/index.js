@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Profile from "../../components/profile";
+import Profile from "components/profile";
 import { useSelector } from "react-redux";
-import { getProfile } from "../../services/api";
+import { getProfile } from "services/api";
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {
