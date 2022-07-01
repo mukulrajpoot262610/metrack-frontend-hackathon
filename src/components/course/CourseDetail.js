@@ -50,17 +50,29 @@ const CourseDetail = ({ course }) => {
                 <div className="-space-x-4 avatar-group ring-0">
                   <div className="avatar">
                     <div className="w-6">
-                      <img src="/profile.png" className="object-top" />
+                      <img
+                        alt="avatar"
+                        src="/profile.png"
+                        className="object-top"
+                      />
                     </div>
                   </div>
                   <div className="avatar">
                     <div className="w-6">
-                      <img src="/profile.png" className="object-top" />
+                      <img
+                        alt="avatar"
+                        src="/profile.png"
+                        className="object-top"
+                      />
                     </div>
                   </div>
                   <div className="avatar">
-                    <div className="w-6">
-                      <img src="/profile.png" className="object-top" />
+                    <div alt="avatar" className="w-6">
+                      <img
+                        alt="avatar"
+                        src="/profile.png"
+                        className="object-top"
+                      />
                     </div>
                   </div>
                   {course?.students?.length > 20 && (

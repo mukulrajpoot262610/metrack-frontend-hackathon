@@ -8,14 +8,6 @@ export default function ProjectContent({ projects, cols = 3 }) {
   const router = useRouter();
   const path = router.pathname;
 
-  function truncateString(str, num) {
-    if (str.length > num) {
-      return str.slice(0, num) + "...";
-    } else {
-      return str;
-    }
-  }
-
   const elements = projects.map((i) => {
     return <Project key={i._id} project={i} />;
   });
@@ -32,7 +24,7 @@ export default function ProjectContent({ projects, cols = 3 }) {
 
           {projects.length === 0 ? (
             <div className="flex flex-col items-center justify-center w-full h-full mt-8">
-              <img src="/no-data.svg" className="h-40 mt-10" />
+              <img alt="no-data" src="/no-data.svg" className="h-40 mt-10" />
               <h1 className="mt-8 text-2xl font-bold">No projects Found...</h1>
               {path === "/profile" && (
                 <>

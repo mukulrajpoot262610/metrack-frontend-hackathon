@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 import { getDiscussion, sendMessage } from "services/api";
@@ -8,16 +7,13 @@ import Messages from "./Messages";
 import Editor from "editor";
 
 // socket connection
-// const socket = io("https://api.metrack.tech");
 const socket = io(process.env.NEXT_PUBLIC_API_URL);
 
 export default function Discussions({ id }) {
   const { isAuth, user } = useSelector((state) => state.auth);
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [sendingMsg, setSendingMsg] = useState(false);
   const [msg, setMsg] = useState("");
-  // console.log(id, "id");
 
   // send message to the server
   const submitMsg = async () => {
@@ -30,7 +26,7 @@ export default function Discussions({ id }) {
       }
       setSendingMsg(true);
       // console.log(user, "user");
-      const res = await sendMessage({
+      await sendMessage({
         message: msg,
         discussionId: id,
         sender: {
@@ -43,8 +39,6 @@ export default function Discussions({ id }) {
     } catch (err) {
       // console.log(err);
       toast.error(err?.response?.data?.msg);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -60,15 +54,12 @@ export default function Discussions({ id }) {
 
     socket.emit("join", id);
     (async () => {
-      setLoading(true);
       try {
         const res = await getDiscussion(id);
         setData(res?.data?.data);
       } catch (err) {
         // console.log(err);
         toast.error(err?.response?.data?.msg);
-      } finally {
-        setLoading(false);
       }
     })();
   }, [id]);
@@ -105,9 +96,10 @@ export default function Discussions({ id }) {
     socket.on("update:message", (payload) => {
       // console.log(payload, "payload");
       setData((data) => {
+        if (!data) return;
         return {
           ...data,
-          chat: [payload, ...data?.chat],
+          chat: [payload, ...data.chat],
         };
       });
       setMsg("");

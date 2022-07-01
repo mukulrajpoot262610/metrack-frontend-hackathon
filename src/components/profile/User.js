@@ -1,8 +1,8 @@
 import React from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { SiHashnode } from "react-icons/si";
+
 export default function User({ user, profile }) {
-  // console.log(user, profile);
   return (
     <div className="flex flex-col p-4 py-12 custom-overlay">
       <section className="flex justify-center">
@@ -10,7 +10,10 @@ export default function User({ user, profile }) {
           id="profile-pic"
           className="w-32 h-32 overflow-hidden bg-white rounded-full ring-2 ring-blue-500 ring-offset-4"
         >
-          <img src={user?.avatar ? user?.avatar : "/profile.png"} />
+          <img
+            alt="avatar"
+            src={user?.avatar ? user?.avatar : "/profile.png"}
+          />
         </div>
       </section>
       <section className="py-6">

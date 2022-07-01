@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import Project from "components/common/Project";
 
@@ -21,10 +21,10 @@ export default function Projects({ course }) {
       </div>
       {elements.length === 0 && (
         <div className="flex flex-col items-center justify-center w-full h-full ">
-          <img src="/projects.svg" className="h-60 mt-10" />
+          <img alt="project" src="/projects.svg" className="mt-10 h-60" />
           <h1 className="mt-8 text-2xl font-bold">Submit your project...</h1>
 
-          <p className="my-1 text-center text-sm">
+          <p className="my-1 text-sm text-center">
             Enroll in this course to submit your project. And be the first one
             to submit.
           </p>

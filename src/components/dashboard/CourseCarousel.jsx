@@ -15,7 +15,7 @@ export default function CourseCarousel({ data }) {
     <Carousel>
       {cards.length === 0 ? (
         <div className="flex flex-col items-center justify-center w-full h-full mt-8">
-          <img src="/no-data.svg" className="h-64" />
+          <img alt="no-data" src="/no-data.svg" className="h-64" />
           <h1 className="mt-8 text-2xl font-bold">No Courses Found...</h1>
           <p className="my-2">Try Enrolling in some courses.</p>
           <Link href="/explore">

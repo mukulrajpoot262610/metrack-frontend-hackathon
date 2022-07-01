@@ -8,14 +8,6 @@ export default function CourseContent({ courses }) {
   const router = useRouter();
   const path = router.pathname;
 
-  function truncateString(str, num) {
-    if (str.length > num) {
-      return str.slice(0, num) + "...";
-    } else {
-      return str;
-    }
-  }
-
   const elements = courses.map((i) => {
     return <CourseCard key={i._id} data={i} />;
   });
@@ -32,7 +24,7 @@ export default function CourseContent({ courses }) {
 
           {courses.length === 0 ? (
             <div className="flex flex-col items-center justify-center w-full h-full mt-8">
-              <img src="/no-data.svg" className="h-40 mt-10" />
+              <img alt="no-data" src="/no-data.svg" className="h-40 mt-10" />
               <h1 className="mt-8 text-2xl font-bold">No Courses Found...</h1>
               {path === "/dashboard/courses" && (
                 <>

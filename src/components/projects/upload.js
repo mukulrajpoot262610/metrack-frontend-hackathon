@@ -9,7 +9,6 @@ import Editor from "editor";
 
 export default function Submission() {
   const [tags, setTags] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { handleSubmit, register } = useForm();
   const [description, setDescription] = useState("");
 
@@ -62,7 +61,7 @@ export default function Submission() {
     }
 
     try {
-      const res = await uploadProject({
+      await uploadProject({
         ...data,
         description,
         tags,
@@ -75,8 +74,6 @@ export default function Submission() {
     } catch (err) {
       // console.log(err);
       toast.error(err?.response?.data?.msg);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -111,7 +108,7 @@ export default function Submission() {
               </h2>
               <label className="flex flex-col items-center w-full p-1 border rounded-lg cursor-pointer lg:w-1/2 text-blue border-blue">
                 {image ? (
-                  <img src={image} alt="" className="rounded-lg" />
+                  <img src={image} alt="preview" className="rounded-lg" />
                 ) : (
                   <div className="flex flex-col items-center m-4">
                     <span className="text-5xl">+</span>

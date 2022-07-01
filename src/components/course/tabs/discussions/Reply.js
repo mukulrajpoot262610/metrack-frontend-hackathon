@@ -10,7 +10,7 @@ export default function Reply({ message, user }) {
   const submitMsg = async () => {
     setLoading(true);
     try {
-      const res = await addReply({
+      await addReply({
         reply: msg,
         discussionId: message?.discussionId,
         messageId: message._id,
@@ -30,17 +30,13 @@ export default function Reply({ message, user }) {
     }
   };
 
-  // handle keydown on msg box
-  const handleKeyDown = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <>
       <div className="flex gap-4">
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
+              alt="avatar"
               src={user?.avatar || "/profile.png"}
               className="object-cover w-8 h-8 rounded-full"
             />

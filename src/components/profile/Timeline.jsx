@@ -1,15 +1,15 @@
-import { format, formatDistance } from "date-fns";
+import { formatDistance } from "date-fns";
 import React, { useEffect, useState } from "react";
 
-export default function Timeline({ projects, courses }) {
+export default function Timeline({ projects }) {
   const [activity, setActivity] = useState([]);
 
   useEffect(() => {
     const arr1 = projects?.map((i) => {
       return { date: i.createdAt, message: i?.title };
     });
-    setActivity((activity) => arr1);
-  }, []);
+    setActivity(() => arr1);
+  }, [projects]);
 
   const elements = activity.map((i, j) => {
     return (

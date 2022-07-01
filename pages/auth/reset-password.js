@@ -36,7 +36,7 @@ const ResetPassowrd = () => {
     if (!params?.token) return;
     (async () => {
       try {
-        const res = await verifyMagicToken(params);
+        await verifyMagicToken(params);
       } catch (err) {
         router.push("/auth/invalid-link");
       }
@@ -53,7 +53,11 @@ const ResetPassowrd = () => {
     <div className="flex items-center justify-center h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <a className="flex flex-col items-center gap-2">
-          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <img
+            alt="metrack-logo"
+            src="/logo.png"
+            className="object-contain w-24 h-12"
+          />
           <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Reset PAssword
           </h1>
@@ -123,6 +127,7 @@ const ResetPassowrd = () => {
             PAssword
           </h1>
           <img
+            alt="forgot-password"
             src="/forgot.png"
             className="z-20 object-cover object-top w-10/12 mt-40 rounded-3xl"
           />
