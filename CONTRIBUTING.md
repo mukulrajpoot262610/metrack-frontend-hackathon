@@ -16,19 +16,6 @@ Description of the project files and directories.
 
 ```bash
 .
-|-- components
-|   |-- card
-|   |-- common
-|   |-- course
-|   |-- explore
-|   |-- layout
-|   |-- sections
-|   |-- dashboard
-|   |-- editor
-|   |-- markdown
-|   |-- profile
-|   `-- projects
-|-- hooks
 |-- pages
 |   |-- api
 |   |-- auth
@@ -39,9 +26,27 @@ Description of the project files and directories.
 |-- public
 |   |-- auth
 |   `-- overlay
-|-- redux
-|-- services
-`--  styles
+`-- src
+    |-- components
+    |   |-- card
+    |   |-- common
+    |   |-- course
+    |   |-- dashboard
+    |   |-- explore
+    |   |-- layout
+    |   |-- profile
+    |   |-- projects
+    |   `-- sections
+    |-- editor
+    |   |-- components
+    |   `-- contexts
+    |-- hooks
+    |-- lib
+    |-- markdown
+    |-- redux
+    |-- services
+    |-- styles
+    `-- utils
 ```
 
 
@@ -54,3 +59,4 @@ An explanation of the `package.json` scripts.
 | `dev`           | Run MeTrack in a development environment    |
 | `build`         | Create a production build of MeTrack        |
 | `start`         | Start a MeTrack in production               |
+| `lint`          | Setup ESLint to catch errors                |
