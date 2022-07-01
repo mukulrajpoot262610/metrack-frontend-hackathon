@@ -113,6 +113,6 @@ This project is open source and available under the [MIT License](https://github
 
 ## Attribution
 
-The project is deployed on [Linode](linode.com) for the [Hashnode X Linode] Hackathon(https://townhall.hashnode.com/build-with-linode-hackathon-june-2022?source=hashnode_countdown).
+The project is deployed on [Linode](https://www.linode.com) for the [Hashnode X Linode Hackathon](https://townhall.hashnode.com/build-with-linode-hackathon-june-2022?source=hashnode_countdown).
 
 ![mYWGJOj8V](https://user-images.githubusercontent.com/73209159/176347320-11f68c2d-d169-4191-82e4-56c305b7d3dd.png)
