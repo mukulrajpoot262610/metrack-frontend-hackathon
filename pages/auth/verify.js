@@ -10,7 +10,6 @@ const VerifyEmail = () => {
         </h1>
         <p className="my-4 text-center">
           We have sent a verification link to your email{" "}
-          {/* <span className="font-bold">mukul@gmail.com</span>. */}
         </p>
 
         <p className="my-4 text-center">
@@ -45,6 +44,7 @@ const VerifyEmail = () => {
             Verification
           </h1>
           <img
+            alt="email"
             src="/email.png"
             className="z-20 object-cover object-top w-10/12 rounded-3xl"
           />

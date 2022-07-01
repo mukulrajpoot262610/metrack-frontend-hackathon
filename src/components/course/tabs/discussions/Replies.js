@@ -18,6 +18,7 @@ function Reply({ i, user }) {
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
+              alt="avatar"
               src={i?.user?.avatar || "/profile.png"}
               className="object-cover w-8 h-8 rounded-full"
             />

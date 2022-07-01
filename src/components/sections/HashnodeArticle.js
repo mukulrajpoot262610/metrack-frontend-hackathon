@@ -10,7 +10,11 @@ const HashnodeArticle = () => {
         CHECKOUT Our Blog ON
       </a>
       <a href="https://blogs.mukulrajpoot.com/metrack-collaborative-youtube-learning">
-        <img src="/hashnode.png" className="object-contain mt-4 w-96" />
+        <img
+          alt="hashnode"
+          src="/hashnode.png"
+          className="object-contain mt-4 w-96"
+        />
       </a>
     </main>
   );

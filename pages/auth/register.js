@@ -38,7 +38,11 @@ const Register = () => {
     <div className="flex items-center justify-center h-screen min-h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <a className="flex flex-col items-center gap-2 mb-2">
-          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <img
+            alt="metrack-logo"
+            src="/logo.png"
+            className="object-contain w-24 h-12"
+          />
           <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Welcome to <span className="text-blue-500">ME</span>Track
           </h1>
@@ -155,6 +159,7 @@ const Register = () => {
             Welcome
           </h1>
           <img
+            alt="welcome"
             src="/auth/404.svg"
             className="z-20 object-contain w-10/12 rounded-3xl"
           />

@@ -40,7 +40,7 @@ export default function Project({ project }) {
               <img
                 className="block object-cover w-full h-full"
                 src={project?.thumbnail || "/project.png"}
-                alt="Shoes"
+                alt="thumbnail"
               />
             </figure>
           </div>
@@ -86,7 +86,7 @@ export default function Project({ project }) {
                   <img
                     className="block w-full h-full"
                     src={project?.thumbnail || "/project.png"}
-                    alt="Shoes"
+                    alt="thumbnail"
                   />
                 </figure>
               </div>
@@ -123,6 +123,7 @@ export default function Project({ project }) {
               <div className="flex gap-2 cursor-pointer">
                 <div className="w-12 h-12 overflow-hidden rounded-full avatar ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
                   <img
+                    alt="avatar"
                     src={user?.avatar ? user?.avatar : "/profile.png"}
                     className="object-top"
                   />
@@ -173,7 +174,7 @@ function WriteFeedback({ project, feedbacks, setFeedbacks }) {
   const submitMsg = async () => {
     setLoading(true);
     try {
-      const res = await addFeedback({
+      await addFeedback({
         message: msg,
         id: project._id,
       });
@@ -233,7 +234,7 @@ function Feedbacks({ feedbacks }) {
 
   console.log(feedbacks);
 
-  const { user, isAuth } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const elements = feedbacks.map((i, j) => (
     <div key={j}>
@@ -241,6 +242,7 @@ function Feedbacks({ feedbacks }) {
         <div className="">
           <div className="w-8 h-8 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img
+              alt="avatar"
               src={i?.user?.avatar ? i?.user?.avatar : "/profile.png"}
               className="object-cover w-8 h-8 rounded-full"
             />

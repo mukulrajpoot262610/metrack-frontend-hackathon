@@ -2,8 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
-import { forwardRef, Fragment, useEffect, useRef, useState } from "react";
-import { TbDeviceMobile } from "react-icons/tb";
+import { Fragment } from "react";
 
 export default function ExploreSidebar({ selected, setSelected, courses }) {
   return (
@@ -44,19 +43,17 @@ export default function ExploreSidebar({ selected, setSelected, courses }) {
                 courses.map((e) => (
                   <>
                     <Menu.Item key={e.id}>
-                      {({ active }) => (
-                        <a
-                          onClick={() => setSelected(e.id)}
-                          className={`relative flex border border-white items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
-                            selected === e.id
-                              ? "bg-blue-50 border border-blue-400 font-bold"
-                              : "hover:border-blue-400 hover:border"
-                          }`}
-                        >
-                          {e.logo}
-                          {e.name} Courses
-                        </a>
-                      )}
+                      <a
+                        onClick={() => setSelected(e.id)}
+                        className={`relative flex border border-white items-center w-full p-3 text-sm rounded-lg cursor-pointer gap-x-2  ${
+                          selected === e.id
+                            ? "bg-blue-50 border border-blue-400 font-bold"
+                            : "hover:border-blue-400 hover:border"
+                        }`}
+                      >
+                        {e.logo}
+                        {e.name} Courses
+                      </a>
                     </Menu.Item>
                   </>
                 ))}

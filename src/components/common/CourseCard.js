@@ -27,7 +27,7 @@ export default function CourseCard({ data }) {
     >
       <Link href={`/explore/${data._id}`}>
         <figure className="aspect-w-2 aspect-h-1">
-          <img src={data?.thumbnail} alt="Shoes" className="object-cover" />
+          <img src={data?.thumbnail} alt="thumbnail" className="object-cover" />
         </figure>
       </Link>
       <div className="p-4 card-body">

@@ -11,7 +11,7 @@ import { setAuth } from "redux/authSlice";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
-import { forwardRef, Fragment, useEffect, useRef, useState } from "react";
+import { forwardRef, Fragment } from "react";
 
 export default function Navbar() {
   const { isAuth, user } = useSelector((state) => state.auth);
@@ -36,7 +36,11 @@ export default function Navbar() {
         <div>
           <Link href="/">
             <a className="flex items-center gap-2">
-              <img src="/logo.png" className="object-contain w-12 h-6" />
+              <img
+                alt="metrack-logo"
+                src="/logo.png"
+                className="object-contain w-12 h-6"
+              />
               <h1 className="hidden font-bold tracking-tight uppercase cursor-pointer lg:block">
                 <span className="text-3xl text-blue-500">ME</span>Track
               </h1>
@@ -90,6 +94,7 @@ function Dropdown({ user, handleLogout }) {
             <div className="cursor-pointer avatar">
               <div className="w-10 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
                 <img
+                  alt="avatar"
                   src={user?.avatar ? user?.avatar : "/profile.png"}
                   className="object-top"
                 />
@@ -112,6 +117,7 @@ function Dropdown({ user, handleLogout }) {
               <div className="cursor-pointer avatar">
                 <div className="w-20 rounded-full ring-1 ring-blue-400 ring-offset-base-100 ring-offset-2">
                   <img
+                    alt="avatar"
                     src={user?.avatar ? user?.avatar : "/profile.png"}
                     className="object-top"
                   />
@@ -124,57 +130,47 @@ function Dropdown({ user, handleLogout }) {
             </div>
             <div className="px-1 py-1 ">
               <Menu.Item>
-                {({ active }) => (
-                  <CustomLink href="/dashboard">
-                    <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
-                      <MdOutlineDashboard className="text-base font-bold" />
-                      Dashboard
-                    </a>
-                  </CustomLink>
-                )}
+                <CustomLink href="/dashboard">
+                  <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
+                    <MdOutlineDashboard className="text-base font-bold" />
+                    Dashboard
+                  </a>
+                </CustomLink>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <CustomLink href="/explore">
-                    <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
-                      <FiBook className="text-base font-bold" />
-                      Explore Courses
-                    </a>
-                  </CustomLink>
-                )}
+                <CustomLink href="/explore">
+                  <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
+                    <FiBook className="text-base font-bold" />
+                    Explore Courses
+                  </a>
+                </CustomLink>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <CustomLink href="/profile">
-                    <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
-                      <AiOutlineUser className="text-base font-bold" />
-                      Profile
-                    </a>
-                  </CustomLink>
-                )}
+                <CustomLink href="/profile">
+                  <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
+                    <AiOutlineUser className="text-base font-bold" />
+                    Profile
+                  </a>
+                </CustomLink>
               </Menu.Item>
             </div>
             <div className="px-1 py-1 ">
               <Menu.Item>
-                {({ active }) => (
-                  <CustomLink href="/dashboard/settings">
-                    <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
-                      <BiCog className="text-base font-bold" />
-                      Settings
-                    </a>
-                  </CustomLink>
-                )}
+                <CustomLink href="/dashboard/settings">
+                  <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
+                    <BiCog className="text-base font-bold" />
+                    Settings
+                  </a>
+                </CustomLink>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center w-full p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl"
-                  >
-                    <TbLogout className="text-base font-bold" />
-                    Logout
-                  </button>
-                )}
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center w-full p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl"
+                >
+                  <TbLogout className="text-base font-bold" />
+                  Logout
+                </button>
               </Menu.Item>
             </div>
           </Menu.Items>

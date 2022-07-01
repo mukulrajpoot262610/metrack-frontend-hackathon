@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { forgotPassword } from "services/api";
 import toast from "react-hot-toast";
 
 const ForgetPassowrd = () => {
-  const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const router = useRouter();
 
@@ -36,7 +35,11 @@ const ForgetPassowrd = () => {
     <div className="flex items-center justify-center h-screen min-h-screen gap-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <a className="flex flex-col items-center gap-2">
-          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <img
+            alt="metrack-logo"
+            src="/logo.png"
+            className="object-contain w-24 h-12"
+          />
           <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Forgot Password
           </h1>
@@ -94,6 +97,7 @@ const ForgetPassowrd = () => {
           </h1>
           <img
             src="/auth/forget.png"
+            alt="forgot-password"
             className="z-20 object-cover object-top w-10/12 mt-40 rounded-3xl"
           />
         </div>
