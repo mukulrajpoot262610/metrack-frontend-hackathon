@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { login } from "../../services/api";
-import { useDispatch, useSelector } from "react-redux";
-import { setAuth } from "../../redux/authSlice";
+import { login } from "services/api";
+import { useDispatch } from "react-redux";
+import { setAuth } from "redux/authSlice";
 import toast from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -38,7 +38,7 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen gap-20 pt-20 pb-10">
       <div className="w-full p-6 lg:w-1/3">
         <a className="flex flex-col items-center gap-2 mb-6">
-          <img src="/logo.png" className="object-contain w-24 h-12" />
+          <img alt="img" src="/logo.png" className="object-contain w-24 h-12" />
           <h1 className="text-3xl font-bold tracking-tight text-center uppercase cursor-pointer">
             Welcome Back to <span className="text-blue-500">ME</span>Track
           </h1>

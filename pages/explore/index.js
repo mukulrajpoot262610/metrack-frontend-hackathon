@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import toast, { LoaderIcon } from "react-hot-toast";
+import toast from "react-hot-toast";
 
-import ExploreComponent from "../../components/Explore/ExploreComponent";
-import ExploreSidebar from "../../components/Explore/ExploreSidebar";
-import { getPublishedCourses } from "../../services/api";
+import ExploreComponent from "components/explore/ExploreComponent";
+import ExploreSidebar from "components/explore/ExploreSidebar";
+import { getPublishedCourses } from "services/api";
 
 import {
   SiHtml5,

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/dashboard/Sidebar";
+import Sidebar from "components/dashboard/Sidebar";
 import toast from "react-hot-toast";
-import ProjectContent from "../../components/Common/ProjectContent";
-import { getProjects } from "../../services/api";
-import { ProtectedRoute } from "../../utils/ProtectedRoute";
+import ProjectContent from "components/common/ProjectContent";
+import { getProjects } from "services/api";
+import { ProtectedRoute } from "utils/ProtectedRoute";
 
 export default function EnrolledCourses() {
   const [projects, setProjects] = useState([]);

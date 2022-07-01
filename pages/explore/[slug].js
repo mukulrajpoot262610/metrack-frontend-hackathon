@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getCourseDetail } from "../../services/api";
-import CourseDetail from "../../components/Course/CourseDetail";
+import { getCourseDetail } from "services/api";
+import CourseDetail from "components/course/CourseDetail";
 import toast, { LoaderIcon } from "react-hot-toast";
 
 const CourseDetailPage = () => {
