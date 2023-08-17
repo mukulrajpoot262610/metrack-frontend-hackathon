@@ -11,7 +11,7 @@ const Team = () => {
               Our Team 😎
             </h1>
             <p className="text-lg font-medium text-center">
-              This platform is built for linode-hashnode hackathon 1 JUN - 30
+              This platform is built for linode-hashnode hackathon 21 JUN - 30
               JUN by these crazy hackers.
             </p>
           </div>

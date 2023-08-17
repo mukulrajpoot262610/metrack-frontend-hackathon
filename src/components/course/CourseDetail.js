@@ -32,7 +32,6 @@ const CourseDetail = ({ course }) => {
       toast.success("Enrolled 🎉");
       dispatch(setAuth(data));
     } catch (err) {
-      // console.log(err);
       toast.error(err?.response?.data?.msg);
     }
   };
@@ -115,39 +114,36 @@ const CourseDetail = ({ course }) => {
             )}
           </div>
 
-          <div className="h-10"></div>
+          <div className="h-5">
+          </div>
 
           <div className="absolute bottom-0 left-0 flex w-full mx-auto overflow-auto lg:w-10/12 lg:left-32">
             <div className="flex">
               <a
                 onClick={() => setTabs(0)}
-                className={`${
-                  tabs === 0 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 0 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <MdVideoLibrary /> Video
               </a>
               <a
                 onClick={() => setTabs(1)}
-                className={`${
-                  tabs === 1 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 1 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <MdOutlineDescription /> About
               </a>
               <a
                 onClick={() => setTabs(2)}
-                className={`${
-                  tabs === 2 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-36`}
+                className={`${tabs === 2 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-36`}
               >
                 <HiChatAlt2 /> Discussion
               </a>
               <a
                 onClick={() => setTabs(3)}
-                className={`${
-                  tabs === 3 && "tab-active font-bold"
-                } tab tab-lifted gap-1 w-28`}
+                className={`${tabs === 3 && "tab-active font-bold"
+                  } tab tab-lifted gap-1 w-28`}
               >
                 <FaLaptopCode /> Projects
               </a>
@@ -155,8 +151,9 @@ const CourseDetail = ({ course }) => {
           </div>
         </header>
 
+
         <div className="flex justify-between">
-          <div className="w-full mt-80 lg:w-4/6">
+          <div className="w-full mt-60 lg:w-4/6">
             {tabs === 0 && <Video course={course} />}
             {tabs === 1 && <About course={course} />}
             {tabs === 2 && <Discussions id={course?.discussionId} />}

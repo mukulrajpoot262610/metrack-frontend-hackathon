@@ -12,8 +12,11 @@ import {
   SiAngular,
   SiDjango,
   SiFlutter,
+  SiPostgresql,
+  SiMongodb,
 } from "react-icons/si";
-import { FaVuejs, FaNodeJs, FaPython } from "react-icons/fa";
+
+import { FaVuejs, FaNodeJs, FaPython, FaGolang, FaDocker } from "react-icons/fa";
 
 const COURSES = [
   {
@@ -61,6 +64,21 @@ const COURSES = [
     name: "Flutter",
     logo: <SiFlutter className="text-xl" />,
   },
+  {
+    id: 9,
+    name: "SQL",
+    logo: <SiPostgresql className="text-xl" />,
+  },
+  {
+    id: 10,
+    name: "Docker",
+    logo: <FaDocker className="text-xl" />,
+  },
+  {
+    id: 11,
+    name: "MongoDB",
+    logo: <SiMongodb className="text-xl" />,
+  },
 ];
 
 const Explore = () => {
@@ -73,7 +91,6 @@ const Explore = () => {
         const { data } = await getPublishedCourses(COURSES[selected].name);
         setResponse(data.data);
       } catch (err) {
-        // console.log(err)
         toast.error(err?.response?.data?.msg);
       }
     };

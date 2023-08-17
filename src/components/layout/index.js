@@ -6,10 +6,19 @@ import { Toaster } from "react-hot-toast";
 import { useLoadingWithRefresh } from "hooks/useLoadingWithRefresh";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
+import AwardWinner from "./awardWinner";
 
 const Layout = ({ children }) => {
   const router = useRouter();
   const { loading } = useLoadingWithRefresh();
+
+  const [show, setShow] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setShow(false);
+    }, 10000);
+  }, []);
 
   const path = router.pathname;
 
@@ -80,6 +89,7 @@ const Layout = ({ children }) => {
       </main>
       <Toaster />
       {!path.includes("auth") && <Footer />}
+      <AwardWinner show={show} />
     </>
   );
 };

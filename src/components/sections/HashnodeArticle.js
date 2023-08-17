@@ -7,7 +7,7 @@ const HashnodeArticle = () => {
         href="https://blogs.mukulrajpoot.com/metrack-collaborative-youtube-learning"
         className="text-sm font-bold text-blue-400 uppercase"
       >
-        CHECKOUT Our Blog ON
+        CHECKOUT Our 🥇WINNING🥇 Blog ON
       </a>
       <a href="https://blogs.mukulrajpoot.com/metrack-collaborative-youtube-learning">
         <img

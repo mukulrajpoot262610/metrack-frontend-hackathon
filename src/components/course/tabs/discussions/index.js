@@ -109,7 +109,7 @@ export default function Discussions({ id }) {
 
   return (
     <div className="w-full space-y-5">
-      <section className="text-accent-content">
+      <section className="text-accent-content my-4">
         <p className="font-bold">Discussions</p>
         <p className="mt-1 text-sm">
           Ask questions, discuss different approaches, and share your thoughts

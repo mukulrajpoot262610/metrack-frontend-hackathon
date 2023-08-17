@@ -8,8 +8,10 @@ import {
   SiAngular,
   SiDjango,
   SiFlutter,
+  SiPostgresql,
+  SiMongodb,
 } from "react-icons/si";
-import { FaVuejs, FaNodeJs, FaPython } from "react-icons/fa";
+import { FaVuejs, FaNodeJs, FaPython, FaDocker } from "react-icons/fa";
 
 const COURSES = [
   {
@@ -56,6 +58,21 @@ const COURSES = [
     id: 8,
     name: "Flutter",
     logo: <SiFlutter className="z-30 text-6xl text-blue-400 sm:text-9xl" />,
+  },
+  {
+    id: 9,
+    name: "SQL",
+    logo: <SiPostgresql className="z-30 text-6xl text-blue-400 sm:text-9xl" />,
+  },
+  {
+    id: 10,
+    name: "Docker",
+    logo: <FaDocker className="z-30 text-6xl text-blue-400 sm:text-9xl" />,
+  },
+  {
+    id: 11,
+    name: "MongoDB",
+    logo: <SiMongodb className="z-30 text-6xl text-blue-400 sm:text-9xl" />,
   },
 ];
 
