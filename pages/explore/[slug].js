@@ -16,7 +16,6 @@ const CourseDetailPage = () => {
         const { data } = await getCourseDetail(id);
         setResponse(data.data);
       } catch (err) {
-        // console.log(err);
         toast.error(err?.response?.data?.msg);
       }
     };

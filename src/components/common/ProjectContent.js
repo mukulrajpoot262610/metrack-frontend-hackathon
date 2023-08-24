@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import Project from "./Project";
 
-export default function ProjectContent({ projects, cols = 3 }) {
+export default function ProjectContent({ projects = [], cols = 3 }) {
   const router = useRouter();
   const path = router.pathname;
 

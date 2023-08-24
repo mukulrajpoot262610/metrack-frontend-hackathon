@@ -9,24 +9,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "services/api";
 import Editor from "editor";
 
-export default function Edit({ profile }) {
+export default function Edit({ profile, setShow }) {
   const { user } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [about, setAbout] = useState(profile?.about || "");
-  const [hashnode, setHashnode] = useState(profile?.hashnode || "");
   const [linkedin, setLinkedin] = useState(profile?.linkedin || "");
   const [github, setGithub] = useState(profile?.github || "");
   const { handleSubmit, register } = useForm();
   const [image, setImage] = useState();
   const [media, setMedia] = useState();
   const [imageLoading, setImageLoading] = useState(false);
+  const [headline, setHeadline] = useState(profile?.headline || "");
+  const [name, setName] = useState(profile?.name || "");
+  const [twitter, setTwitter] = useState(profile?.twitter || "");
+  const [facebook, setFacebook] = useState(profile?.facebook || "");
+  const [instagram, setInstagram] = useState(profile?.instagram || "");
+  const [website, setWebsite] = useState(profile?.website || "");
+
   const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     if (!user) return;
     setLoading(true);
     try {
-      await updateProfile({ ...data, about });
+      await updateProfile({ ...data, about, avatar: image });
       toast.success("profile updated");
       Router.reload();
     } catch (err) {
@@ -71,11 +77,12 @@ export default function Edit({ profile }) {
   };
 
   return (
-    <div className="p-4 custom-overlay">
+    <div className="p-4 custom-overlay w-full lg:w-1/2 h-2/3 overflow-auto">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <section className="space-y-2">
-          <h2 className="block text-xs font-bold text-blue-500 uppercase">
-            about
+          <h2 className="flex text-xs font-bold text-blue-500 uppercase justify-between items-center">
+            Avatar
+            <span className="cursor-pointer" onClick={(e) => setShow(false)}>X</span>
           </h2>
           <label className="flex flex-col items-center w-full p-1 border rounded-lg cursor-pointer lg:w-1/2 text-blue border-blue">
             {image ? (
@@ -90,22 +97,49 @@ export default function Edit({ profile }) {
           </label>
           <button
             onClick={uploadImage}
-            className={`${
-              imageLoading ? "loading" : ""
-            } btn bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-4`}
+            className={`${imageLoading ? "loading" : ""
+              } btn btn-sm bg-blue-500 hover:bg-blue-400 border-0 w-fit mt-4`}
           >
             Upload
           </button>
         </section>
+
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-blue-500 uppercase">
+            Name
+          </label>
+          <input
+            type="text"
+            {...register("name")}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full input input-bordered"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-blue-500 uppercase">
+            Headline
+          </label>
+          <input
+            type="text"
+            {...register("headline")}
+            value={headline}
+            onChange={(e) => setHeadline(e.target.value)}
+            className="w-full input input-bordered"
+          />
+        </div>
+
         <div className="space-y-2">
           <label className="block text-xs font-bold text-blue-500 uppercase">
             about
           </label>
           <Editor data={about} setData={setAbout} />
         </div>
+
         <div className="space-y-2">
           <label className="block text-xs font-bold text-blue-500 uppercase">
-            github username
+            github
           </label>
           <input
             type="text"
@@ -115,9 +149,10 @@ export default function Edit({ profile }) {
             className="w-full input input-bordered"
           />
         </div>
+
         <div className="space-y-2">
           <label className="block text-xs font-bold text-blue-500 uppercase">
-            linkedin username
+            linkedin
           </label>
           <input
             type="text"
@@ -129,16 +164,57 @@ export default function Edit({ profile }) {
         </div>
         <div className="space-y-2">
           <label className="block text-xs font-bold text-blue-500 uppercase">
-            hashnode username
+            twitter
           </label>
           <input
             type="text"
-            {...register("hashnode")}
-            value={hashnode}
-            onChange={(e) => setHashnode(e.target.hashnode)}
+            {...register("twitter")}
+            value={twitter}
+            onChange={(e) => setTwitter(e.target.value)}
             className="w-full input input-bordered"
           />
         </div>
+
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-blue-500 uppercase">
+            facebook
+          </label>
+          <input
+            type="text"
+            {...register("facebook")}
+            value={facebook}
+            onChange={(e) => setFacebook(e.target.value)}
+            className="w-full input input-bordered"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-blue-500 uppercase">
+            Website
+          </label>
+          <input
+            type="text"
+            {...register("website")}
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            className="w-full input input-bordered"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-xs font-bold text-blue-500 uppercase">
+            Instagram
+          </label>
+          <input
+            type="text"
+            {...register("instagram")}
+            value={instagram}
+            onChange={(e) => setInstagram(e.target.value)}
+            className="w-full input input-bordered"
+          />
+        </div>
+
+
         <div className="flex justify-end">
           <button className="btn btn-primary">
             {loading ? "updating" : "update"}

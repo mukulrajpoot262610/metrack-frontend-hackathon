@@ -49,7 +49,7 @@ export default function Navbar() {
         </div>
         {isAuth ? (
           <div className="flex items-center gap-4">
-            <Link href="/profile">
+            <Link href={`/${user?.username}`}>
               <a className="text-xs font-bold border border-blue-300 btn btn-ghost hover:bg-blue-50 btn-sm">
                 Profile
               </a>
@@ -125,6 +125,7 @@ function Dropdown({ user, handleLogout }) {
               </div>
               <div>
                 <h2 className="text-lg font-bold">{user?.name}</h2>
+                <h2 className="text-sm font-semibold">@{user?.username}</h2>
                 <h3 className="text-sm font-semibold">{user?.email}</h3>
               </div>
             </div>
@@ -146,7 +147,7 @@ function Dropdown({ user, handleLogout }) {
                 </CustomLink>
               </Menu.Item>
               <Menu.Item>
-                <CustomLink href="/profile">
+                <CustomLink href={`/${user?.username}`}>
                   <a className="flex items-center p-4 py-3 gap-x-4 hover:bg-blue-50 active:bg-blue-300 rounded-xl">
                     <AiOutlineUser className="text-base font-bold" />
                     Profile

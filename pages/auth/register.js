@@ -1,23 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { register as signup } from "services/api";
+import { register as signup, checkUsername } from "services/api";
 import { setAuth } from "redux/authSlice";
 import toast from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Register = () => {
   const dispatch = useDispatch();
+
+  const [usernameAvailable, setUsernameAvailable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [toggelFieldType, setToggleFieledType] = useState(false);
+
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(async () => {
+      if (username.length > 0) {
+        try {
+          const res = await checkUsername({ username })
+          setUsernameAvailable(res.data.msg === "Username is available");
+        } catch (err) {
+          console.log(err);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    }, 800)
+    return () => clearTimeout(timer)
+  }, [username])
 
   const onSubmit = async (payload) => {
     setLoading(true);
@@ -36,7 +59,7 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center h-screen min-h-screen gap-20 pb-10">
-      <div className="w-full p-6 lg:w-1/3">
+      <div className="w-full p-6 lg:w-2/5">
         <a className="flex flex-col items-center gap-2 mb-2">
           <img
             alt="metrack-logo"
@@ -52,6 +75,31 @@ const Register = () => {
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text text-text-white font-light">Username <span className="text-red-500">*</span></span>
+            </label>
+            <input type="text"
+              className={`w-full input input-bordered ${errors.username ? "input-error" : ""
+                }`}
+              placeholder="Type here"
+              {...register("username", {
+                required: true,
+              })}
+              onChange={(e) => setUsername(e.target.value)} value={username} required />
+            {
+              username.length > 0 && (isLoading ? <label className="label">
+                <span className="label-text-alt text-blue-500 font-bold flex justify-center items-center gap-1"> Checking Availability...</span>
+              </label> : !usernameAvailable ? <label className="label">
+                <span className="label-text-alt text-red-500 font-bold flex justify-center items-center gap-1"> {username} is not available</span>
+              </label> : <label className="label">
+                <span className="label-text-alt text-emerald-600 font-bold flex items-center justify-center gap-1"> {username} is available</span>
+              </label>)
+            }
+
+          </div>
+
+
           <div className="w-full form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -59,9 +107,8 @@ const Register = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${
-                errors.name ? "input-error" : ""
-              }`}
+              className={`w-full input input-bordered ${errors.name ? "input-error" : ""
+                }`}
               {...register("name", {
                 required: true,
               })}
@@ -81,9 +128,8 @@ const Register = () => {
             <input
               type="text"
               placeholder="Type here"
-              className={`w-full input input-bordered ${
-                errors.email ? "input-error" : ""
-              }`}
+              className={`w-full input input-bordered ${errors.email ? "input-error" : ""
+                }`}
               {...register("email", {
                 required: true,
                 pattern: {
@@ -107,9 +153,8 @@ const Register = () => {
               <input
                 type={toggelFieldType ? "text" : "password"}
                 placeholder="Password"
-                className={`input ${
-                  errors.password ? "input-error" : ""
-                } input-bordered w-full`}
+                className={`input ${errors.password ? "input-error" : ""
+                  } input-bordered w-full`}
                 {...register("password", {
                   required: true,
                 })}
@@ -137,9 +182,8 @@ const Register = () => {
             </label>
           </div>
           <button
-            className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${
-              loading && "loading"
-            } `}
+            className={`w-full mt-4 bg-blue-100 btn btn-ghost hover:bg-blue-300 ${loading && "loading"
+              } `}
           >
             Register{" "}
           </button>
